@@ -27,7 +27,7 @@ function Innovation() {
     animate: inView 
       ? { opacity: 1, transform: 'scale3d(1, 1, 1) translate3d(0, 0, 0)' } 
       : { opacity: 0, transform: 'scale3d(1.1, 1.1, 1) translate3d(0, 0, 0)' },
-    transition: { duration: 0.4, delay: 0.3 + index * 0.1, ease: 'easeOut' },
+    transition: { duration: 0.4, delay: 0.3 + index * 0.1, ease: [0, 0, 0.2, 1] as const },
   })
 
   return (
