@@ -1,34 +1,23 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import SingleAchievement from './SingleAchievement'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function Achievements() {
   const ref = useRef(null)
   const inView = useInView(ref)
-  const [achievementsList, setAchievementsList] = useState<any>(null);
+  const { data } = usePageData()
+  const achievementsList = data?.achievementsList
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setAchievementsList(data?.achievementsList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const bottomAnimation = (index: any) => ({
-    initial: { y: '5%', opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: '10%', opacity: 0 },
-    transition: { duration: 0.4, delay: 0.4 + index * 0.3 },
+  // GPU-accelerated animation using transform3d
+  const bottomAnimation = (index: number) => ({
+    initial: { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'translate3d(0, 10%, 0)' },
+    transition: { duration: 0.4, delay: 0.4 + index * 0.15 },
   })
 
   return (
@@ -47,9 +36,13 @@ function Achievements() {
               </h2>
             </div>
             <div className='grid md:grid-cols-2 xl:grid-cols-3 gap-6'>
-              {achievementsList?.map((item: any, index: any) => {
+              {achievementsList?.map((item: any, index: number) => {
                 return (
-                  <motion.div {...bottomAnimation(index)} key={index}>
+                  <motion.div 
+                    {...bottomAnimation(index)} 
+                    key={index}
+                    className='gpu-accelerated'
+                  >
                     <SingleAchievement key={index} achievements={item} />
                   </motion.div>
                 )

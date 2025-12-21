@@ -1,19 +1,47 @@
 import { Metadata } from "next";
-import Achievements from "./components/home/achievements";
-import Brand from "./components/home/brand";
-import CreativeMind from "./components/home/creative-mind";
-import CustomerStories from "./components/home/customer-stories";
-import Faq from "./components/home/faq";
-import HeroSection from "./components/home/hero";
-import Innovation from "./components/home/innovation";
-import OnlinePresence from "./components/home/online-presence";
-import Solutions from "./components/home/solution";
-import Subscription from "./components/home/subscription";
-import WebResult from "./components/home/web-result";
+import dynamic from "next/dynamic";
 import Script from "next/script";
 
+// Critical above-the-fold components - load immediately
+import HeroSection from "./components/home/hero";
+import Brand from "./components/home/brand";
+import WebResult from "./components/home/web-result";
+
+// Below-fold components - lazy load for better performance
+const Innovation = dynamic(() => import("./components/home/innovation"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const OnlinePresence = dynamic(() => import("./components/home/online-presence"), {
+  loading: () => <div className="min-h-[600px]" />,
+});
+
+const CreativeMind = dynamic(() => import("./components/home/creative-mind"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const CustomerStories = dynamic(() => import("./components/home/customer-stories"), {
+  loading: () => <div className="min-h-[500px]" />,
+});
+
+const Subscription = dynamic(() => import("./components/home/subscription"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const Faq = dynamic(() => import("./components/home/faq"), {
+  loading: () => <div className="min-h-[300px]" />,
+});
+
+const Achievements = dynamic(() => import("./components/home/achievements"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const Solutions = dynamic(() => import("./components/home/solution"), {
+  loading: () => <div className="min-h-[300px]" />,
+});
+
 // Base URL for canonical and social sharing
-const siteUrl = "https://satwikkanhere.dev";
+const siteUrl = "https://satwik-kanhere.vercel.app";
 const ogImageUrl = `${siteUrl}/images/og-image.jpg`;
 
 export const metadata: Metadata = {
@@ -142,7 +170,7 @@ export const metadata: Metadata = {
   
   // ============== VERIFICATION ==============
   verification: {
-    google: "your-google-site-verification-code",
+    google: "bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw",
     yandex: "your-yandex-verification-code",
     other: {
       "msvalidate.01": "your-bing-verification-code",
@@ -514,83 +542,61 @@ export default function Home() {
       <Script
         id="schema-person"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <Script
         id="schema-website"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Script
         id="schema-webpage"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <Script
         id="schema-service"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
       />
       <Script
         id="schema-projects"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
       />
       <Script
         id="schema-faq"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Script
         id="schema-org"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       
       <main>
-        {/* ---------------------Hero section Starts-----------------  */}
+        {/* Critical above-the-fold content */}
         <HeroSection />
-        {/* ---------------------Hero section Ends-----------------  */}
-
-        {/* ---------------------Brand logo section Starts-----------------  */}
         <Brand />
-        {/* ---------------------Brand logo section Ends-----------------  */}
-
-        {/* ---------------------Web result section Starts-----------------  */}
         <WebResult />
-        {/* ---------------------Web result section Ends-----------------  */}
-
-        {/* ---------------------Innovation section Starts-----------------  */}
+        
+        {/* Lazy-loaded below-fold content */}
         <Innovation />
-        {/* ---------------------Innovation section Ends-----------------  */}
-
-        {/* ---------------------Online presence section Starts-----------------  */}
         <OnlinePresence />
-        {/* ---------------------Online presence section Ends-----------------  */}
-
-        {/* ---------------------Creative mind section Starts-----------------  */}
         <CreativeMind />
-        {/* ---------------------Creative mind section Ends-----------------  */}
-
-        {/* ---------------------Customer Stories section Starts-----------------  */}
         <CustomerStories />
-        {/* ---------------------Customer Stories section Ends-----------------  */}
-
-        {/* ---------------------Subscription section Starts-----------------  */}
         <Subscription />
-        {/* ---------------------Subscription section Ends-----------------  */}
-
-        {/* ---------------------Faq section Starts-----------------  */}
         <Faq />
-        {/* ---------------------Faq section Ends-----------------  */}
-
-        {/* ---------------------Achievements section Starts-----------------  */}
         <Achievements />
-        {/* ---------------------Achievements section Ends-----------------  */}
-
-        {/* ---------------------Solutions section Starts-----------------  */}
         <Solutions />
-        {/* ---------------------Solutions section Ends-----------------  */}
       </main>
     </>
   )

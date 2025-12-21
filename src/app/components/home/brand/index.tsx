@@ -1,24 +1,16 @@
 'use client'
 import Slider from 'react-infinite-logo-slider'
 import SingleBrand from './SingleBrand'
-import { useEffect, useState } from 'react';
+import { usePageData } from '@/providers/PageDataContext'
 
 function Brand() {
-  const [brandList, setbrandList] = useState<any>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
+  const { data, loading } = usePageData()
+  const brandList = data?.brandList
 
-        const data = await res.json()
-        setbrandList(data?.brandList || [])
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-    fetchData()
-  }, [])
+  // Show skeleton or nothing while loading
+  if (loading || !brandList?.length) {
+    return null
+  }
 
   return (
     <section>
@@ -33,19 +25,17 @@ function Brand() {
               </p>
             </div>
 
-            {brandList && brandList.length > 0 && (
-              <div className='py-3 Xsm:py-7'>
-                <Slider
-                  width='200px'
-                  duration={20}
-                  pauseOnHover={true}
-                  blurBorders={false}>
-                  {brandList?.map((items: any, index: any) => (
-                    <SingleBrand key={index} brand={items} />
-                  ))}
-                </Slider>
-              </div>
-            )}
+            <div className='py-3 Xsm:py-7'>
+              <Slider
+                width='200px'
+                duration={20}
+                pauseOnHover={true}
+                blurBorders={false}>
+                {brandList.map((items: any, index: number) => (
+                  <SingleBrand key={index} brand={items} />
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ const SingleBrand = ({ brand }: { brand: any }) => {
           alt={title}
           height={50}
           width={130}
+          loading="lazy"
           className='dark:hidden swiper-logo-image h-10'
         />
         <Image
@@ -19,6 +20,7 @@ const SingleBrand = ({ brand }: { brand: any }) => {
           alt={title}
           height={50}
           width={130}
+          loading="lazy"
           className='dark:block hidden swiper-logo-image h-10'
         />
       </div>

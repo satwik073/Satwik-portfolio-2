@@ -11,13 +11,16 @@ const SingleCreativeMind = ({
     return (
         <div
             className='group flex flex-col gap-6 items-center justify-center max-w-80'>
-            <div className='group-hover:grayscale'>
+            <div className='group-hover:grayscale transition-[filter] duration-300'>
                 <Image
                     src={image}
                     alt={name}
                     width={625}
                     height={410}
-                    className='rounded-2xl'
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQREiExBQYTQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgARA//2gAMAwEAAhEDEEA/ANX7k7hktrmO3ggWSNFBZ3AIZiOQPQH71SRTA8ilKzQ7uH//2Q=="
+                    className='rounded-2xl object-cover'
                 />
             </div>
             <div className='flex flex-col gap-4 items-center'>
@@ -30,7 +33,9 @@ const SingleCreativeMind = ({
                 <div className='flex gap-4'>
                     <Link
                         href={twitterLink}
-                        className='group text-[#b1b1b1] hover:text-indigo-800'>
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className='group text-[#b1b1b1] hover:text-indigo-800 transition-colors duration-200'>
                         <svg
                             width='20'
                             height='18'
@@ -46,7 +51,9 @@ const SingleCreativeMind = ({
                     </Link>
                     <Link
                         href={linkedinLink}
-                        className='group text-[#b1b1b1] hover:text-indigo-800'>
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className='group text-[#b1b1b1] hover:text-indigo-800 transition-colors duration-200'>
                         <svg
                             width='20'
                             height='20'

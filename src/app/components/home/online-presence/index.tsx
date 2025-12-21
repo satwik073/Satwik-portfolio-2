@@ -2,34 +2,24 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function OnlinePresence() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
-  const [onlinePresenceList, setOnlinePresenceList] = useState<any>(null)
+  const { data } = usePageData()
+  const onlinePresenceList = data?.onlinePresenceList
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setOnlinePresenceList(data?.onlinePresenceList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-    fetchData()
-  }, [])
-
+  // GPU-accelerated animation using transform3d
   const bottomAnimation = (index: number) => ({
-    initial: { y: 50, opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 },
-    transition: { duration: 0.8, delay: 0.4 + index * 0.2, },
+    initial: { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+    transition: { duration: 0.6, delay: 0.4 + index * 0.15 },
   })
 
   return (
@@ -51,7 +41,7 @@ function OnlinePresence() {
               {onlinePresenceList?.map((items: any, index: number) => (
                 <motion.div
                   key={index}
-                  className='group flex flex-col gap-6 cursor-pointer'
+                  className='group flex flex-col gap-6 cursor-pointer gpu-accelerated'
                   {...bottomAnimation(index)}
                 >
                   <div className='relative'>
@@ -60,10 +50,13 @@ function OnlinePresence() {
                       alt={items.title}
                       width={625}
                       height={410}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQREiExBQYTQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgARA//2gAMAwEAAhEDEEA/ANX7k7hktrmO3ggWSNFBZ3AIZiOQPQH71SRTA8ilKzQ7uH//2Q=="
                       className='rounded-2xl'
                     />
                     <Link
-                      href={'https://www.framer.com/@wrap-pixel/'}
+                      href={items.link || '#'}
                       target='_blank'
                       className='absolute top-0 left-0 bg-black/50 w-full h-full rounded-2xl hidden group-hover:flex'
                     >
@@ -82,11 +75,11 @@ function OnlinePresence() {
                     <h3 className='group-hover:text-purple_blue text-2xl'>
                       {items.title}
                     </h3>
-                    <div className='flex gap-3'>
-                      {items.tag?.map((tag: any, idx: number) => (
+                    <div className='flex gap-3 flex-wrap'>
+                      {items.tag?.map((tag: string, idx: number) => (
                         <p
                           key={idx}
-                          className='text-sm border border-dark_black/10 dark:border-white/50 w-fit py-1.5 px-4 rounded-full hover:bg-dark_black hover:text-white'
+                          className='text-sm border border-dark_black/10 dark:border-white/50 w-fit py-1.5 px-4 rounded-full hover:bg-dark_black hover:text-white transition-colors duration-200'
                         >
                           {tag}
                         </p>

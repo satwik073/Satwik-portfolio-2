@@ -1,26 +1,11 @@
 'use client'
-import { useEffect, useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../ui/accordion';
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect';
+import { usePageData } from '@/providers/PageDataContext';
 
 function Faq() {
-  const [faqList, setfaqList] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setfaqList(data?.faqList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
+  const { data } = usePageData()
+  const faqList = data?.faqList
 
   return (
     <section>
@@ -42,7 +27,7 @@ function Faq() {
                 type='single'
                 collapsible
                 className='flex flex-col gap-4'>
-                {faqList?.map((item: any, index: any) => (
+                {faqList?.map((item: any, index: number) => (
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}

@@ -1,26 +1,13 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react';
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect';
+import { usePageData } from '@/providers/PageDataContext';
 
 function Subscription() {
-  const [startupPlanList, setstartupPlanList] = useState<any>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
+  const { data } = usePageData()
+  const startupPlanList = data?.startupPlanList
 
-        const data = await res.json()
-        setstartupPlanList(data?.startupPlanList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
   return (
     <section id='pricing'>
       <div className='2xl:py-20 py-11'>
@@ -94,14 +81,15 @@ function Subscription() {
                       className={`flex flex-col gap-4 md:pl-6 md:border-l ${items.border_color}`}>
                       <p className={`${items.text_color}`}>Features</p>
                       <ul className='flex flex-col gap-4'>
-                        {items.plan_feature?.map((feature: any, index: number) => {
+                        {items.plan_feature?.map((feature: string, featureIndex: number) => {
                           return (
-                            <li key={index} className='flex items-center gap-3'>
+                            <li key={featureIndex} className='flex items-center gap-3'>
                               <Image
                                 src={items.icon_img}
-                                alt='icon'
+                                alt='checkmark icon'
                                 width={20}
                                 height={20}
+                                loading="lazy"
                               />
                               <p className={`${items.text_color}`}>{feature}</p>
                             </li>

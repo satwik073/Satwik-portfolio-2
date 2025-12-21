@@ -1,35 +1,25 @@
 'use client'
 import { motion, useInView } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import SingleCreativeMind from './SingleCreativeMind'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function CreativeMind() {
   const ref = useRef(null)
   const inView = useInView(ref)
-  const [creativeMindList, setcreativeMindList] = useState<any>(null);
+  const { data } = usePageData()
+  const creativeMindList = data?.creativeMindList
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setcreativeMindList(data?.creativeMindList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const bottomAnimation = (index: any) => ({
-    initial: { y: '5%', opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: '10%', opacity: 0 },
-    transition: { duration: 0.4, delay: 0.4 + index * 0.3 },
+  // GPU-accelerated animation using transform3d
+  const bottomAnimation = (index: number) => ({
+    initial: { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'translate3d(0, 10%, 0)' },
+    transition: { duration: 0.4, delay: 0.4 + index * 0.15 },
   })
+
   return (
     <section id='team'>
       <div ref={ref} className='2xl:py-20 py-11'>
@@ -46,9 +36,13 @@ function CreativeMind() {
               </h2>
             </div>
             <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8'>
-              {creativeMindList?.map((item: any, index: any) => {
+              {creativeMindList?.map((item: any, index: number) => {
                 return (
-                  <motion.div {...bottomAnimation(index)} key={index}>
+                  <motion.div 
+                    {...bottomAnimation(index)} 
+                    key={index}
+                    className='gpu-accelerated'
+                  >
                     <SingleCreativeMind key={index} creativemind={item} />
                   </motion.div>
                 )

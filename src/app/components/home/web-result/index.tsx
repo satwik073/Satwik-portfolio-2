@@ -2,45 +2,30 @@
 import Image from 'next/image'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
-import { useEffect, useState } from 'react'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function WebResult() {
-  const [data, setData] = useState<any>(null);
+  const { data: pageData } = usePageData()
+  const webResultTagList = pageData?.WebResultTagList
 
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5,
   })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setData(data?.WebResultTagList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
   return (
     <section id='aboutus'>
       <div className='2xl:py-20 py-11'>
         <div className='container'>
-          <div className='flex flex-col  lg:gap-16 gap-5'>
+          <div className='flex flex-col lg:gap-16 gap-5'>
             <div className='flex flex-col items-center justify-center text-center gap-3'>
               <h2 className='max-w-6xl'>
                 <TextGenerateEffect words='Building high-performance applications with modern technologies and best practices driven by' duration={0.2} />
               </h2>
               <div>
                 <h2>
-                  {data?.map((items: any, index: any) => (
+                  {webResultTagList?.map((items: any, index: number) => (
                     <span
                       key={index}
                       className={`inline-flex m-2 py-1 px-5 gap-3 rounded-full ${items.bg_color} ${items.txt_color} items-center`}>
@@ -49,6 +34,7 @@ function WebResult() {
                         alt={items.name}
                         width={40}
                         height={40}
+                        loading="lazy"
                         style={{ width: 'auto', height: 'auto' }}
                       />
                       <span className='instrument-font italic font-normal'>

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://satwikkanhere.dev'
+  const baseUrl = 'https://satwik-kanhere.vercel.app'
   
   return [
     {
