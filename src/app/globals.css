@@ -168,3 +168,7 @@ layer(base);
     @apply text-base  font-normal text-dark_black dark:text-white;
   }
 }
+#tidio-chat {
+  /* position: absolute !important; */
+  bottom : 26px !important;
+}
