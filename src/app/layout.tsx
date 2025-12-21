@@ -5,8 +5,12 @@ import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
 import { interTight, instrumentSerif } from '@/lib/fonts'
 import Script from 'next/script'
+import ServiceWorkerRegistration from './components/ServiceWorkerRegistration'
 
 const siteUrl = "https://satwik-kanhere.vercel.app";
+
+// Build-time cache version
+const CACHE_VERSION = process.env.NEXT_PUBLIC_BUILD_ID || '1.0.0'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
     telephone: true,
   },
   
-  // Open Graph - Works on Facebook, LinkedIn, WhatsApp, Discord, Slack, Telegram
+  // Open Graph
   openGraph: {
     type: 'profile',
     locale: 'en_US',
@@ -105,43 +109,25 @@ export const metadata: Metadata = {
     google: 'bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw',
   },
   
-  // Additional meta for social platforms
   other: {
-    // WhatsApp/Telegram specific (uses OG tags but these help)
     'og:image:width': '1200',
     'og:image:height': '630',
-    
-    // LinkedIn
     'linkedin:owner': 'satwikkanhere0730',
-    
-    // Pinterest
     'pinterest-rich-pin': 'true',
-    
-    // Instagram (limited, but helps with link previews)
     'instagram:creator': '@satwikkanhere',
-    
-    // Skype
     'skype_toolbar': 'skype_toolbar_parser_compatible',
-    
-    // Mobile app banners
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'apple-mobile-web-app-title': 'Satwik Kanhere',
-    
-    // Windows/MS
     'msapplication-TileColor': '#4928fd',
     'msapplication-TileImage': '/mstile-144x144.png',
-    
-    // Theme
     'theme-color': '#4928fd',
-    
-    // Format detection
     'format-detection': 'telephone=yes',
-    
-    // Geo
     'geo.region': 'IN-CH',
     'geo.placename': 'Chandigarh, India',
+    // Cache version for debugging
+    'x-cache-version': CACHE_VERSION,
   },
 }
 
@@ -157,51 +143,58 @@ export default function RootLayout({
       className={`${interTight.variable} ${instrumentSerif.variable}`}
     >
       <head>
-        {/* Favicon */}
+        {/* ============== CRITICAL RESOURCE HINTS ============== */}
+        
+        {/* Preconnect to critical origins */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        
+        {/* DNS Prefetch for third-party domains */}
+        <link rel="dns-prefetch" href="//code.tidio.co" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Preload critical assets for LCP optimization */}
+        <link 
+          rel="preload" 
+          href="/images/home/avatar_1.jpg" 
+          as="image" 
+          type="image/jpeg"
+        />
+        <link 
+          rel="preload" 
+          href="/images/home/avatar_2.jpg" 
+          as="image" 
+          type="image/jpeg"
+        />
+        
+        {/* Prefetch likely next navigations */}
+        <link rel="prefetch" href="/contact" />
+        
+        {/* ============== FAVICON & ICONS ============== */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         
-        {/* Preconnect for critical resources only */}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* DNS prefetch for third-party domains */}
-        <link rel="dns-prefetch" href="//code.tidio.co" />
-        
-        {/* Additional social meta tags that Next.js Metadata doesn't cover */}
-        
-        {/* WhatsApp specific */}
+        {/* ============== SOCIAL META TAGS ============== */}
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:alt" content="Satwik Kanhere - Software Development Engineer" />
-        
-        {/* Telegram */}
         <meta name="telegram:channel" content="@satwikkanhere" />
-        
-        {/* Discord */}
         <meta name="theme-color" content="#4928fd" />
-        
-        {/* Slack */}
-        <meta name="slack-app-id" content="your-slack-app-id" />
-        
-        {/* Facebook App */}
         <meta property="fb:app_id" content="your-facebook-app-id" />
         <meta property="fb:admins" content="your-facebook-admin-id" />
-        
-        {/* Article metadata for rich previews */}
         <meta property="article:author" content="Satwik Kanhere" />
         <meta property="article:publisher" content="https://linkedin.com/in/satwikkanhere0730" />
-        
-        {/* Profile metadata */}
         <meta property="profile:first_name" content="Satwik" />
         <meta property="profile:last_name" content="Kanhere" />
         <meta property="profile:username" content="satwikkanhere" />
         
-        {/* Business/Contact */}
+        {/* ============== CONTACT & BUSINESS ============== */}
         <meta name="author" content="Satwik Kanhere" />
         <meta name="designer" content="Satwik Kanhere" />
         <meta name="owner" content="Satwik Kanhere" />
         <meta name="contact" content="satwikkanhere2003@gmail.com" />
         
-        {/* Language & Region */}
+        {/* ============== LANGUAGE & REGION ============== */}
         <meta httpEquiv="content-language" content="en-US" />
         <meta name="language" content="English" />
         <meta name="coverage" content="Worldwide" />
@@ -209,11 +202,15 @@ export default function RootLayout({
         <meta name="target" content="all" />
         <meta name="audience" content="all" />
         
-        {/* Refresh/Cache */}
+        {/* ============== CACHE CONTROL META ============== */}
         <meta name="revisit-after" content="7 days" />
         <meta name="rating" content="General" />
+        <meta name="x-build-version" content={CACHE_VERSION} />
       </head>
       <body className={interTight.className}>
+        {/* Service Worker Registration for offline caching */}
+        <ServiceWorkerRegistration />
+        
         <Providers>
           <Header />
           {children}
