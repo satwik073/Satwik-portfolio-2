@@ -1,36 +1,35 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function Innovation() {
   const ref = useRef(null)
   const inView = useInView(ref)
-  const [innovationList, setinnovationList] = useState<any>(null);
+  const { data } = usePageData()
+  const innovationList = data?.innovationList
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setinnovationList(data?.innovationList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const bottomAnimation = (index: any) => ({
-    initial: { y: '25%', opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: '25%', opacity: 0 },
-    transition: { duration: 0.3, delay: 0.3 + index * 0.3 },
+  // GPU-accelerated animations using transform3d
+  const bottomAnimation = (index: number) => ({
+    initial: { opacity: 0, transform: 'translate3d(0, 25%, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'translate3d(0, 25%, 0)' },
+    transition: { duration: 0.3, delay: 0.3 + index * 0.15 },
   })
+
+  // Optimized card animation - using transform only (GPU accelerated)
+  const cardAnimation = (index: number) => ({
+    initial: { opacity: 0, transform: 'scale3d(1.1, 1.1, 1) translate3d(0, 0, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'scale3d(1, 1, 1) translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'scale3d(1.1, 1.1, 1) translate3d(0, 0, 0)' },
+    transition: { duration: 0.4, delay: 0.3 + index * 0.1, ease: 'easeOut' },
+  })
+
   return (
     <section id='services'>
       <div ref={ref} className='2xl:py-20 py-11'>
@@ -39,7 +38,7 @@ function Innovation() {
             <div className='flex flex-col justify-center items-center gap-10 lg:gap-16'>
               <motion.div
                 {...bottomAnimation(1)}
-                className='max-w-(--breakpoint-Xsm) text-center'>
+                className='max-w-(--breakpoint-Xsm) text-center gpu-accelerated'>
                 <h2>
                   <TextGenerateEffect words="My technical" delay={0.4} />
                   <TextGenerateEffect
@@ -52,21 +51,20 @@ function Innovation() {
               <div ref={ref} className='w-full'>
                 <div
                   className='grid auto-rows-max grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 w-full'>
-                  {innovationList?.map((items: any, index: any) => {
+                  {innovationList?.map((items: any, index: number) => {
                     return (
                       <motion.div
                         key={index}
-                        className={`${items.bg_color} flex flex-col p-8 rounded-2xl gap-6 lg:gap-9`}
-                        initial={{ scale: 1.2, opacity: 0, filter: 'blur(8px)' }}
-                        animate={inView ? { scale: 1, opacity: 1, filter: 'blur(0px)' } : {}}
-                        transition={{ duration: 0.6, delay: 0.3 + index * 0.2, ease: 'easeInOut' }}
+                        className={`${items.bg_color} flex flex-col p-8 rounded-2xl gap-6 lg:gap-9 gpu-accelerated`}
+                        {...cardAnimation(index)}
                       >
                         <div>
                           <Image
                             src={items.image}
-                            alt='image'
+                            alt={items.title || 'Service icon'}
                             height={40}
                             width={40}
+                            loading="lazy"
                           />
                         </div>
                         <div>

@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap')
-layer(base);
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap')
-layer(base);
+/* Fonts are now loaded via next/font in layout.tsx for optimal performance */
+/* Removed @import for Google Fonts to eliminate render-blocking requests */
 
 @import 'tailwindcss';
 
@@ -94,7 +92,7 @@ layer(base);
 @layer utilities {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter Tight', sans-serif;
+    font-family: var(--font-inter-tight), 'Inter Tight', system-ui, sans-serif;
     overflow-x: hidden;
     @apply dark:bg-dark_black;
   }
@@ -113,7 +111,7 @@ layer(base);
 
 @layer utilities {
   .instrument-font {
-    font-family: 'Instrument Serif', serif;
+    font-family: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
   }
 
   .hero-mask {
@@ -131,6 +129,24 @@ layer(base);
       white 80%,
       transparent
     );
+  }
+  
+  /* GPU-accelerated animations for better performance */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+  
+  /* Reduced motion support for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -168,7 +184,7 @@ layer(base);
     @apply text-base  font-normal text-dark_black dark:text-white;
   }
 }
+
 #tidio-chat {
-  /* position: absolute !important; */
   bottom : 26px !important;
 }

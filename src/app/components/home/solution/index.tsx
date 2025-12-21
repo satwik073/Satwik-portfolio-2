@@ -2,16 +2,18 @@
 import Link from 'next/link'
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
-import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
 
 function Solutions() {
   const ref = useRef(null)
   const inView = useInView(ref)
 
+  // GPU-accelerated animation
   const bottomAnimation = {
-    initial: { y: '5%', opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 1, delay: 0.8 },
+    initial: { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
+    animate: inView 
+      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
+      : { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
+    transition: { duration: 0.8, delay: 0.4 },
   }
 
   return (
@@ -23,12 +25,11 @@ function Solutions() {
             className='py-16 md:py-28 px-6 border border-dark_black/10 rounded-3xl bg-[linear-gradient(90deg,#CDEFFB_0%,#FFFFFF_33.23%,#FFFFFF_65.77%,#FDEECB_100%)] backdrop-blur-[200px] dark:opacity-80'>
             <motion.div
               {...bottomAnimation}
-              className='flex flex-col gap-6 items-center md:max-w-3xl mx-auto'>
+              className='flex flex-col gap-6 items-center md:max-w-3xl mx-auto gpu-accelerated'>
               <div className='flex flex-col gap-3 items-center text-center'>
                 <h2 className='text-3xl md:text-5xl dark:text-dark_black w-full max-w-3xl flex gap-2'>
-                  <p className='text-3xl md:text-5xl leading-tight text-black  tracking-tight'>Let's build something</p>
-                  <p
-                    className="text-3xl md:text-5xl leading-tight text-black  tracking-tight instrument-font italic">amazing together</p>
+                  <p className='text-3xl md:text-5xl leading-tight text-black tracking-tight'>Let's build something</p>
+                  <p className="text-3xl md:text-5xl leading-tight text-black tracking-tight instrument-font italic">amazing together</p>
                 </h2>
                 <p className='dark:text-dark_black'>
                   Have a project in mind? I specialize in creating scalable web applications,

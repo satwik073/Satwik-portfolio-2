@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Satwik Kanhere | Software Development Engineer",
     description: "Reach out for software development projects, consulting, or career opportunities",
-    url: "https://satwikkanhere.dev/contact",
+    url: "https://satwik-kanhere.vercel.app/contact",
     type: "website",
   },
   twitter: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: "Get in touch for software development projects",
   },
   alternates: {
-    canonical: "https://satwikkanhere.dev/contact",
+    canonical: "https://satwik-kanhere.vercel.app/contact",
   },
 };
 
@@ -36,7 +36,7 @@ const contactJsonLd = {
   "@type": "ContactPage",
   name: "Contact Satwik Kanhere",
   description: "Contact page for Satwik Kanhere - Software Development Engineer",
-  url: "https://satwikkanhere.dev/contact",
+  url: "https://satwik-kanhere.vercel.app/contact",
   mainEntity: {
     "@type": "Person",
     name: "Satwik Kanhere",

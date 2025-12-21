@@ -3,8 +3,10 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
+import { interTight, instrumentSerif } from '@/lib/fonts'
+import Script from 'next/script'
 
-const siteUrl = "https://satwikkanhere.dev";
+const siteUrl = "https://satwik-kanhere.vercel.app";
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -100,7 +102,7 @@ export const metadata: Metadata = {
   },
   
   verification: {
-    google: 'your-google-verification-code',
+    google: 'bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw',
   },
   
   // Additional meta for social platforms
@@ -149,20 +151,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html 
+      lang="en" 
+      suppressHydrationWarning
+      className={`${interTight.variable} ${instrumentSerif.variable}`}
+    >
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         
-        {/* Tidio Chat Widget */}
-        <script src="//code.tidio.co/vimkwl9xsfgphj7hjmxld2h2mnvywtal.js" async></script>
-        <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
-        
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Preconnect for critical resources only */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        
+        {/* DNS prefetch for third-party domains */}
+        <link rel="dns-prefetch" href="//code.tidio.co" />
         
         {/* Additional social meta tags that Next.js Metadata doesn't cover */}
         
@@ -210,12 +213,19 @@ export default function RootLayout({
         <meta name="revisit-after" content="7 days" />
         <meta name="rating" content="General" />
       </head>
-      <body>
+      <body className={interTight.className}>
         <Providers>
           <Header />
           {children}
           <Footer />
         </Providers>
+        
+        {/* Tidio Chat Widget - Loaded after page is interactive */}
+        <Script
+          src="//code.tidio.co/vimkwl9xsfgphj7hjmxld2h2mnvywtal.js"
+          strategy="lazyOnload"
+          id="tidio-chat-widget"
+        />
       </body>
     </html>
   )

@@ -1,34 +1,22 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'motion/react'
 import StarRating from '../../shared/star-rating'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { usePageData } from '@/providers/PageDataContext'
 
 function HeroSection() {
   const ref = useRef(null)
-  const [avatarList, setAvatarList] = useState<any>(null);
+  const { data } = usePageData()
+  const avatarList = data?.avatarList
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-        const data = await res.json()
-        setAvatarList(data)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
+  // GPU-accelerated animation using transform instead of y
   const bottomAnimation = {
-    initial: { y: '20%', opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 1, delay: 0.8 },
+    initial: { opacity: 0, transform: 'translateY(20px)' },
+    animate: { opacity: 1, transform: 'translateY(0px)' },
+    transition: { duration: 0.8, delay: 0.8 },
   }
 
   return (
@@ -37,9 +25,7 @@ function HeroSection() {
         <div className='container relative z-10'>
           <div ref={ref} className='flex flex-col gap-8'>
             {/* ---------------- heading text --------------- */}
-            <div
-              // {...bottomAnimation}
-              className='relative flex flex-col text-center items-center '>
+            <div className='relative flex flex-col text-center items-center '>
               <h1 className="leading-none">
                 <TextGenerateEffect className='text-3xl md:text-6xl lg:text-8xl leading-none' words="Hi, I'm Satwik Kanhere" />
                 <TextGenerateEffect
@@ -57,7 +43,7 @@ function HeroSection() {
 
             <motion.div
               {...bottomAnimation}
-              className='flex flex-col items-center justify-center gap-4'>
+              className='flex flex-col items-center justify-center gap-4 gpu-accelerated'>
               <div className='flex flex-col items-center justify-center gap-8 w-full sm:flex-row'>
                 {/* ----------- Get started Link -------------- */}
                 <Link
@@ -99,14 +85,16 @@ function HeroSection() {
                 {/* --------------- avatar division -------------- */}
                 <div className='flex items-center gap-7'>
                   <ul className='avatar flex flex-row items-center'>
-                    {avatarList?.avatarList?.map((items: any, index: any) => (
+                    {avatarList?.map((items: any, index: number) => (
                       <li key={index} className='-mr-2 z-1 avatar-hover:ml-2'>
                         <Image
                           src={items.image}
-                          alt='Image'
+                          alt={items.title || 'Team member'}
                           width={44}
                           height={44}
-                          quality={100}
+                          quality={75}
+                          loading={index < 2 ? undefined : 'lazy'}
+                          priority={index < 2}
                           className='rounded-full border-2 border-white'
                         />
                       </li>

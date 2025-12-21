@@ -35,13 +35,13 @@ function CustomerStories() {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Top Left Box */}
+                {/* Top Left Box - GPU accelerated animation */}
                 <motion.div
                   ref={topLeftRef}
-                  initial={{ x: -100, y: -100, opacity: 0 }}
-                  animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat"
+                  initial={{ opacity: 0, transform: 'translate3d(-50px, -50px, 0)' }}
+                  animate={topLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
+                  transition={{ duration: 0.6 }}
+                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat gpu-accelerated"
                 >
                   <span className="text-white/60 uppercase text-sm font-medium">
                     Current Role
@@ -62,10 +62,10 @@ function CustomerStories() {
                 {/* Top Right Box */}
                 <motion.div
                   ref={topRightRef}
-                  initial={{ x: 100, y: -100, opacity: 0 }}
-                  animate={topRightInView ? { x: 0, y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="flex flex-col justify-between gap-36 xl:max-w-25 bg-pale-yellow rounded-2xl p-8"
+                  initial={{ opacity: 0, transform: 'translate3d(50px, -50px, 0)' }}
+                  animate={topRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
+                  transition={{ duration: 0.6 }}
+                  className="flex flex-col justify-between gap-36 xl:max-w-25 bg-pale-yellow rounded-2xl p-8 gpu-accelerated"
                 >
                   <div>
                     <span className="uppercase text-sm font-medium text-dark_black/60">
@@ -85,10 +85,10 @@ function CustomerStories() {
                 {/* Bottom Left Box */}
                 <motion.div
                   ref={bottomLeftRef}
-                  initial={{ x: -100, y: 100, opacity: 0 }}
-                  animate={bottomLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="flex flex-col justify-between bg-dark_black xl:max-w-25 dark:bg-white/10 rounded-2xl p-8"
+                  initial={{ opacity: 0, transform: 'translate3d(-50px, 50px, 0)' }}
+                  animate={bottomLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
+                  transition={{ duration: 0.6 }}
+                  className="flex flex-col justify-between bg-dark_black xl:max-w-25 dark:bg-white/10 rounded-2xl p-8 gpu-accelerated"
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-white/60 uppercase text-sm font-medium">
@@ -100,10 +100,11 @@ function CustomerStories() {
                     <div>
                       <Image
                         src="/images/home/customerStories/creativity_img.jpg"
-                        alt="image"
+                        alt="Infosys experience"
                         width={344}
                         height={220}
-                        className="w-full h-52"
+                        loading="lazy"
+                        className="w-full h-52 object-cover"
                       />
                     </div>
                   </div>
@@ -112,10 +113,10 @@ function CustomerStories() {
                 {/* Bottom Right Box */}
                 <motion.div
                   ref={bottomRightRef}
-                  initial={{ x: 100, y: 100, opacity: 0 }}
-                  animate={bottomRightInView ? { x: 0, y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="flex flex-col gap-24 justify-between bg-dark_black/5 dark:bg-white/5 p-8 rounded-2xl"
+                  initial={{ opacity: 0, transform: 'translate3d(50px, 50px, 0)' }}
+                  animate={bottomRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
+                  transition={{ duration: 0.6 }}
+                  className="flex flex-col gap-24 justify-between bg-dark_black/5 dark:bg-white/5 p-8 rounded-2xl gpu-accelerated"
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">

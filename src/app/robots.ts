@@ -17,8 +17,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://satwikkanhere.dev/sitemap.xml',
-    host: 'https://satwikkanhere.dev',
+    sitemap: 'https://satwik-kanhere.vercel.app/sitemap.xml',
+    host: 'https://satwik-kanhere.vercel.app',
   }
 }
 
