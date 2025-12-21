@@ -155,6 +155,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         
+        {/* Tidio Chat Widget */}
+        <script src="//code.tidio.co/vimkwl9xsfgphj7hjmxld2h2mnvywtal.js" async></script>
+        <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
+        
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
