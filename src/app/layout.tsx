@@ -157,6 +157,7 @@ export default function RootLayout({
         
         {/* Tidio Chat Widget */}
         <script src="//code.tidio.co/vimkwl9xsfgphj7hjmxld2h2mnvywtal.js" async></script>
+        <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
         
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
