@@ -2,543 +2,296 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 
-// Critical above-the-fold components - load immediately
+// Critical above-the-fold components
 import HeroSection from "./components/home/hero";
 import Brand from "./components/home/brand";
 import WebResult from "./components/home/web-result";
 
-// Below-fold components - lazy load for better performance
+// Lazy-loaded below-fold components
 const Innovation = dynamic(() => import("./components/home/innovation"), {
   loading: () => <div className="min-h-[400px]" />,
 });
-
 const OnlinePresence = dynamic(() => import("./components/home/online-presence"), {
   loading: () => <div className="min-h-[600px]" />,
 });
-
 const CreativeMind = dynamic(() => import("./components/home/creative-mind"), {
   loading: () => <div className="min-h-[400px]" />,
 });
-
 const CustomerStories = dynamic(() => import("./components/home/customer-stories"), {
   loading: () => <div className="min-h-[500px]" />,
 });
-
 const Subscription = dynamic(() => import("./components/home/subscription"), {
   loading: () => <div className="min-h-[400px]" />,
 });
-
 const Faq = dynamic(() => import("./components/home/faq"), {
   loading: () => <div className="min-h-[300px]" />,
 });
-
 const Achievements = dynamic(() => import("./components/home/achievements"), {
   loading: () => <div className="min-h-[400px]" />,
 });
-
 const Solutions = dynamic(() => import("./components/home/solution"), {
   loading: () => <div className="min-h-[300px]" />,
 });
 
-// Base URL for canonical and social sharing
 const siteUrl = "https://satwik-kanhere.vercel.app";
 const ogImageUrl = `${siteUrl}/images/og-image.jpg`;
 
+// ============== SEO-OPTIMIZED METADATA ==============
+// Title: 55 chars (Google limit: 60) | Description: 155 chars (Google limit: 160)
 export const metadata: Metadata = {
-  // ============== BASIC META ==============
-  title: "Satwik Kanhere | Software Development Engineer | Full-Stack Developer",
-  description: "Satwik Kanhere - Software Development Engineer at WizCommerce. Expert in React.js, Next.js, Node.js, TypeScript. Building scalable enterprise solutions serving 85+ US clients with 99.8% uptime. B.Tech CSE from Chitkara University with 9.41 CGPA. Published researcher in Springer.",
+  // Primary title with brand + role + differentiator
+  title: "Satwik Kanhere | Full Stack Developer | React Expert",
+  
+  // Action-oriented description with keywords + contact
+  description: "Satwik Kanhere - Top React & Node.js Developer. SDE at WizCommerce building enterprise apps. Hire best Indian developer. Call: +91-6284486063",
+  
+  // Comprehensive keywords for all search variations
   keywords: [
-    "Satwik Kanhere",
-    "Software Developer",
-    "Software Development Engineer",
-    "SDE",
-    "Full Stack Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Node.js Developer",
-    "TypeScript Developer",
-    "JavaScript Developer",
-    "Java Developer",
-    "WizCommerce",
-    "Infosys",
-    "Frontend Developer",
-    "Backend Developer",
-    "Web Developer India",
-    "Chandigarh Developer",
-    "Gurugram Developer",
-    "Chitkara University",
-    "Software Engineer",
-    "React.js",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "PostgreSQL",
-    "MongoDB",
-    "Prisma",
-    "Ag-Grid",
-    "Kafka",
-    "Enterprise Software",
-    "PIM System",
-    "Product Information Management",
-    "Hire Developer India",
-    "Remote Developer"
+    // Name variations (critical for personal branding)
+    "Satwik Kanhere", "Satwik", "Sat", "Sat Kanhere", "satwikkanhere",
+    "satwik kanhere portfolio", "satwik developer", "sat developer",
+    
+    // Job titles
+    "Software Developer", "Full Stack Developer", "SDE", "Software Engineer",
+    "React Developer", "Node.js Developer", "Frontend Developer", "Backend Developer",
+    
+    // Skills
+    "React.js", "Next.js", "Node.js", "TypeScript", "JavaScript", "Java",
+    "PostgreSQL", "MongoDB", "Express.js", "MERN Stack",
+    
+    // Companies
+    "WizCommerce", "Infosys", "Chitkara University",
+    
+    // Location
+    "Developer India", "Developer Gurugram", "Developer Chandigarh",
+    "Hire Developer India", "Indian Developer", "Remote Developer",
+    
+    // Action keywords
+    "Hire React Developer", "Best Developer India", "Top Developer Portfolio",
   ],
-  authors: [{ name: "Satwik Kanhere", url: "https://linkedin.com/in/satwikkanhere0730" }],
+  
+  authors: [
+    { name: "Satwik Kanhere", url: siteUrl },
+    { name: "Sat", url: siteUrl },
+  ],
   creator: "Satwik Kanhere",
   publisher: "Satwik Kanhere",
   
-  // ============== ROBOTS ==============
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
 
-  // ============== CANONICAL URL ==============
   alternates: {
     canonical: siteUrl,
-    languages: {
-      'en-US': siteUrl,
-      'en-IN': siteUrl,
-    },
   },
 
-  // ============== OPEN GRAPH (Facebook, LinkedIn, WhatsApp, Discord, Slack) ==============
   openGraph: {
     type: "profile",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Satwik Kanhere - Software Developer Portfolio",
-    title: "Satwik Kanhere | Software Development Engineer at WizCommerce",
-    description: "🚀 SDE at WizCommerce | Building enterprise solutions for 85+ US clients | React.js, Next.js, Node.js Expert | Published Researcher | CGPA 9.41",
-    images: [
-      {
-        url: ogImageUrl,
-        secureUrl: ogImageUrl,
-        width: 1200,
-        height: 630,
-        alt: "Satwik Kanhere - Software Development Engineer Portfolio",
-        type: "image/jpeg",
-      },
-      {
-        url: `${siteUrl}/images/og-square.jpg`,
-        width: 600,
-        height: 600,
-        alt: "Satwik Kanhere - SDE",
-        type: "image/jpeg",
-      },
-    ],
+    siteName: "Satwik Kanhere - Developer Portfolio",
+    title: "Satwik Kanhere | Hire Top Full Stack Developer India",
+    description: "React, Next.js, Node.js Expert. SDE at WizCommerce. Building apps for 85+ US clients. Available for hire.",
+    images: [{
+      url: ogImageUrl,
+      width: 1200,
+      height: 630,
+      alt: "Satwik Kanhere - Full Stack Developer",
+    }],
     firstName: "Satwik",
     lastName: "Kanhere",
     username: "satwikkanhere",
-    gender: "male",
   },
 
-  // ============== TWITTER / X ==============
   twitter: {
     card: "summary_large_image",
     site: "@satwikkanhere",
     creator: "@satwikkanhere",
-    title: "Satwik Kanhere | Software Development Engineer",
-    description: "🚀 SDE at WizCommerce | React.js, Next.js, Node.js Expert | Building scalable solutions for 85+ US clients | Published Researcher",
-    images: {
-      url: ogImageUrl,
-      alt: "Satwik Kanhere - Software Development Engineer",
-    },
+    title: "Satwik Kanhere | React & Node.js Developer",
+    description: "Full Stack Developer at WizCommerce. React, Next.js, Node.js expert. Open to opportunities.",
+    images: [ogImageUrl],
   },
 
-  // ============== APP LINKS ==============
-  appLinks: {
-    web: {
-      url: siteUrl,
-      should_fallback: true,
-    },
-  },
-
-  // ============== OTHER META ==============
-  category: "Technology",
-  classification: "Software Development Portfolio",
-  
-  // ============== VERIFICATION ==============
   verification: {
     google: "bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw",
-    yandex: "your-yandex-verification-code",
-    other: {
-      "msvalidate.01": "your-bing-verification-code",
-      "facebook-domain-verification": "your-facebook-verification-code",
-    },
   },
 
-  // ============== ADDITIONAL META ==============
-  other: {
-    // LinkedIn specific
-    "linkedin:owner": "satwikkanhere0730",
-    
-    // Pinterest
-    "pinterest-rich-pin": "true",
-    
-    // Slack
-    "slack-app-id": "your-slack-app-id",
-    
-    // Article info for rich snippets
-    "article:author": "Satwik Kanhere",
-    "article:published_time": "2025-01-01T00:00:00Z",
-    "article:modified_time": new Date().toISOString(),
-    
-    // Contact info
-    "contact:email": "satwikkanhere2003@gmail.com",
-    "contact:phone": "+91-6284486063",
-    
-    // Geo targeting
-    "geo.region": "IN-CH",
-    "geo.placename": "Chandigarh",
-    "geo.position": "30.7333;76.7794",
-    "ICBM": "30.7333, 76.7794",
-    
-    // Language
-    "language": "English",
-    "revisit-after": "7 days",
-    "rating": "General",
-    "distribution": "Global",
-    
-    // Mobile
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "apple-mobile-web-app-title": "Satwik Kanhere",
-    
-    // MS
-    "msapplication-TileColor": "#4928fd",
-    "msapplication-config": "/browserconfig.xml",
-  },
+  category: "Technology",
 };
 
-// ============== JSON-LD STRUCTURED DATA (Schema.org) ==============
+// ============== STRUCTURED DATA (Schema.org) ==============
+// Comprehensive JSON-LD for rich search results
 
-// Person Schema - Main profile
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${siteUrl}/#person`,
   name: "Satwik Kanhere",
+  alternateName: ["Sat", "Sat Kanhere", "Satwik", "satwikkanhere"],
   givenName: "Satwik",
   familyName: "Kanhere",
   url: siteUrl,
-  image: {
-    "@type": "ImageObject",
-    url: `${siteUrl}/images/satwik-kanhere.jpg`,
-    width: 400,
-    height: 400,
-  },
-  description: "Software Development Engineer at WizCommerce, specializing in React.js, Next.js, Node.js, and enterprise solutions. Published researcher and B.Tech CSE graduate with 9.41 CGPA.",
+  image: `${siteUrl}/images/satwik-kanhere.jpg`,
+  description: "Full Stack Developer specializing in React.js, Next.js, Node.js. Software Development Engineer at WizCommerce building enterprise solutions.",
   sameAs: [
     "https://linkedin.com/in/satwikkanhere0730",
     "https://github.com/satwik073",
-    "https://satwik073.github.io/SatwikPortFolio/",
-    "https://twitter.com/satwikkanhere"
+    "https://twitter.com/satwikkanhere",
+    siteUrl,
   ],
   jobTitle: "Software Development Engineer",
   worksFor: {
     "@type": "Organization",
-    "@id": `${siteUrl}/#wizcommerce`,
     name: "WizCommerce",
     url: "https://wizcommerce.com",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Gurugram",
-      addressRegion: "Haryana",
-      addressCountry: "IN"
-    }
   },
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Chitkara University",
     url: "https://chitkara.edu.in",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Chandigarh",
-      addressCountry: "IN"
-    }
   },
   email: "satwikkanhere2003@gmail.com",
   telephone: "+91-6284486063",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Chandigarh",
-    addressCountry: "IN"
-  },
-  nationality: {
-    "@type": "Country",
-    name: "India"
+    addressLocality: "Gurugram",
+    addressRegion: "Haryana",
+    addressCountry: "IN",
   },
   knowsAbout: [
-    "JavaScript", "TypeScript", "Java",
-    "React.js", "Next.js", "Node.js", "Express.js",
-    "PostgreSQL", "MongoDB", "Prisma", "Kafka",
-    "Ag-Grid", "TailwindCSS", "React Native",
-    "Git", "GitHub", "Sentry", "Grafana",
-    "Full-Stack Development", "Enterprise Software",
-    "Agile Methodology", "Scrum"
+    "React.js", "Next.js", "Node.js", "TypeScript", "JavaScript", "Java",
+    "PostgreSQL", "MongoDB", "Express.js", "Full-Stack Development",
+    "Enterprise Software", "Agile Methodology",
   ],
   knowsLanguage: ["English", "Hindi"],
-  hasCredential: [
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Bachelor of Technology in Computer Science and Engineering",
-      credentialCategory: "degree",
-      educationalLevel: "Bachelor's Degree",
-      recognizedBy: {
-        "@type": "CollegeOrUniversity",
-        name: "Chitkara University"
-      }
-    }
-  ],
   hasOccupation: {
     "@type": "Occupation",
     name: "Software Development Engineer",
-    occupationLocation: {
-      "@type": "City",
-      name: "Gurugram"
-    },
-    estimatedSalary: {
-      "@type": "MonetaryAmountDistribution",
-      currency: "INR",
-      duration: "P1Y"
-    },
-    skills: "React.js, Next.js, Node.js, TypeScript, PostgreSQL, MongoDB"
-  }
+    skills: "React.js, Next.js, Node.js, TypeScript, PostgreSQL",
+  },
 };
 
-// Website Schema
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
-  name: "Satwik Kanhere - Software Developer Portfolio",
+  name: "Satwik Kanhere - Full Stack Developer Portfolio",
+  alternateName: ["Sat Kanhere Portfolio", "Satwik Developer", "Sat Developer"],
   url: siteUrl,
-  description: "Portfolio website of Satwik Kanhere - Software Development Engineer at WizCommerce",
-  publisher: {
-    "@id": `${siteUrl}/#person`
-  },
-  author: {
-    "@id": `${siteUrl}/#person`
-  },
+  description: "Portfolio of Satwik Kanhere - Full Stack Developer & Software Engineer",
+  publisher: { "@id": `${siteUrl}/#person` },
   inLanguage: "en-US",
-  copyrightYear: 2025,
-  copyrightHolder: {
-    "@id": `${siteUrl}/#person`
-  },
   potentialAction: {
     "@type": "SearchAction",
-    target: `${siteUrl}/?s={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
+    target: `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
-// WebPage Schema
-const webPageSchema = {
+const profilePageSchema = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${siteUrl}/#webpage`,
-  url: siteUrl,
-  name: "Satwik Kanhere | Software Development Engineer",
-  description: "Portfolio of Satwik Kanhere - SDE at WizCommerce building enterprise solutions",
-  isPartOf: {
-    "@id": `${siteUrl}/#website`
-  },
-  about: {
-    "@id": `${siteUrl}/#person`
-  },
-  author: {
-    "@id": `${siteUrl}/#person`
-  },
-  inLanguage: "en-US",
-  datePublished: "2025-01-01",
+  "@type": "ProfilePage",
+  "@id": `${siteUrl}/#profilepage`,
+  mainEntity: { "@id": `${siteUrl}/#person` },
+  dateCreated: "2024-01-01",
   dateModified: new Date().toISOString().split('T')[0],
-  breadcrumb: {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteUrl
-      }
-    ]
-  }
+  name: "Satwik Kanhere - Developer Profile",
+  description: "Professional portfolio of Satwik Kanhere, Full Stack Developer",
 };
 
-// Professional Service Schema
 const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${siteUrl}/#service`,
   name: "Satwik Kanhere - Software Development Services",
-  description: "Full-stack software development services including React.js, Next.js, Node.js, enterprise solutions, and technical consulting",
-  provider: {
-    "@id": `${siteUrl}/#person`
-  },
-  areaServed: {
-    "@type": "Place",
-    name: "Worldwide"
-  },
+  alternateName: "Sat Kanhere Development",
+  description: "Full-stack development services: React.js, Next.js, Node.js, enterprise solutions",
+  provider: { "@id": `${siteUrl}/#person` },
+  areaServed: { "@type": "Country", name: "Worldwide" },
   serviceType: [
     "Full-Stack Web Development",
     "React.js Development",
-    "Next.js Development", 
+    "Next.js Development",
     "Node.js Backend Development",
     "Enterprise Software Development",
-    "Technical Consulting",
-    "API Development",
-    "Database Design"
   ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Development Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Freelance Development",
-          description: "Custom web development for startups and businesses"
-        }
-      },
-      {
-        "@type": "Offer", 
-        itemOffered: {
-          "@type": "Service",
-          name: "Full-Time Employment",
-          description: "Open to SDE roles at innovative tech companies"
-        }
-      }
-    ]
-  }
+  telephone: "+91-6284486063",
+  email: "satwikkanhere2003@gmail.com",
+  priceRange: "$$",
 };
 
-// ItemList Schema for Projects
-const projectsSchema = {
+const faqSchema = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "@id": `${siteUrl}/#projects`,
-  name: "Featured Projects by Satwik Kanhere",
-  description: "Portfolio of software development projects",
-  numberOfItems: 4,
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Who is Satwik Kanhere?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Satwik Kanhere (also known as Sat) is a Full Stack Developer and Software Development Engineer at WizCommerce. He specializes in React.js, Next.js, Node.js, and TypeScript, building enterprise solutions for 85+ US clients.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can I hire Satwik Kanhere?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can contact Satwik via email at satwikkanhere2003@gmail.com, connect on LinkedIn at linkedin.com/in/satwikkanhere0730, or call +91-6284486063. He is available for freelance projects and full-time opportunities.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What technologies does Satwik specialize in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Satwik specializes in React.js, Next.js, Node.js, TypeScript, JavaScript, Java, PostgreSQL, MongoDB, Express.js, Prisma, Ag-Grid, and Kafka. He has expertise in building enterprise-grade applications.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Satwik Kanhere located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Satwik is based in Gurugram, Haryana, India. He works remotely and is available for projects worldwide.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Satwik's educational background?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Satwik completed B.Tech in Computer Science and Engineering from Chitkara University, Chandigarh (2021-2025) with a CGPA of 9.41. He is also a published researcher in Springer.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "Product Information Management (PIM) System",
-        description: "Enterprise PIM system handling 10,000+ SKUs daily for 85+ US clients with 99.8% uptime",
-        applicationCategory: "Enterprise Software",
-        operatingSystem: "Web"
-      }
+      name: "Satwik Kanhere",
+      item: siteUrl,
     },
-    {
-      "@type": "ListItem",
-      position: 2,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "Arobix: Enterprise Design Studio",
-        description: "SaaS platform with subdomain hosting, funnel building, and project management tools",
-        applicationCategory: "SaaS",
-        operatingSystem: "Web",
-        url: "https://github.com/satwik073"
-      }
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "Priscus: AI Project Analysis Platform",
-        description: "Automated Kanban board and React Flow workflow generators with MCP server integration",
-        applicationCategory: "Development Tools",
-        operatingSystem: "Web",
-        url: "https://priscus.vercel.app"
-      }
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      item: {
-        "@type": "SoftwareApplication",
-        name: "iOS Assistive Technology App",
-        description: "Assistive technology app for visually impaired students, serving 300+ students in Chandigarh",
-        applicationCategory: "Accessibility",
-        operatingSystem: "iOS"
-      }
-    }
-  ]
-};
-
-// FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": `${siteUrl}/#faq`,
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What technologies does Satwik Kanhere specialize in?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Satwik specializes in JavaScript, TypeScript, Java, React.js, Next.js, Node.js, Express.js, PostgreSQL, MongoDB, and has experience with Kafka, Prisma, Ag-Grid, and performance monitoring tools like Sentry and Grafana."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Where does Satwik Kanhere currently work?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Satwik currently works as a Software Development Engineer 1 at WizCommerce in Gurugram, India, where he built a complete PIM system handling 10,000+ SKUs daily for 85+ US clients."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "What is Satwik Kanhere's educational background?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Satwik completed his Bachelor of Technology in Computer Science and Engineering from Chitkara University, Chandigarh (2021-2025) with a CGPA of 9.41."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How can I contact Satwik Kanhere?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can reach Satwik via email at satwikkanhere2003@gmail.com, connect on LinkedIn at linkedin.com/in/satwikkanhere0730, or call at +91-6284486063."
-      }
-    }
-  ]
-};
-
-// Organization Schema for work experience
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${siteUrl}/#wizcommerce`,
-  name: "WizCommerce",
-  employee: {
-    "@id": `${siteUrl}/#person`
-  }
+  ],
 };
 
 export default function Home() {
   return (
     <>
-      {/* Schema.org JSON-LD Structured Data */}
+      {/* Structured Data for SEO */}
       <Script
         id="schema-person"
         type="application/ld+json"
@@ -552,10 +305,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Script
-        id="schema-webpage"
+        id="schema-profilepage"
         type="application/ld+json"
         strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
       <Script
         id="schema-service"
@@ -564,31 +317,22 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
       />
       <Script
-        id="schema-projects"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
-      />
-      <Script
         id="schema-faq"
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Script
-        id="schema-org"
+        id="schema-breadcrumb"
         type="application/ld+json"
         strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       
       <main>
-        {/* Critical above-the-fold content */}
         <HeroSection />
         <Brand />
         <WebResult />
-        
-        {/* Lazy-loaded below-fold content */}
         <Innovation />
         <OnlinePresence />
         <CreativeMind />
