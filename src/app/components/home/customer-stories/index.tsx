@@ -5,25 +5,23 @@ import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
 function CustomerStories() {
-  // Refs for each box
   const topLeftRef = useRef(null)
   const topRightRef = useRef(null)
   const bottomLeftRef = useRef(null)
   const bottomRightRef = useRef(null)
 
-  // Detect if each box is in view
   const topLeftInView = useInView(topLeftRef, { once: true })
   const topRightInView = useInView(topRightRef, { once: true })
   const bottomLeftInView = useInView(bottomLeftRef, { once: true })
   const bottomRightInView = useInView(bottomRightRef, { once: true })
 
   return (
-    <section>
+    <section aria-labelledby="journey-heading">
       <div className="2xl:py-20 py-11">
         <div className="container">
           <div className="flex flex-col justify-center gap-10 md:gap-20">
             <div className="mx-auto max-w-2xl flex items-center text-center">
-              <h2>
+              <h2 id="journey-heading">
                 <TextGenerateEffect words="Highlights from my" />
                 <TextGenerateEffect
                   words="professional journey"
@@ -35,8 +33,8 @@ function CustomerStories() {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Top Left Box - GPU accelerated animation */}
-                <motion.div
+                {/* Top Left Box */}
+                <motion.article
                   ref={topLeftRef}
                   initial={{ opacity: 0, transform: 'translate3d(-50px, -50px, 0)' }}
                   animate={topLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
@@ -47,7 +45,7 @@ function CustomerStories() {
                     Current Role
                   </span>
                   <div className="flex flex-col gap-6">
-                    <h3 className="text-white">
+                    <h3 className="text-white text-2xl md:text-4xl">
                       Built complete PIM system from scratch handling 10,000+ SKUs daily serving 85+ US clients
                     </h3>
                     <div className="flex flex-col gap-1">
@@ -57,10 +55,10 @@ function CustomerStories() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </motion.article>
 
                 {/* Top Right Box */}
-                <motion.div
+                <motion.article
                   ref={topRightRef}
                   initial={{ opacity: 0, transform: 'translate3d(50px, -50px, 0)' }}
                   animate={topRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
@@ -73,17 +71,17 @@ function CustomerStories() {
                     </span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h2 className="text-7xl font-medium dark:text-dark_black">9.41</h2>
+                    <p className="text-7xl font-medium dark:text-dark_black">9.41</p>
                     <h3 className="dark:text-dark_black text-2xl">
                       CGPA at Chitkara University, B.Tech CSE
                     </h3>
                   </div>
-                </motion.div>
+                </motion.article>
               </div>
 
               <div className="flex flex-col xl:flex xl:flex-row gap-6">
                 {/* Bottom Left Box */}
-                <motion.div
+                <motion.article
                   ref={bottomLeftRef}
                   initial={{ opacity: 0, transform: 'translate3d(-50px, 50px, 0)' }}
                   animate={bottomLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
@@ -95,12 +93,12 @@ function CustomerStories() {
                       Previous Experience
                     </span>
                     <h3 className="text-white text-2xl">
-                      Led daily standups & sprint planning for 9-member agile team, delivering 4 sprint milestones on schedule
+                      Led daily standups and sprint planning for 9-member agile team, delivering 4 sprint milestones on schedule
                     </h3>
                     <div>
                       <Image
                         src="/images/home/customerStories/creativity_img.jpg"
-                        alt="Infosys experience"
+                        alt="Infosys internship experience showing team collaboration"
                         width={344}
                         height={220}
                         loading="lazy"
@@ -108,10 +106,10 @@ function CustomerStories() {
                       />
                     </div>
                   </div>
-                </motion.div>
+                </motion.article>
 
                 {/* Bottom Right Box */}
-                <motion.div
+                <motion.article
                   ref={bottomRightRef}
                   initial={{ opacity: 0, transform: 'translate3d(50px, 50px, 0)' }}
                   animate={bottomRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
@@ -122,17 +120,17 @@ function CustomerStories() {
                     <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">
                       Key Achievement
                     </span>
-                    <h2 className="text-2xl lg:text-5xl">
+                    <h3 className="text-2xl lg:text-4xl">
                       Built 10+ dynamic Ag-Grid tables with Server-Side Row Model, displaying 500K+ records and $10M+ in transactional data
-                    </h2>
+                    </h3>
                   </div>
                   <div className="flex flex-col gap-1">
                     <p className="font-medium">Infosys, Mysuru</p>
                     <p className="text-dark_black/60 dark:text-white/60 text-sm font-medium">
-                      Application Developer Intern & Scrum Master
+                      Application Developer Intern and Scrum Master
                     </p>
                   </div>
-                </motion.div>
+                </motion.article>
               </div>
             </div>
           </div>

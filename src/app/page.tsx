@@ -32,6 +32,9 @@ const Achievements = dynamic(() => import("./components/home/achievements"), {
 const Solutions = dynamic(() => import("./components/home/solution"), {
   loading: () => <div className="min-h-[300px]" />,
 });
+const AboutSEO = dynamic(() => import("./components/home/about-seo"), {
+  loading: () => <div className="min-h-[300px]" />,
+});
 
 const siteUrl = "https://satwik-kanhere.vercel.app";
 const ogImageUrl = `${siteUrl}/images/og-image.jpg`;
@@ -341,6 +344,7 @@ export default function Home() {
         <Faq />
         <Achievements />
         <Solutions />
+        <AboutSEO />
       </main>
     </>
   )
