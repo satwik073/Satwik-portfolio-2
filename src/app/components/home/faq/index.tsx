@@ -1,27 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../ui/accordion';
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect';
+import { faqList } from '@/constants';
 
 function Faq() {
-  const [faqList, setfaqList] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setfaqList(data?.faqList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
   return (
     <section>
       <div className='2xl:py-20 py-11'>
@@ -29,7 +11,7 @@ function Faq() {
           <div className='flex flex-col gap-10 md:gap-20'>
             <div className='max-w-md text-center mx-auto'>
               <h2>
-                <TextGenerateEffect words="Frequently asked" />
+                <TextGenerateEffect words="Common" />
                 <TextGenerateEffect
                   words="questions"
                   delay={1}
@@ -42,7 +24,7 @@ function Faq() {
                 type='single'
                 collapsible
                 className='flex flex-col gap-4'>
-                {faqList?.map((item: any, index: any) => (
+                {faqList.map((item, index) => (
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
@@ -53,7 +35,7 @@ function Faq() {
                       </h4>
                     </AccordionTrigger>
                     <AccordionContent>
-                      <p className='text-base font-normal text-dark_black/60 dark:text-white/60'>
+                      <p className='text-base font-normal text-dark_black/60 dark:text-white/60 leading-relaxed'>
                         {item.faq_ans}
                       </p>
                     </AccordionContent>

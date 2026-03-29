@@ -1,50 +1,37 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react';
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect';
+import { startupPlanList } from '@/constants';
 
 function Subscription() {
-  const [startupPlanList, setstartupPlanList] = useState<any>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setstartupPlanList(data?.startupPlanList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
   return (
     <section id='pricing'>
       <div className='2xl:py-20 py-11'>
         <div className='container'>
           <div className='flex flex-col gap-10 md:gap-20'>
-            <div className='max-w-25 text-center mx-auto'>
+            <div className='max-w-2xl text-center mx-auto'>
               <h2>
-                <TextGenerateEffect words="Looking to hire? Here's how we can" />
+                <TextGenerateEffect words="How we can" />
                 <TextGenerateEffect
                   words="work together"
                   delay={1.2}
                   className="italic font-normal instrument-font"
                 />
               </h2>
+              <p className='text-dark_black/60 dark:text-white/60 mt-4'>
+                Open to contract engagements and full-time roles. I bring the same intensity to both.
+              </p>
             </div>
             <div className='grid grid-cols-1 xxl:grid-cols-2 gap-6'>
-              {startupPlanList?.map((items: any, index: number) => (
+              {startupPlanList.map((items, index) => (
                 <div
                   className={`${items.plan_bg_color} p-6 md:p-10 rounded-2xl`}
                   key={index}>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     <div className='flex flex-col gap-12 md:pr-6'>
                       <div className='flex flex-col gap-3'>
-                        <p className='py-2 px-4 bg-dark_black w-fit text-white rounded-full'>
+                        <p className='py-2 px-4 bg-dark_black w-fit text-white rounded-full text-sm font-medium'>
                           {items.plan_name}
                         </p>
                         <p className={`text-${items.descp_color}`}>
@@ -55,16 +42,12 @@ function Subscription() {
                         <h2
                           className={`${items.text_color} dark:${items.text_color}`}>
                           {items.plan_price}
-                          <span
-                            className={`text-base text-${items.descp_color} ml-1`}>
-                            /month
-                          </span>
                         </h2>
                         <Link
                           href='/contact'
                           className='group text-dark_black font-medium bg-white rounded-full flex items-center gap-4 py-2 pl-5 pr-2 w-fit'>
                           <span className='transform transition-transform duration-200 ease-in-out'>
-                            Get In Touch
+                            Start a Conversation
                           </span>
                           <svg
                             width='32'
@@ -92,9 +75,9 @@ function Subscription() {
                     </div>
                     <div
                       className={`flex flex-col gap-4 md:pl-6 md:border-l ${items.border_color}`}>
-                      <p className={`${items.text_color}`}>Features</p>
+                      <p className={`${items.text_color} font-medium`}>What You Get</p>
                       <ul className='flex flex-col gap-4'>
-                        {items.plan_feature?.map((feature: any, index: number) => {
+                        {items.plan_feature?.map((feature: string, index: number) => {
                           return (
                             <li key={index} className='flex items-center gap-3'>
                               <Image

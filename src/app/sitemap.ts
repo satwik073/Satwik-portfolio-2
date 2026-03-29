@@ -1,63 +1,29 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { SITE_URL, SITEMAP_ROUTES } from "@/constants";
 
+/**
+ * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+ * Single source of truth: SITEMAP_ROUTES in @/constants/site
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://satwikkanhere.dev'
-  
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#aboutus`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#work`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#team`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#awards`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms-and-conditions`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
-}
+  const lastModified = new Date();
 
+  return SITEMAP_ROUTES.map(({ path, changeFrequency, priority }) => {
+    const url =
+      path === "/" ? SITE_URL : `${SITE_URL.replace(/\/$/, "")}${path}`;
+
+    return {
+      url,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          "en-US": url,
+          "en-IN": url,
+          "x-default": url,
+        },
+      },
+    };
+  });
+}

@@ -1,63 +1,43 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
+import { innovationList } from '@/constants'
 
 function Innovation() {
   const ref = useRef(null)
   const inView = useInView(ref)
-  const [innovationList, setinnovationList] = useState<any>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/page-data')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setinnovationList(data?.innovationList)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const bottomAnimation = (index: any) => ({
-    initial: { y: '25%', opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: '25%', opacity: 0 },
-    transition: { duration: 0.3, delay: 0.3 + index * 0.3 },
-  })
   return (
     <section id='services'>
       <div ref={ref} className='2xl:py-20 py-11'>
         <div className='container'>
           <div className='flex flex-col gap-12'>
             <div className='flex flex-col justify-center items-center gap-10 lg:gap-16'>
-              <motion.div
-                {...bottomAnimation(1)}
-                className='max-w-(--breakpoint-Xsm) text-center'>
+              <div className='max-w-(--breakpoint-Xsm) text-center'>
                 <h2>
-                  <TextGenerateEffect words="My technical" delay={0.4} />
+                  <TextGenerateEffect words="What I bring to" delay={0.4} />
                   <TextGenerateEffect
-                    words="expertise"
+                    words="the table"
                     delay={1}
                     className="italic font-normal instrument-font"
                   />
                 </h2>
-              </motion.div>
+                <p className='text-dark_black/60 dark:text-white/60 mt-4 max-w-2xl mx-auto'>
+                  Deep expertise across the modern web stack, battle-tested in production systems serving enterprise clients.
+                </p>
+              </div>
               <div ref={ref} className='w-full'>
                 <div
                   className='grid auto-rows-max grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 w-full'>
-                  {innovationList?.map((items: any, index: any) => {
+                  {innovationList.map((items, index) => {
                     return (
                       <motion.div
                         key={index}
-                        className={`${items.bg_color} flex flex-col p-8 rounded-2xl gap-6 lg:gap-9`}
-                        initial={{ scale: 1.2, opacity: 0, filter: 'blur(8px)' }}
+                        className={`${items.bg_color} flex flex-col p-8 rounded-2xl gap-4 lg:gap-6 group hover:shadow-lg transition-shadow duration-300`}
+                        initial={{ scale: 1, opacity: 0, filter: 'blur(8px)' }}
                         animate={inView ? { scale: 1, opacity: 1, filter: 'blur(0px)' } : {}}
                         transition={{ duration: 0.6, delay: 0.3 + index * 0.2, ease: 'easeInOut' }}
                       >
@@ -69,15 +49,18 @@ function Innovation() {
                             width={40}
                           />
                         </div>
-                        <div>
+                        <div className='flex flex-col gap-2'>
                           <h3 className={`text-2xl ${items.txt_color}`}>
-                            {items.title.split('\n')?.map((line: any, i: number) => (
+                            {items.title.split('\n')?.map((line: string, i: number) => (
                               <React.Fragment key={i}>
                                 {line}
                                 <br />
                               </React.Fragment>
                             ))}
                           </h3>
+                          <p className='text-sm text-dark_black/50 dark:text-white/50 leading-relaxed'>
+                            {items.description}
+                          </p>
                         </div>
                       </motion.div>
                     )
@@ -88,8 +71,8 @@ function Innovation() {
             <div
               className='flex flex-col gap-4 xl:flex xl:flex-row bg-dark_black items-center justify-between dark:bg-white/5 py-8 px-7 sm:px-12 rounded-3xl w-full'>
               <h4 className='text-white text-center xl:text-left'>
-                See My Work in Action.
-                <br /> Let's Build Something Great Together!
+                Want to see how I solve real engineering problems?
+                <br /> Let&apos;s talk architecture.
               </h4>
               <div className='flex flex-col sm:flex-row gap-3 items-center'>
                 <Link
@@ -126,7 +109,7 @@ function Innovation() {
                   href='/#work'
                   className='group border border-white dark:border-white/50 text-white font-medium bg-dark_black gap-2 rounded-full flex items-center justify-between lg:gap-4 py-2 pl-5 pr-2 hover:opacity-95 hover:bg-transparent hover:text-white transition-all duration-200 ease-in-out'>
                   <span className='transform transition-transform duration-200 ease-in-out'>
-                    View Portfolio
+                    View Projects
                   </span>
                   <svg
                     width='32'

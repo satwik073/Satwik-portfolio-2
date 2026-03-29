@@ -17,7 +17,7 @@ export const TextGenerateEffect = ({
   delay?: number;
 }) => {
   const [scope, animate] = useAnimate();
-  const triggerRef = useRef<HTMLSpanElement | null>(null); // separate ref for inView
+  const triggerRef = useRef<HTMLSpanElement | null>(null);
   const isInView = useInView(triggerRef, { once: true, margin: "-10% 0px" });
 
   const wordsArray = words.split(" ");
@@ -49,8 +49,11 @@ export const TextGenerateEffect = ({
       {wordsArray.map((word, idx) => (
         <motion.span
           key={word + idx}
-          className=" text-black opacity-0 dark:text-white leading-tight"
-          style={{ filter: filter ? "blur(10px)" : "none" }}
+          className="text-black dark:text-white leading-tight"
+          style={{
+            opacity: 0.15,
+            filter: filter ? "blur(4px)" : "none",
+          }}
         >
           {word}{" "}
         </motion.span>

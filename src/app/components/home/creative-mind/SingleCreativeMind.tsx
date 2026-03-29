@@ -6,12 +6,12 @@ const SingleCreativeMind = ({
 }: {
     creativemind: any
 }) => {
-    const { image, name, position, twitterLink, linkedinLink } = creativemind
+    const { image, name, position, duration, highlights, twitterLink, linkedinLink } = creativemind
 
     return (
         <div
-            className='group flex flex-col gap-6 items-center justify-center max-w-80'>
-            <div className='group-hover:grayscale'>
+            className='group flex flex-col gap-5 items-center justify-start max-w-80'>
+            <div className='group-hover:grayscale transition-all duration-300'>
                 <Image
                     src={image}
                     alt={name}
@@ -20,17 +20,28 @@ const SingleCreativeMind = ({
                     className='rounded-2xl'
                 />
             </div>
-            <div className='flex flex-col gap-4 items-center'>
+            <div className='flex flex-col gap-3 items-center text-center'>
                 <div className='flex flex-col gap-1 items-center'>
-                    <p className='font-medium'>{name}</p>
-                    <p className='text-dark_black/60 dark:text-white/60'>
+                    <p className='font-semibold text-lg'>{name}</p>
+                    <p className='text-dark_black/80 dark:text-white/80 text-sm font-medium'>
                         {position}
                     </p>
+                    {duration && (
+                        <p className='text-dark_black/50 dark:text-white/50 text-xs'>
+                            {duration}
+                        </p>
+                    )}
                 </div>
-                <div className='flex gap-4'>
+                {highlights && (
+                    <p className='text-dark_black/50 dark:text-white/50 text-xs leading-relaxed px-2'>
+                        {highlights}
+                    </p>
+                )}
+                <div className='flex gap-4 mt-1'>
                     <Link
                         href={twitterLink}
-                        className='group text-[#b1b1b1] hover:text-indigo-800'>
+                        target='_blank'
+                        className='group text-[#b1b1b1] hover:text-indigo-800 transition-colors duration-200'>
                         <svg
                             width='20'
                             height='18'
@@ -46,7 +57,8 @@ const SingleCreativeMind = ({
                     </Link>
                     <Link
                         href={linkedinLink}
-                        className='group text-[#b1b1b1] hover:text-indigo-800'>
+                        target='_blank'
+                        className='group text-[#b1b1b1] hover:text-indigo-800 transition-colors duration-200'>
                         <svg
                             width='20'
                             height='20'

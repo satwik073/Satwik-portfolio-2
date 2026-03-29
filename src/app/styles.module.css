@@ -1,0 +1,98 @@
+/**
+ * Reusable layout and typography classes.
+ * Use with: import styles from '@/app/styles.module.css'
+ * Theme colors use CSS variables from globals.css @theme.
+ */
+
+/* Section layout */
+.section {
+  display: block;
+}
+
+.sectionPadding {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.sectionPaddingLg {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1440px) {
+  .sectionPadding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .sectionPaddingLg {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Container - mirrors Tailwind container utility */
+.container {
+  width: 100%;
+  max-width: 82.8rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}
+
+/* Typography */
+.instrumentFont {
+  font-family: "Instrument Serif", serif;
+}
+
+.textMuted {
+  color: color-mix(in srgb, var(--color-dark_black) 60%, transparent);
+}
+
+:global(.dark) .textMuted {
+  color: color-mix(in srgb, white 60%, transparent);
+}
+
+/* Hero mask - gradient mask for hero area */
+.heroMask {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+}
+
+/* Common flex layouts */
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexColCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textCenter {
+  text-align: center;
+}

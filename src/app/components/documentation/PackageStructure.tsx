@@ -158,44 +158,6 @@ export const PackageStructure = () => {
                                               )}
                                             </div>
                                             <ul className='ps-3 md:ps-12 list-unstyled'>
-                                              <li className='py-2'>
-                                                <div className='flex items-center gap-8'>
-                                                  <p className='text-xl dark:text-grey'>
-                                                    |
-                                                  </p>
-                                                  <div className='flex items-center gap-3'>
-                                                    <p className='text-xl dark:text-grey'>
-                                                      |—
-                                                    </p>
-                                                    <span className='font-medium text-midnight_text dark:text-grey'>
-                                                      <Icon
-                                                        icon='tabler:folder'
-                                                        className='text-primary text-base inline-block me-2'
-                                                      />
-                                                      signin
-                                                    </span>
-                                                  </div>
-                                                </div>
-                                              </li>
-                                              <li className='py-2'>
-                                                <div className='flex items-center gap-8'>
-                                                  <p className='text-xl dark:text-grey'>
-                                                    |
-                                                  </p>
-                                                  <div className='flex items-center gap-3'>
-                                                    <p className='text-xl dark:text-grey'>
-                                                      |—
-                                                    </p>
-                                                    <span className='font-medium text-midnight_text dark:text-grey'>
-                                                      <Icon
-                                                        icon='tabler:folder'
-                                                        className='text-primary text-base inline-block me-2'
-                                                      />
-                                                      signup
-                                                    </span>
-                                                  </div>
-                                                </div>
-                                              </li>
                                             </ul>
                                           </div>
                                         </li>
