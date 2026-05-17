@@ -1,34 +1,68 @@
 'use client'
-import Slider from 'react-infinite-logo-slider'
-import SingleBrand from './SingleBrand'
-import { brandList } from '@/constants'
+
+type Company = {
+  name: string
+  /** Optional serif-italic flourish for the logo treatment */
+  italic?: boolean
+  /** What I did there / shipped with */
+  caption: string
+}
+
+const companies: Company[] = [
+  { name: 'WizCommerce', italic: true, caption: 'BUILT · PIM SYSTEM' },
+  { name: 'Infosys', caption: 'SHIPPED · 4 SPRINTS' },
+  { name: 'Chitkara', italic: true, caption: 'CGPA · 9.41 / 10' },
+  { name: 'Springer', caption: 'PUBLISHED · 2024' },
+  { name: 'Arobix', italic: true, caption: 'BUILT · SAAS PLATFORM' },
+  { name: 'Priscus', caption: 'BUILT · AI TOOLING' },
+  { name: 'iOS Ally', italic: true, caption: 'SHIPPED · A11Y APP' },
+  { name: 'React.js', caption: 'PROD · 4 YRS' },
+  { name: 'Next.js', italic: true, caption: 'PROD · SSR / ISR' },
+  { name: 'Node.js', caption: 'PROD · APIs' },
+  { name: 'PostgreSQL', italic: true, caption: 'SCHEMA · 500K REC' },
+  { name: 'TypeScript', caption: 'PROD · 4 YRS' },
+]
 
 function Brand() {
   return (
-    <section>
-      <div className='2xl:py-20 py-11'>
-        <div className='container'>
-          <div className='gap-4'>
-            <div className='flex justify-center text-center py-4 relative'>
-              <p
-                className='relative px-2 text-dark_black/60 dark:text-white/60
-                    md:before:absolute md:before:right-[-150px] md:before:top-1/2 md:before:h-0.5 md:before:w-36 md:before:bg-linear-to-r md:before:from-gray-800 dark:md:before:from-gray-300 dark:md:before:opacity-100 md:before:opacity-10 md:before:to-transparent md:after:absolute md:after:left-[-150px] md:after:top-1/2 md:after:h-0.5 md:after:w-36 md:after:bg-linear-to-l md:after:from-gray-800 dark:md:after:from-gray-300 md:after:opacity-10 dark:md:after:opacity-100 md:after:to-transparent'>
-                Technologies I ship production code with daily
-              </p>
-            </div>
-
-            <div className='py-3 Xsm:py-7'>
-              <Slider
-                width='200px'
-                duration={20}
-                pauseOnHover={true}
-                blurBorders={false}>
-                {brandList.map((items, index) => (
-                  <SingleBrand key={index} brand={items} />
-                ))}
-              </Slider>
-            </div>
+    <section className='wiz-font bg-white dark:bg-dark_black py-12 sm:py-16 lg:py-24'>
+      <div className='container'>
+        <div className='grid lg:grid-cols-12 gap-6 lg:gap-10 items-start'>
+          <div className='lg:col-span-4'>
+            <p className='wiz-eyebrow text-wiz_ink dark:text-white/70'>
+              Our Customers
+            </p>
           </div>
+          <div className='lg:col-span-8'>
+            <h2 className='wiz-display text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white'>
+              Built for Scale.
+              <br />
+              Powered by Engineering.
+            </h2>
+          </div>
+        </div>
+
+        {/* Logo grid — wizcommerce-style with cyan caption band */}
+        <div className='mt-8 sm:mt-12 grid grid-cols-2 Xsm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
+          {companies.map((c, i) => (
+            <div
+              key={i}
+              className='bg-white dark:bg-dark_black aspect-[4/3] flex flex-col group hover:bg-wiz_chip/30 dark:hover:bg-white/5 transition-colors'>
+              <div className='flex-1 flex items-center justify-center px-3 sm:px-4 text-center'>
+                <span
+                  className={`wiz-serif text-[18px] sm:text-[22px] md:text-[24px] text-wiz_ink dark:text-white leading-none ${
+                    c.italic ? 'italic' : ''
+                  }`}>
+                  {c.name}
+                </span>
+              </div>
+              <div className='w-full bg-[#cfeae8] dark:bg-white/10 py-2 px-2'>
+                <p className='wiz-eyebrow text-[9px] sm:text-[10px] text-wiz_ink/85 dark:text-white/80 text-center tracking-[0.18em]'>
+                  {c.caption}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

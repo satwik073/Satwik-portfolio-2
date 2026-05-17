@@ -93,7 +93,7 @@ export default function Home() {
         <OnlinePresence />
         <CreativeMind />
         <CustomerStories />
-        <Subscription />
+        {/* <Subscription /> */}
         <Faq />
         <Achievements />
         <Solutions />

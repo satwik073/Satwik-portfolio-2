@@ -3,8 +3,42 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
+import Script from 'next/script'
+import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
 
-const siteUrl = "https://satwikkanhere.dev";
+const siteUrl = 'https://satwikkanhere.dev'
+
+// Self-host fonts via next/font — eliminates external Google Fonts request,
+// kills FOUT, and gives a tighter FCP. General Sans is still loaded via
+// Fontshare in globals.css since it isn't on Google Fonts.
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+})
+
+// Playfair Display — primary heading face. Classic editorial display serif
+// with variable weights and elegant italics.
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: 'variable',
+  style: ['normal', 'italic'],
+})
+
+// Instrument Serif — kept for the existing .instrument-font utility (italic
+// accent on a few words in the hero).
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-instrument',
+  weight: '400',
+  style: ['normal', 'italic'],
+})
+
+const CACHE_VERSION = process.env.NEXT_PUBLIC_BUILD_ID || '1.0.0'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -143,7 +177,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -151,8 +188,12 @@ export default function RootLayout({
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://api.fontshare.com" />
+        <link rel="dns-prefetch" href="https://cdn.fontshare.com" />
 
         {/* Social meta tags */}
         <meta property="og:image:type" content="image/jpeg" />

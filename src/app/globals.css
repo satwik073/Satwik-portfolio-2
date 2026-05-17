@@ -1,7 +1,42 @@
+/* Inter + Fraunces are loaded via next/font (see layout.tsx) — exposed as
+   --font-inter and --font-fraunces CSS variables for zero-runtime requests.
+   Instrument Serif kept for the existing .instrument-font utility, and
+   General Sans is loaded from Fontshare since it isn't on Google Fonts. */
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap')
 layer(base);
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap')
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@300,301,400,401,500,501,600,601&display=swap')
 layer(base);
+
+/* ---------------------------------------------------------------------------
+   Recife Text (the actual wizcommerce heading font, paid via indestructible.co)
+   The font-family stack across headings starts with "Recife Text TEST" so it
+   renders if the font is available — installed locally on your machine, OR
+   self-hosted by dropping the woff2 files into /public/fonts/ and uncommenting
+   the @font-face declarations below.
+--------------------------------------------------------------------------- */
+/*
+@font-face {
+  font-family: 'Recife Text TEST';
+  src: url('/fonts/RecifeText-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Recife Text TEST';
+  src: url('/fonts/RecifeText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Recife Text TEST';
+  src: url('/fonts/RecifeText-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+*/
 
 @import 'tailwindcss';
 
@@ -14,6 +49,27 @@ layer(base);
 
   --color-dark_black: #1b1d1e;
   --color-purple_blue: #4928fd;
+
+  /* wizcommerce-style tokens (from screenshots) */
+  --color-wiz_ink: #0a0a0a;
+  --color-wiz_promo: #0a0a0a;
+  --color-wiz_promo_text: #f5f5f5;
+  --color-wiz_muted: #6b6f76;
+  --color-wiz_border: #e9e7e2;
+  --color-wiz_surface: #ffffff;
+  --color-wiz_chip: #f5f1ea;
+  --color-wiz_accent: #1f2937;
+  --color-wiz_cream: #f5efe5;
+  --color-wiz_cream_soft: #f9f4eb;
+  --color-wiz_orange: #ff7a1a;
+  --color-wiz_orange_soft: #ffe2cf;
+  --color-wiz_pink: #ff7bb0;
+  --color-wiz_navy: #0a0820;
+  --color-wiz_peach: #f7e6d2;
+
+  --shadow-wiz_dropdown: 0 24px 48px -16px rgba(15, 17, 21, 0.18),
+    0 2px 8px -2px rgba(15, 17, 21, 0.08);
+  --shadow-wiz_header: 0 1px 0 0 rgba(15, 17, 21, 0.06);
   --color-purple: #ba81ee;
   --color-blue: #70b5ff;
   --color-orange: #ffaf68;
@@ -88,13 +144,14 @@ layer(base);
 }
 
 @utility container {
-  @apply w-full max-w-[82.8rem] my-0 mx-auto py-0 sm:px-7 px-5;
+  @apply w-full max-w-[96rem] my-0 mx-auto py-0 sm:px-8 px-5 lg:px-12;
 }
 
 @layer utilities {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'General Sans', var(--font-inter), 'Inter', system-ui,
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     overflow-x: hidden;
     @apply dark:bg-dark_black;
   }
@@ -113,7 +170,82 @@ layer(base);
 
 @layer utilities {
   .instrument-font {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  .wiz-font {
+    /* Wizcommerce uses General Sans for body. Inter (next/font) as fallback. */
+    font-family: 'General Sans', var(--font-inter), 'Inter', system-ui,
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'kern', 'ss01';
+    letter-spacing: 0;
+  }
+
+  .wiz-serif {
+    /* Heading font — Fraunces, the first display serif we landed on. */
+    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-feature-settings: 'kern', 'liga', 'ss01';
+    font-variation-settings: 'wght' 300;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+
+  .wiz-display {
+    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-feature-settings: 'kern', 'liga', 'ss01';
+    font-variation-settings: 'wght' 300;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  .wiz-eyebrow {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 12px;
+    font-weight: 500;
+    /* No hardcoded color — let parent / utility classes drive it so this
+       utility works on both light and dark surfaces. */
+  }
+
+  .wiz-dropdown {
+    animation: wiz-dropdown-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: top center;
+  }
+
+  @keyframes wiz-dropdown-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .wiz-promo-marquee {
+    animation: wiz-promo-fade 6s ease-in-out infinite;
+  }
+
+  @keyframes wiz-promo-fade {
+    0%,
+    45% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50%,
+    55% {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    60%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hero-mask {
@@ -136,21 +268,71 @@ layer(base);
 
 @layer components {
   body {
-    @apply text-base font-normal;
+    font-family: 'General Sans', 'Inter', 'Inter Tight', system-ui,
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'kern', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    @apply text-base font-normal text-wiz_ink dark:text-white;
     -webkit-text-size-adjust: 100%;
+    background-color: #ffffff;
+  }
+
+  body.dark,
+  .dark body {
+    background-color: var(--color-dark_black);
+  }
+
+  /* Smooth, consistent transitions for interactive elements */
+  a,
+  button {
+    transition: color 180ms ease, background-color 180ms ease,
+      border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+  }
+
+  /* Accessible focus rings */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-wiz_ink);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: rgba(255, 122, 26, 0.25);
+    color: var(--color-wiz_ink);
   }
 
   h1 {
-    @apply 2xl:text-9xl 2xl:leading-[156px] md:text-7xl text-5xl font-medium text-dark_black dark:text-white;
+    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-feature-settings: 'kern', 'liga', 'ss01';
+    font-variation-settings: 'wght' 500;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    @apply 2xl:text-8xl md:text-7xl text-5xl text-dark_black dark:text-white;
   }
 
   h2 {
-    @apply text-4xl md:text-5xl font-medium text-dark_black dark:text-white;
+    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-feature-settings: 'kern', 'liga', 'ss01';
+    font-variation-settings: 'wght' 500;
+    font-weight: 500;
+    letter-spacing: -0.022em;
+    line-height: 1.08;
+    @apply text-4xl md:text-5xl text-dark_black dark:text-white;
   }
 
   h3 {
-    @apply text-5xl font-medium text-dark_black dark:text-white;
+    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-feature-settings: 'kern', 'liga';
+    font-variation-settings: 'opsz' 96, 'SOFT' 0, 'wght' 350;
+    font-weight: 350;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+    @apply text-3xl md:text-4xl text-dark_black dark:text-white;
   }
+
 
   h4 {
     @apply text-2xl font-medium text-dark_black dark:text-white;
@@ -165,6 +347,9 @@ layer(base);
   }
 
   p {
-    @apply text-base  font-normal text-dark_black dark:text-white;
+    font-family: 'General Sans', var(--font-inter), 'Inter', system-ui,
+      sans-serif;
+    @apply text-base font-normal text-dark_black dark:text-white;
+    letter-spacing: 0;
   }
 }
