@@ -194,15 +194,13 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preconnect — only the origins we actually hit at runtime. */}
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://api.fontshare.com" />
         <link rel="dns-prefetch" href="https://cdn.fontshare.com" />
+        {/* LCP image preload is injected by next/image's `priority` prop on
+            the hero <Image> — it uses the matching /_next/image?... URL. */}
 
         {/* Social meta tags */}
         <meta property="og:image:type" content="image/jpeg" />

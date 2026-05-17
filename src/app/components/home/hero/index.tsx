@@ -70,6 +70,8 @@ function HeroSection() {
                       alt={avatarList[0].title}
                       width={56}
                       height={56}
+                      priority
+                      fetchPriority='high'
                       className='object-cover'
                     />
                   </div>

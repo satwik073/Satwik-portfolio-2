@@ -49,6 +49,14 @@ import {
 
 export const metadata: Metadata = getMetadata()
 
+/**
+ * ISR — the page renders to static HTML at build time, gets served from the
+ * edge cache, and revalidates in the background every hour. Crawlers and
+ * first-time visitors get the fully-rendered page on the first byte.
+ */
+export const revalidate = 3600
+export const dynamicParams = false
+
 export default function Home() {
   return (
     <>
