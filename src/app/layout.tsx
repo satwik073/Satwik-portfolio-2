@@ -182,6 +182,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
       <head>
+        {/* Resource Hints */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//code.tidio.co" />
+        <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
+        
+        {/* Preload LCP images */}
+        <link rel="preload" href="/images/home/avatar_1.jpg" as="image" type="image/jpeg" />
+        
+        {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
