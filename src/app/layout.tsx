@@ -171,6 +171,7 @@ export default function RootLayout({
         {/* Resource Hints */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//code.tidio.co" />
+        <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
         
         {/* Preload LCP images */}
         <link rel="preload" href="/images/home/avatar_1.jpg" as="image" type="image/jpeg" />
