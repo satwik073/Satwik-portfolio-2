@@ -1,73 +1,92 @@
 'use client'
 import Link from 'next/link'
-import { useRef } from 'react'
-import { motion, useInView } from 'motion/react'
 
 function Solutions() {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-
-  // GPU-accelerated animation
-  const bottomAnimation = {
-    initial: { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
-    animate: inView 
-      ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } 
-      : { opacity: 0, transform: 'translate3d(0, 5%, 0)' },
-    transition: { duration: 0.8, delay: 0.4 },
-  }
-
   return (
-    <section>
-      <div className='2xl:py-20 py-11'>
-        <div className='container'>
-          <div
-            ref={ref}
-            className='py-16 md:py-28 px-6 border border-dark_black/10 rounded-3xl bg-[linear-gradient(90deg,#CDEFFB_0%,#FFFFFF_33.23%,#FFFFFF_65.77%,#FDEECB_100%)] backdrop-blur-[200px] dark:opacity-80'>
-            <motion.div
-              {...bottomAnimation}
-              className='flex flex-col gap-6 items-center md:max-w-3xl mx-auto gpu-accelerated'>
-              <div className='flex flex-col gap-3 items-center text-center'>
-                <h2 className='text-3xl md:text-5xl dark:text-dark_black w-full max-w-3xl flex gap-2'>
-                  <p className='text-3xl md:text-5xl leading-tight text-black tracking-tight'>Let's build something</p>
-                  <p className="text-3xl md:text-5xl leading-tight text-black tracking-tight instrument-font italic">amazing together</p>
-                </h2>
-                <p className='dark:text-dark_black'>
-                  Have a project in mind? I specialize in creating scalable web applications,
-                  robust APIs, and intuitive user experiences that help businesses thrive
-                  in the digital world.
-                </p>
-              </div>
+    <section className='wiz-font bg-wiz_cream dark:bg-dark_black'>
+      <div className='container py-12 sm:py-16 lg:py-24'>
+        <div className='grid lg:grid-cols-12 gap-8 sm:gap-10 items-center'>
+          <div className='lg:col-span-6'>
+            <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>
+              Get in Touch
+            </p>
+            <h2 className='wiz-display mt-4 sm:mt-5 text-[30px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white'>
+              Finally, An Engineer
+              <br />
+              Who Adapts To Your
+              <br />
+              Workflow — Not The
+              <br />
+              Other Way Around.
+            </h2>
+
+            <div className='mt-7'>
               <Link
                 href='/contact'
-                className='group w-fit text-white font-medium bg-dark_black rounded-full flex items-center gap-4 py-2 pl-5 pr-2 hover:bg-transparent border border-dark_black'>
-                <span className='group-hover:text-dark_black transform transition-transform duration-200 ease-in-out'>
-                  Get In Touch
-                </span>
-                <svg
-                  width='32'
-                  height='32'
-                  viewBox='0 0 32 32'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='transition-all duration-200 ease-in-out group-hover:rotate-45'>
-                  <rect
-                    width='32'
-                    height='32'
-                    rx='16'
-                    fill='white'
-                    className='fill-white transition-colors duration-200 ease-in-out group-hover:fill-black'
-                  />
+                className='inline-flex items-center gap-3 bg-[#ff7a1a] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[#ff8c39] transition'>
+                Get In Touch
+                <svg width='16' height='16' viewBox='0 0 24 24' fill='none'>
                   <path
-                    d='M11.832 11.3334H20.1654M20.1654 11.3334V19.6668M20.1654 11.3334L11.832 19.6668'
-                    stroke='#1B1D1E'
-                    strokeWidth='1.42857'
+                    d='M5 12h14M13 6l6 6-6 6'
+                    stroke='currentColor'
+                    strokeWidth='2'
                     strokeLinecap='round'
                     strokeLinejoin='round'
-                    className='stroke-[#1B1D1E] transition-colors duration-200 ease-in-out group-hover:stroke-white'
                   />
                 </svg>
               </Link>
-            </motion.div>
+            </div>
+          </div>
+
+          <div className='lg:col-span-6'>
+            <div className='relative aspect-[5/4] bg-[#efe3ce] dark:bg-white/5 border border-wiz_border dark:border-white/10 overflow-hidden'>
+              <div
+                aria-hidden
+                className='absolute inset-0 opacity-[0.12]'
+                style={{
+                  backgroundImage:
+                    'repeating-linear-gradient(0deg,#0a0a0a 0,#0a0a0a 1px,transparent 1px,transparent 32px),repeating-linear-gradient(90deg,#0a0a0a 0,#0a0a0a 1px,transparent 1px,transparent 32px)',
+                }}
+              />
+              <div className='absolute inset-0 grid place-items-center p-6 sm:p-10'>
+                <div className='bg-white dark:bg-dark_black shadow-[0_24px_60px_-24px_rgba(15,17,21,0.25)] w-full max-w-sm'>
+                  <div className='border-b border-wiz_border dark:border-white/10 px-5 py-4 flex items-center justify-between'>
+                    <p className='wiz-eyebrow text-wiz_muted text-[10px]'>
+                      Now Booking
+                    </p>
+                    <span className='inline-flex items-center gap-2 wiz-eyebrow text-emerald-700 dark:text-emerald-400 text-[10px]'>
+                      <span className='inline-block h-1.5 w-1.5 rounded-full bg-emerald-500' />
+                      Open
+                    </span>
+                  </div>
+                  <div className='px-5 py-5'>
+                    <p className='wiz-serif text-[26px] sm:text-[30px] text-wiz_ink dark:text-white leading-tight'>
+                      Q3 contracts &amp;
+                      <br />
+                      full-time roles.
+                    </p>
+                    <div className='mt-5 grid grid-cols-2 gap-3'>
+                      <div className='border border-wiz_border dark:border-white/10 px-3 py-2'>
+                        <p className='wiz-eyebrow text-wiz_muted text-[9px]'>
+                          Reply
+                        </p>
+                        <p className='wiz-serif text-[18px] text-wiz_ink dark:text-white leading-none mt-1'>
+                          &lt; 24h
+                        </p>
+                      </div>
+                      <div className='border border-wiz_border dark:border-white/10 px-3 py-2'>
+                        <p className='wiz-eyebrow text-wiz_muted text-[9px]'>
+                          Based In
+                        </p>
+                        <p className='wiz-serif text-[18px] text-wiz_ink dark:text-white leading-none mt-1'>
+                          IN · UTC+5:30
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

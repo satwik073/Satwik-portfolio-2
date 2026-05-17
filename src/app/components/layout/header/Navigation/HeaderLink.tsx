@@ -1,80 +1,70 @@
 'use client'
-import React, { useEffect, useState, Suspense } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import React from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import type { HeaderItem } from '@/constants/data'
 
-const OFFSET = 80 // Adjust this value based on your fixed header height
-
-// Hook to manage the active link and apply offset
-const useActiveLink = (setActiveLink: (link: string) => void) => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const updateActiveLink = () => {
-      const fullPath = window.location.hash
-        ? `${pathname}${window.location.hash}`
-        : pathname
-      setActiveLink(fullPath)
-    }
-
-    const handleScrollOffset = () => {
-      if (window.location.hash) {
-        const id = window.location.hash.substring(1)
-        const element = document.getElementById(id)
-        if (element) {
-          setTimeout(() => {
-            const elementPosition =
-              element.getBoundingClientRect().top + window.scrollY
-            window.scrollTo({
-              top: elementPosition - OFFSET,
-              behavior: 'smooth',
-            })
-          }, 0)
-        }
-      }
-    }
-
-    updateActiveLink()
-    handleScrollOffset()
-
-    window.addEventListener('hashchange', updateActiveLink)
-    window.addEventListener('hashchange', handleScrollOffset)
-
-    return () => {
-      window.removeEventListener('hashchange', updateActiveLink)
-      window.removeEventListener('hashchange', handleScrollOffset)
-    }
-  }, [pathname, searchParams, setActiveLink])
+type Props = {
+  item: HeaderItem
+  isOpen: boolean
+  onHover: () => void
+  onClick: () => void
 }
 
-// HeaderLink component
-const HeaderLinkContent: React.FC<{ item: any }> = ({ item }) => {
-  const [activeLink, setActiveLink] = useState('')
-
-  useActiveLink(setActiveLink)
+const HeaderLink: React.FC<Props> = ({ item, isOpen, onHover, onClick }) => {
+  const pathname = usePathname()
+  const hasChildren = !!item.children?.length
+  const isActive = pathname === item.href
 
   return (
-    <li>
+    <li className='relative' onMouseEnter={onHover}>
       <Link
         href={item.href}
-        className={`px-4 py-2 font-medium hover:text-black dark:hover:text-black hover:bg-white hover:rounded-3xl hover:shadow-header_shadow 
-                    ${
-                      activeLink === item.href
-                        ? 'bg-white text-black rounded-[90rem] shadow-header_shadow'
-                        : 'text-dark_black/60 dark:text-white'
-                    }`}>
-        {item.label}
+        onClick={e => {
+          if (hasChildren) {
+            e.preventDefault()
+            onClick()
+          } else {
+            onClick()
+          }
+        }}
+        style={{ letterSpacing: '0.005em' }}
+        className={`group relative inline-flex items-center gap-1.5 px-3.5 py-2 text-[15px] font-medium
+          ${
+            isOpen || isActive
+              ? 'text-wiz_ink dark:text-white'
+              : 'text-wiz_ink/75 dark:text-white/70 hover:text-wiz_ink dark:hover:text-white'
+          }`}>
+        <span className='relative'>
+          {item.label}
+          <span
+            aria-hidden
+            className={`absolute -bottom-1 left-0 h-px bg-current transition-all duration-200 ease-out ${
+              isOpen ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-60'
+            }`}
+          />
+        </span>
+        {hasChildren && (
+          <svg
+            width='10'
+            height='10'
+            viewBox='0 0 24 24'
+            fill='none'
+            className={`transition-transform duration-200 ${
+              isOpen ? 'rotate-180' : 'rotate-0'
+            }`}>
+            <path
+              d='M6 9l6 6 6-6'
+              stroke='currentColor'
+              strokeWidth='2.4'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          </svg>
+        )}
       </Link>
     </li>
   )
 }
-
-// Wrap in Suspense
-const HeaderLink: React.FC<{ item: any }> = ({ item }) => (
-  <Suspense fallback={null}>
-    <HeaderLinkContent item={item} />
-  </Suspense>
-)
 
 export default HeaderLink

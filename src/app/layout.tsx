@@ -3,11 +3,40 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
-import { interTight, instrumentSerif } from '@/lib/fonts'
 import Script from 'next/script'
-import ServiceWorkerRegistration from './components/ServiceWorkerRegistration'
+import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
 
-const siteUrl = "https://satwik-kanhere.vercel.app";
+const siteUrl = 'https://satwikkanhere.dev'
+
+// Self-host fonts via next/font — eliminates external Google Fonts request,
+// kills FOUT, and gives a tighter FCP. General Sans is still loaded via
+// Fontshare in globals.css since it isn't on Google Fonts.
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+})
+
+// Playfair Display — primary heading face. Classic editorial display serif
+// with variable weights and elegant italics.
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: 'variable',
+  style: ['normal', 'italic'],
+})
+
+// Instrument Serif — kept for the existing .instrument-font utility (italic
+// accent on a few words in the hero).
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-instrument',
+  weight: '400',
+  style: ['normal', 'italic'],
+})
 
 const CACHE_VERSION = process.env.NEXT_PUBLIC_BUILD_ID || '1.0.0'
 
@@ -134,11 +163,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html 
+    <html
       lang="en"
       suppressHydrationWarning
-      className={`${interTight.variable} ${instrumentSerif.variable}`}
-    >
+      className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
       <head>
         {/* Resource Hints */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -150,21 +178,22 @@ export default function RootLayout({
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
-        {/* Single canonical hreflang - no duplicates */}
-        <link rel="alternate" hrefLang="en" href={siteUrl} />
-        <link rel="alternate" hrefLang="x-default" href={siteUrl} />
-        
-        {/* Author and profile meta */}
-        <meta name="author" content="Satwik Kanhere" />
-        <meta itemProp="name" content="Satwik Kanhere" />
-        <meta itemProp="alternateName" content="Sat Kanhere" />
-        
-        {/* Social profiles */}
-        <meta property="og:see_also" content="https://linkedin.com/in/satwikkanhere0730" />
-        <meta property="og:see_also" content="https://github.com/satwik073" />
-        
-        {/* Profile data */}
+
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://api.fontshare.com" />
+        <link rel="dns-prefetch" href="https://cdn.fontshare.com" />
+
+        {/* Social meta tags */}
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content="Satwik Kanhere - Software Development Engineer" />
+
+        {/* Profile metadata */}
         <meta property="profile:first_name" content="Satwik" />
         <meta property="profile:last_name" content="Kanhere" />
         <meta property="profile:username" content="satwikkanhere" />
@@ -179,9 +208,7 @@ export default function RootLayout({
         {/* Google verification */}
         <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
       </head>
-      <body className={interTight.className}>
-        <ServiceWorkerRegistration />
-        
+      <body>
         <Providers>
           <Header />
           {children}

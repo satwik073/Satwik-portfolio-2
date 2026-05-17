@@ -1,139 +1,104 @@
-"use client"
-import Image from 'next/image'
-import { TextGenerateEffect } from '@/app/components/ui/text-generate-effect'
-import { motion, useInView } from 'motion/react'
-import { useRef } from 'react'
+'use client'
+import Link from 'next/link'
+
+const stories = [
+  {
+    eyebrow: 'WizCommerce',
+    quote:
+      'Building the PIM from scratch removed a huge amount of manual work for us. Orders, inventory and product data are connected — the whole operation just runs.',
+    name: 'Rishabh Jain',
+    role: 'VP of Operations',
+    stats: [
+      { value: '40+', label: 'Hours saved per week' },
+      { value: '9×', label: 'Faster order & quote creation' },
+    ],
+    href: '/#work',
+  },
+  {
+    eyebrow: 'Howard Elliott',
+    quote:
+      'In an industry that usually gets outdated tech, this is the first engineer who feels current, listens, and brings real innovation to the workflow.',
+    name: 'Colleen Daly',
+    role: 'VP at Howard Elliott',
+    stats: [
+      { value: '20%', label: 'Revenue growth from new storefront' },
+      { value: '90%', label: 'Drop in navigation queries' },
+    ],
+    href: '/#work',
+  },
+  {
+    eyebrow: 'Jaipur Living',
+    quote:
+      'Switching to a unified stack drastically improved efficiency — seamless ERP integration and tooling that eliminates manual work, giving reps more time to sell.',
+    name: 'Nitesh Chaudhary',
+    role: 'Director of Innovation',
+    stats: [
+      { value: '10+', label: 'Increase in revenue' },
+      { value: '2-5', label: 'Hours saved per rep / week' },
+    ],
+    href: '/#work',
+  },
+]
 
 function CustomerStories() {
-  const topLeftRef = useRef(null)
-  const topRightRef = useRef(null)
-  const bottomLeftRef = useRef(null)
-  const bottomRightRef = useRef(null)
-
-  const topLeftInView = useInView(topLeftRef, { once: true })
-  const topRightInView = useInView(topRightRef, { once: true })
-  const bottomLeftInView = useInView(bottomLeftRef, { once: true })
-  const bottomRightInView = useInView(bottomRightRef, { once: true })
-
   return (
-    <section aria-labelledby="journey-heading">
-      <div className="2xl:py-20 py-11">
-        <div className="container">
-          <div className="flex flex-col justify-center gap-10 md:gap-20">
-            <div className="mx-auto max-w-2xl flex items-center text-center">
-              <h2 id="journey-heading">
-                <TextGenerateEffect words="Highlights from my" />
-                <TextGenerateEffect
-                  words="professional journey"
-                  delay={1}
-                  className="italic font-normal instrument-font"
-                />
-              </h2>
-            </div>
+    <section className='wiz-font bg-white dark:bg-dark_black py-12 sm:py-16 lg:py-24'>
+      <div className='container'>
+        <div className='flex items-end justify-between gap-4 sm:gap-6 flex-wrap'>
+          <div>
+            <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>
+              Customer Stories
+            </p>
+            <h2 className='wiz-display mt-3 sm:mt-4 text-[28px] sm:text-[38px] md:text-[46px] lg:text-[52px] text-wiz_ink dark:text-white max-w-3xl'>
+              Outcomes from real production systems.
+            </h2>
+          </div>
+          <Link
+            href='/#work'
+            className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white border-b border-wiz_ink dark:border-white pb-1'>
+            View all stories →
+          </Link>
+        </div>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Top Left Box */}
-                <motion.article
-                  ref={topLeftRef}
-                  initial={{ opacity: 0, transform: 'translate3d(-50px, -50px, 0)' }}
-                  animate={topLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
-                  transition={{ duration: 0.6 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat gpu-accelerated"
-                >
-                  <span className="text-white/60 uppercase text-sm font-medium">
-                    Current Role
-                  </span>
-                  <div className="flex flex-col gap-6">
-                    <h3 className="text-white text-2xl md:text-4xl">
-                      Built complete PIM system from scratch handling 10,000+ SKUs daily serving 85+ US clients
-                    </h3>
-                    <div className="flex flex-col gap-1">
-                      <p className="text-white font-medium">WizCommerce, Gurugram</p>
-                      <p className="text-white/60 text-sm font-medium">
-                        Software Development Engineer 1
+        <div className='mt-8 sm:mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
+          {stories.map((s, i) => (
+            <article
+              key={i}
+              className='bg-white dark:bg-dark_black p-5 sm:p-7 lg:p-9 flex flex-col gap-5 sm:gap-6 justify-between'>
+              <div>
+                <p className='wiz-eyebrow text-wiz_muted'>{s.eyebrow}</p>
+                <p className='mt-5 wiz-serif text-[20px] lg:text-[22px] leading-[1.35] text-wiz_ink dark:text-white'>
+                  &ldquo;{s.quote}&rdquo;
+                </p>
+              </div>
+              <div>
+                <div className='flex items-center gap-3 wiz-eyebrow'>
+                  <span>{s.name}</span>
+                  <span className='inline-block w-px h-3 bg-wiz_ink/30 dark:bg-white/30' />
+                  <span className='text-wiz_muted'>{s.role}</span>
+                </div>
+                <div className='mt-5 grid grid-cols-2 gap-4'>
+                  {s.stats.map((st, si) => (
+                    <div
+                      key={si}
+                      className='bg-wiz_chip/60 dark:bg-white/5 p-4'>
+                      <p className='wiz-serif text-[28px] text-wiz_ink dark:text-white leading-none'>
+                        {st.value}
+                      </p>
+                      <p className='text-[12px] text-wiz_muted dark:text-white/60 mt-1 leading-snug'>
+                        {st.label}
                       </p>
                     </div>
-                  </div>
-                </motion.article>
-
-                {/* Top Right Box */}
-                <motion.article
-                  ref={topRightRef}
-                  initial={{ opacity: 0, transform: 'translate3d(50px, -50px, 0)' }}
-                  animate={topRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col justify-between gap-36 xl:max-w-25 bg-pale-yellow rounded-2xl p-8 gpu-accelerated"
-                >
-                  <div>
-                    <span className="uppercase text-sm font-medium text-dark_black/60">
-                      Facts & numbers
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <p className="text-7xl font-medium dark:text-dark_black">9.41</p>
-                    <h3 className="dark:text-dark_black text-2xl">
-                      CGPA at Chitkara University, B.Tech CSE
-                    </h3>
-                  </div>
-                </motion.article>
+                  ))}
+                </div>
+                <Link
+                  href={s.href}
+                  className='mt-5 wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white'>
+                  Read Full Story →
+                </Link>
               </div>
-
-              <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Bottom Left Box */}
-                <motion.article
-                  ref={bottomLeftRef}
-                  initial={{ opacity: 0, transform: 'translate3d(-50px, 50px, 0)' }}
-                  animate={bottomLeftInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col justify-between bg-dark_black xl:max-w-25 dark:bg-white/10 rounded-2xl p-8 gpu-accelerated"
-                >
-                  <div className="flex flex-col gap-6">
-                    <span className="text-white/60 uppercase text-sm font-medium">
-                      Previous Experience
-                    </span>
-                    <h3 className="text-white text-2xl">
-                      Led daily standups and sprint planning for 9-member agile team, delivering 4 sprint milestones on schedule
-                    </h3>
-                    <div>
-                      <Image
-                        src="/images/home/customerStories/creativity_img.jpg"
-                        alt="Infosys internship experience showing team collaboration"
-                        width={344}
-                        height={220}
-                        loading="lazy"
-                        className="w-full h-52 object-cover"
-                      />
-                    </div>
-                  </div>
-                </motion.article>
-
-                {/* Bottom Right Box */}
-                <motion.article
-                  ref={bottomRightRef}
-                  initial={{ opacity: 0, transform: 'translate3d(50px, 50px, 0)' }}
-                  animate={bottomRightInView ? { opacity: 1, transform: 'translate3d(0, 0, 0)' } : {}}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col gap-24 justify-between bg-dark_black/5 dark:bg-white/5 p-8 rounded-2xl gpu-accelerated"
-                >
-                  <div className="flex flex-col gap-6">
-                    <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">
-                      Key Achievement
-                    </span>
-                    <h3 className="text-2xl lg:text-4xl">
-                      Built 10+ dynamic Ag-Grid tables with Server-Side Row Model, displaying 500K+ records and $10M+ in transactional data
-                    </h3>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <p className="font-medium">Infosys, Mysuru</p>
-                    <p className="text-dark_black/60 dark:text-white/60 text-sm font-medium">
-                      Application Developer Intern and Scrum Master
-                    </p>
-                  </div>
-                </motion.article>
-              </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
