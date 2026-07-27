@@ -97,7 +97,7 @@ const Header = () => {
                 href='https://github.com/satwik073'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='hidden lg:inline-flex text-[15px] font-medium text-wiz_ink/85 dark:text-white/85 hover:text-wiz_ink dark:hover:text-white px-1'>
+                className='hidden lg:inline-flex items-center min-h-12 text-[15px] font-medium text-wiz_ink dark:text-white/85 hover:text-wiz_ink dark:hover:text-white px-3'>
                 GitHub
               </Link>
               <Link
@@ -112,7 +112,7 @@ const Header = () => {
                 type='button'
                 aria-label='Open menu'
                 onClick={() => setSidebarOpen(true)}
-                className='lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full border border-wiz_border dark:border-white/15'>
+                className='lg:hidden inline-flex items-center justify-center h-12 w-12 min-h-12 min-w-12 rounded-full border border-wiz_border dark:border-white/15'>
                 <svg width='18' height='18' viewBox='0 0 24 24' fill='none'>
                   <path
                     d='M4 7h16M4 12h16M4 17h16'
@@ -259,7 +259,7 @@ const Header = () => {
             type='button'
             aria-label='Close menu'
             onClick={() => setSidebarOpen(false)}
-            className='h-10 w-10 inline-flex items-center justify-center rounded-full border border-wiz_border dark:border-white/15'>
+            className='h-12 w-12 min-h-12 min-w-12 inline-flex items-center justify-center rounded-full border border-wiz_border dark:border-white/15'>
             <svg width='16' height='16' viewBox='0 0 24 24' fill='none'>
               <path
                 d='M6 6l12 12M6 18L18 6'

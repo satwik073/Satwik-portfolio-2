@@ -51,7 +51,7 @@ function Innovation() {
                   <p className='wiz-eyebrow text-[10px] sm:text-[11px] tracking-[0.2em] text-wiz_ink dark:text-white/90'>
                     {String(groupIndex + 1).padStart(2, '0')} — {group.title}
                   </p>
-                  <p className='wiz-eyebrow text-[9px] sm:text-[10px] tracking-[0.16em] text-wiz_ink/45 dark:text-white/40'>
+                  <p className='wiz-eyebrow text-[9px] sm:text-[10px] tracking-[0.16em] text-wiz_ink/75 dark:text-white/70'>
                     {String(group.items.length).padStart(2, '0')}
                   </p>
                 </div>

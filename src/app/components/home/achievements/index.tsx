@@ -74,7 +74,8 @@ function Achievements() {
               href={featured.href}
               target='_blank'
               rel='noopener noreferrer'
-              className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white'>
+              aria-label='Learn more about Apple assistive tech collaboration'
+              className='wiz-eyebrow inline-flex min-h-12 items-center gap-2 text-wiz_ink dark:text-white'>
               Learn More →
             </Link>
           </div>
@@ -104,7 +105,7 @@ function Achievements() {
                     {c.title}
                   </h3>
                   <p className='wiz-eyebrow text-wiz_muted mt-1'>{c.date}</p>
-                  <span className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white mt-3'>
+                  <span className='wiz-eyebrow inline-flex min-h-12 items-center gap-2 text-wiz_ink dark:text-white mt-3'>
                     Learn More →
                   </span>
                 </div>

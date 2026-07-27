@@ -9,7 +9,7 @@ function HeroSection() {
         <div className='flex items-center bg-white dark:bg-dark_black hero-enter'>
           <div className='w-full px-5 sm:px-8 lg:px-12 xl:pl-[max(48px,calc((100vw-1536px)/2+48px))] xl:pr-16 py-10 lg:py-14'>
             <div className='max-w-xl'>
-              <p className='wiz-eyebrow text-wiz_ink dark:text-white/80 text-[8px] und'>
+              <p className='wiz-eyebrow text-wiz_ink dark:text-white/80 text-[10px]'>
                 Full-Stack Software Engineer · 2+ Years
               </p>
 
@@ -102,10 +102,7 @@ function HeroSection() {
           <div className='relative flex-1 flex flex-col justify-between px-6 sm:px-10 lg:px-12 xl:px-14 pt-10 sm:pt-12 pb-0'>
             <div className='flex items-center justify-between gap-3'>
               <p className='inline-flex items-center gap-2.5 bg-[var(--brand)] text-wiz_ink px-3 py-1.5 wiz-eyebrow text-[10px]'>
-                <span className='relative flex h-2 w-2'>
-                  <span className='absolute inset-0 animate-ping bg-wiz_ink/50' />
-                  <span className='relative h-2 w-2 bg-wiz_ink' />
-                </span>
+                <span className='h-2 w-2 bg-wiz_ink' />
                 Live from Gurugram
               </p>
               <p className='wiz-serif text-[15px] text-white/80 rotate-[-2deg]'>

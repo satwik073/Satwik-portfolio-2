@@ -127,7 +127,7 @@ function OnlinePresence() {
             }}>
             Selected Work
           </h2>
-          <p className='mt-5 max-w-2xl px-2 text-[14px] sm:text-[15px] leading-[1.6] text-white/65'>
+          <p className='mt-5 max-w-2xl px-2 text-[14px] sm:text-[15px] leading-[1.6] text-white/70'>
             From the resume: WizCommerce production systems, Assembly &amp; Flux
             side projects, Infosys delivery, and Apple-collaborated assistive tech.
           </p>
@@ -175,11 +175,11 @@ function OnlinePresence() {
                 <h3 className='wiz-serif text-[20px] sm:text-[22px] lg:text-[26px] text-white leading-snug'>
                   {c.title}
                 </h3>
-                <p className='text-[14px] leading-[1.6] text-white/55 max-w-md'>
+                <p className='text-[14px] leading-[1.6] text-white/70 max-w-md'>
                   {c.description}
                 </p>
                 {c.href && (
-                  <span className='wiz-eyebrow text-[11px] text-[var(--brand-pink)] mt-auto'>
+                  <span className='wiz-eyebrow text-[11px] text-[#ffb38a] mt-auto'>
                     Visit →
                   </span>
                 )}

@@ -4,7 +4,7 @@ import Link from 'next/link'
 function Solutions() {
   return (
     <section className='wiz-font bg-wiz_cream dark:bg-dark_black'>
-      <div className='container py-12 sm:py-16 lg:py-24'>
+      <div className='container py-10 sm:py-14 lg:py-20'>
         <div className='grid lg:grid-cols-12 gap-8 sm:gap-10 items-center'>
           <div className='lg:col-span-6'>
             <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>

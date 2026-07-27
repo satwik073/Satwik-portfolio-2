@@ -29,7 +29,7 @@ const HeaderLink: React.FC<Props> = ({ item, isOpen, onHover, onClick }) => {
           }
         }}
         style={{ letterSpacing: '0.005em' }}
-        className={`group relative inline-flex items-center gap-1.5 px-3.5 py-2 text-[15px] font-medium
+        className={`group relative inline-flex min-h-12 items-center gap-1.5 px-3.5 py-3 text-[15px] font-medium
           ${
             isOpen || isActive
               ? 'text-wiz_ink dark:text-white'
