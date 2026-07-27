@@ -52,7 +52,7 @@ const footerData = {
             { name: "GitHub", url: "https://github.com/satwik073" },
             { name: "LinkedIn", url: "https://linkedin.com/in/satwikkanhere0730" },
             { name: "Portfolio", url: "https://satwik073.github.io/SatwikPortFolio/" },
-            { name: "Documentation", url: "/documentation" }
+            { name: "About", url: "/about" }
         ]
     },
     contactDetails: {
