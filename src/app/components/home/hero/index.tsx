@@ -1,23 +1,12 @@
-'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { motion } from 'motion/react'
 import { avatarList } from '@/constants'
 
 function HeroSection() {
-  const fade = {
-    initial: { opacity: 0, y: 12 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  }
-
   return (
     <section className='wiz-font bg-white dark:bg-dark_black pt-[80px]'>
       <div className='grid lg:grid-cols-2 items-stretch'>
-        <motion.div
-          {...fade}
-          className='flex items-center bg-white dark:bg-dark_black'>
+        <div className='flex items-center bg-white dark:bg-dark_black hero-enter'>
           <div className='w-full px-5 sm:px-8 lg:px-12 xl:pl-[max(48px,calc((100vw-1536px)/2+48px))] xl:pr-16 py-10 lg:py-14'>
             <div className='max-w-xl'>
               <p className='wiz-eyebrow text-wiz_ink dark:text-white/80 text-[8px] und'>
@@ -46,7 +35,7 @@ function HeroSection() {
                   href='/contact'
                   className='inline-flex items-center gap-2.5 bg-wiz_ink text-white text-[14px] font-medium px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-black transition-colors'>
                   Get In Touch
-                  <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
+                  <svg width='14' height='14' viewBox='0 0 24 24' fill='none' aria-hidden>
                     <path
                       d='M5 12h14M13 6l6 6-6 6'
                       stroke='currentColor'
@@ -75,6 +64,7 @@ function HeroSection() {
                       height={56}
                       priority
                       fetchPriority='high'
+                      sizes='56px'
                       className='object-cover'
                     />
                   </div>
@@ -95,38 +85,22 @@ function HeroSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          className='relative bg-wiz_navy text-white overflow-hidden min-h-[520px] lg:min-h-full flex flex-col'>
-          {/* Peach accent slab — same position, translucent (rgba so opacity always applies) */}
-          <motion.div
+        <div className='relative bg-wiz_navy text-white overflow-hidden min-h-[520px] lg:min-h-full flex flex-col hero-enter-delay'>
+          <div
             aria-hidden
-            initial={{ x: '40%', opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className='absolute -right-8 -top-16 z-[1] h-[55%] w-[70%] rotate-[14deg] pointer-events-none'
-            style={{ backgroundColor: 'rgba(255, 244, 232, 0.28)' }}
+            className='absolute -right-8 -top-16 z-[1] h-[55%] w-[70%] rotate-[14deg] pointer-events-none hero-peach-slab'
           />
-          <motion.div
+          <div
             aria-hidden
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.12 }}
-            transition={{ duration: 1, delay: 0.35 }}
-            className='absolute -left-6 bottom-[18%] wiz-display text-[180px] sm:text-[220px] leading-none text-white select-none pointer-events-none'>
+            className='absolute -left-6 bottom-[18%] wiz-display text-[180px] sm:text-[220px] leading-none text-white/12 select-none pointer-events-none'>
             SK
-          </motion.div>
+          </div>
 
           <div className='relative flex-1 flex flex-col justify-between px-6 sm:px-10 lg:px-12 xl:px-14 pt-10 sm:pt-12 pb-0'>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.28 }}
-              className='flex items-center justify-between gap-3'>
-              <p className='inline-flex items-center gap-2.5 bg-[#ff7a1a] text-wiz_ink px-3 py-1.5 wiz-eyebrow text-[10px]'>
+            <div className='flex items-center justify-between gap-3'>
+              <p className='inline-flex items-center gap-2.5 bg-[var(--brand)] text-wiz_ink px-3 py-1.5 wiz-eyebrow text-[10px]'>
                 <span className='relative flex h-2 w-2'>
                   <span className='absolute inset-0 animate-ping bg-wiz_ink/50' />
                   <span className='relative h-2 w-2 bg-wiz_ink' />
@@ -136,62 +110,44 @@ function HeroSection() {
               <p className='wiz-serif text-[15px] text-white/80 rotate-[-2deg]'>
                 no cap, I ship
               </p>
-            </motion.div>
+            </div>
 
             <div className='my-10 sm:my-12 lg:my-auto py-4 relative z-10'>
-              <motion.p
-                initial={{ opacity: 0, rotate: -3 }}
-                animate={{ opacity: 1, rotate: -2 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className='inline-block wiz-eyebrow text-wiz_navy bg-wiz_peach px-2.5 py-1 text-[10px]'>
+              <p className='inline-block wiz-eyebrow text-wiz_navy bg-wiz_peach px-2.5 py-1 text-[10px] rotate-[-2deg]'>
                 Satwik Kanhere · SDE 1
-              </motion.p>
+              </p>
 
-              <motion.h2
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className='wiz-display mt-4 text-[44px] sm:text-[58px] md:text-[68px] lg:text-[76px] xl:text-[84px] leading-[0.94] tracking-[-0.03em] text-white'>
+              <h2 className='wiz-display mt-4 text-[44px] sm:text-[58px] md:text-[68px] lg:text-[76px] xl:text-[84px] leading-[0.94] tracking-[-0.03em] text-white'>
                 Full-stack
                 <br />
                 that doesn&rsquo;t
                 <br />
-                <span className='instrument-font italic text-[#ffb38a]'>cry at 100K SKUs.</span>
-              </motion.h2>
+                <span className='instrument-font italic text-[var(--brand)]'>
+                  cry at 100K SKUs.
+                </span>
+              </h2>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.65 }}
-                className='mt-5 max-w-sm text-[14.5px] sm:text-[15.5px] leading-[1.55] text-white/60'>
+              <p className='mt-5 max-w-sm text-[14.5px] sm:text-[15.5px] leading-[1.55] text-white/60'>
                 Java, Spring Boot, Hibernate on the backend — React, Next.js,
                 TypeScript up front. Plus Ag-Grid, payments, and CDN. The boring
                 stuff that makes enterprise products actually fun to use.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.75 }}
-                className='mt-7 flex flex-wrap gap-2'>
+              <div className='mt-7 flex flex-wrap gap-2'>
                 {['Java', 'Spring Boot', 'Hibernate', 'React', 'Next.js'].map((tag, i) => (
                   <span
                     key={tag}
                     style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1.5}deg)` }}
-                    className='border border-white/25 px-3 py-1.5 text-[12px] text-white/85 hover:border-[#ff7a1a] hover:text-[#ffb38a] transition-colors'>
+                    className='border border-white/25 px-3 py-1.5 text-[12px] text-white/85 hover:border-[var(--brand)] hover:text-[var(--brand)] transition-colors'>
                     {tag}
                   </span>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
 
-          {/* Goofy infinite marquee */}
           <div className='relative z-10 border-t border-white/10 bg-white/[0.03] overflow-hidden py-3.5'>
-            <motion.div
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{ duration: 18, ease: 'linear', repeat: Infinity }}
-              className='flex w-max whitespace-nowrap'>
+            <div className='hero-marquee flex w-max whitespace-nowrap'>
               {[0, 1].map((dup) => (
                 <p
                   key={dup}
@@ -199,9 +155,9 @@ function HeroSection() {
                   Java&nbsp;&nbsp;·&nbsp;&nbsp;Spring Boot&nbsp;&nbsp;·&nbsp;&nbsp;Hibernate&nbsp;&nbsp;·&nbsp;&nbsp;JPA&nbsp;&nbsp;·&nbsp;&nbsp;React.js&nbsp;&nbsp;·&nbsp;&nbsp;Next.js&nbsp;&nbsp;·&nbsp;&nbsp;TypeScript&nbsp;&nbsp;·&nbsp;&nbsp;Node.js&nbsp;&nbsp;·&nbsp;&nbsp;Ag-Grid&nbsp;&nbsp;·&nbsp;&nbsp;Kafka&nbsp;&nbsp;·&nbsp;&nbsp;MySQL&nbsp;&nbsp;·&nbsp;&nbsp;MongoDB&nbsp;&nbsp;·&nbsp;&nbsp;full-stack before standup ends&nbsp;&nbsp;·&nbsp;&nbsp;
                 </p>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

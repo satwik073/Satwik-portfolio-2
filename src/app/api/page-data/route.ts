@@ -262,16 +262,31 @@ const achievementsList = [
 ]
 
 
+export const dynamic = 'force-static'
+export const revalidate = false
+
 export const GET = async () => {
-  return NextResponse.json({
-    avatarList,
-    brandList,
-    innovationList,
-    onlinePresenceList,
-    creativeMindList,
-    WebResultTagList,
-    startupPlanList,
-    faqList,
-    achievementsList,
-  });
-};
+  return NextResponse.json(
+    {
+      avatarList,
+      brandList,
+      innovationList,
+      onlinePresenceList,
+      creativeMindList,
+      WebResultTagList,
+      startupPlanList,
+      faqList,
+      achievementsList,
+    },
+    {
+      headers: {
+        'Cache-Control':
+          'public, max-age=86400, s-maxage=31536000, stale-while-revalidate=31536000, stale-if-error=31536000',
+        'CDN-Cache-Control':
+          'public, max-age=31536000, stale-while-revalidate=31536000, stale-if-error=31536000',
+        'Vercel-CDN-Cache-Control':
+          'public, max-age=31536000, stale-while-revalidate=31536000, stale-if-error=31536000',
+      },
+    }
+  )
+}

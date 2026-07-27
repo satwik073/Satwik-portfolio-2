@@ -98,7 +98,7 @@ function CreativeMind() {
 
                 <div className='relative h-full flex flex-col justify-between p-6 sm:p-8'>
                   <div className='inline-flex self-start items-center gap-2 bg-white dark:bg-dark_black border border-wiz_border dark:border-white/10 px-3 py-1.5 shadow-sm'>
-                    <span className='inline-block h-1.5 w-1.5 rounded-full bg-[#ff7a1a]' />
+                    <span className='inline-block h-1.5 w-1.5 rounded-full bg-[var(--brand)]' />
                     <span className='wiz-eyebrow text-[10px] text-wiz_ink dark:text-white/85'>
                       Now Featured
                     </span>
@@ -139,7 +139,7 @@ function CreativeMind() {
                           viewBox='0 0 24 24'
                           fill='none'
                           className={`shrink-0 transition-transform duration-300 text-wiz_ink/60 dark:text-white/60 ${
-                            isOpen ? 'rotate-90 text-[#ff7a1a]' : ''
+                            isOpen ? 'rotate-90 text-[var(--brand)]' : ''
                           }`}>
                           <path
                             d='M5 12h14M13 6l6 6-6 6'
@@ -157,7 +157,7 @@ function CreativeMind() {
                           </p>
                           <div className='mt-5 bg-[#fff3e1] dark:bg-white/5 border border-[#ffd9b5] dark:border-white/10 px-3 py-2.5 flex items-center gap-3 flex-wrap'>
                             <span className='inline-flex items-center gap-2 wiz-eyebrow text-[10px] text-wiz_ink/85'>
-                              <span className='inline-block h-2 w-2 bg-[#ff7a1a]' />
+                              <span className='inline-block h-2 w-2 bg-[var(--brand)]' />
                               Stack:
                             </span>
                             {ind.usedBy.map((u, ui) => (

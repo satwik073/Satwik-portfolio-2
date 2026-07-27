@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL, SITEMAP_ROUTES } from "@/constants";
 
+/** Fully static until redeploy — avoid `new Date()` on every request. */
+export const dynamic = "force-static";
+export const revalidate = false;
+
 /**
  * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
  * Single source of truth: SITEMAP_ROUTES in @/constants/site
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date("2026-07-27T00:00:00.000Z");
 
   return SITEMAP_ROUTES.map(({ path, changeFrequency, priority }) => {
     const url =

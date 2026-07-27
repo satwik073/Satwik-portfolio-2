@@ -1,5 +1,3 @@
-'use client'
-
 type Company = {
   name: string
   italic?: boolean

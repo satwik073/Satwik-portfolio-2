@@ -24,6 +24,11 @@ const contactLinks = [
     href: 'mailto:satwikkanhere2003@gmail.com',
   },
   {
+    label: 'WhatsApp',
+    value: '+91 6284486063',
+    href: 'https://wa.me/916284486063?text=Hi%20Satwik%2C%20I%20came%20across%20your%20portfolio%20and%20wanted%20to%20connect.',
+  },
+  {
     label: 'Phone',
     value: '+91 6284486063',
     href: 'tel:+916284486063',
@@ -37,6 +42,16 @@ const contactLinks = [
     label: 'GitHub',
     value: 'satwik073',
     href: 'https://github.com/satwik073',
+  },
+  {
+    label: 'X / Twitter',
+    value: '@satwikkanhere',
+    href: 'https://x.com/satwikkanhere',
+  },
+  {
+    label: 'Resume',
+    value: 'View CV',
+    href: 'https://satwik073.github.io/SatwikPortFolio/',
   },
 ]
 
@@ -314,7 +329,7 @@ function ContactForm() {
                   <button
                     type='submit'
                     disabled={loader}
-                    className='inline-flex items-center gap-2.5 bg-[#ff7a1a] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[#ff8c39] transition disabled:opacity-60'>
+                    className='inline-flex items-center gap-2.5 bg-[var(--brand)] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[var(--brand-hover)] transition disabled:opacity-60'>
                     {loader ? 'Sending…' : 'Send Message'}
                     {!loader && (
                       <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>

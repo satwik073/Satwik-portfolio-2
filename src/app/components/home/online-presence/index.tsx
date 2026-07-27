@@ -120,7 +120,7 @@ function OnlinePresence() {
             className='wiz-display text-[36px] sm:text-[48px] md:text-[56px] lg:text-[72px]'
             style={{
               backgroundImage:
-                'linear-gradient(90deg, #f7c8ff 0%, #ffb38a 50%, #f7c8ff 100%)',
+                'linear-gradient(90deg, #f7c8ff 0%, var(--brand-pink) 50%, #f7c8ff 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -145,7 +145,7 @@ function OnlinePresence() {
                   className={`wiz-eyebrow px-6 sm:px-10 py-3 sm:py-3.5 text-[11px] sm:text-[13px] tracking-[0.18em] transition-all
                     ${
                       isActive
-                        ? 'bg-gradient-to-r from-[#ff7bb0] via-[#ffb38a] to-[#ff7a1a] text-wiz_ink shadow-[0_8px_24px_-12px_rgba(255,122,26,0.6)]'
+                        ? 'bg-gradient-to-r from-[#ff7bb0] via-[var(--brand-pink)] to-[var(--brand)] text-wiz_ink shadow-[0_8px_24px_-12px_rgba(255,122,26,0.6)]'
                         : 'border border-white/25 text-white/85 hover:text-white hover:border-white/60 hover:bg-white/[0.04]'
                     }`}>
                   {t.label}
@@ -179,7 +179,7 @@ function OnlinePresence() {
                   {c.description}
                 </p>
                 {c.href && (
-                  <span className='wiz-eyebrow text-[11px] text-[#ffb38a] mt-auto'>
+                  <span className='wiz-eyebrow text-[11px] text-[var(--brand-pink)] mt-auto'>
                     Visit →
                   </span>
                 )}

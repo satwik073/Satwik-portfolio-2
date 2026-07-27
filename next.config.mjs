@@ -1,40 +1,55 @@
 /** @type {import('next').NextConfig} */
+
+/** 1 year — safe for content-hashed / versioned assets */
+const IMMUTABLE = 'public, max-age=31536000, immutable'
+
+/**
+ * HTML / SEO documents — most aggressive practical setup:
+ * - Browser keeps a full day (survives reloads)
+ * - Vercel/CDN edge keeps a year and serves stale while revalidating
+ * - Redeploys still ship new builds; edge picks up new deployment IDs
+ */
+const HTML_CACHE =
+  'public, max-age=86400, s-maxage=31536000, stale-while-revalidate=31536000, stale-if-error=31536000'
+
+/** Pure CDN override used by Vercel (takes precedence over Cache-Control s-maxage) */
+const VERCEL_CDN =
+  'public, max-age=31536000, stale-while-revalidate=31536000, stale-if-error=31536000'
+
+const htmlCacheHeaders = [
+  { key: 'Cache-Control', value: HTML_CACHE },
+  { key: 'CDN-Cache-Control', value: VERCEL_CDN },
+  { key: 'Vercel-CDN-Cache-Control', value: VERCEL_CDN },
+]
+
+const immutableHeaders = [{ key: 'Cache-Control', value: IMMUTABLE }]
+
 const nextConfig = {
-  /** Omit X-Powered-By for cleaner responses + minor hardening. */
   poweredByHeader: false,
-
-  /** Enable gzip / brotli compression (default true, explicit for clarity). */
   compress: true,
-
-  /** Strip the build-time React property checks → smaller production JS. */
   reactStrictMode: true,
-
-  /** Defaults to 'no-cache' for HTML routes — we override per-route below. */
   generateEtags: true,
 
-  /** Image pipeline — AVIF/WebP, long-cache, content-hashed by Next. */
   images: {
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000, // 1 year — content-hashed in Next's image cache
+    minimumCacheTTL: 31536000,
     deviceSizes: [360, 480, 640, 750, 828, 1080, 1200, 1440, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  /** Production build optimizations. */
   experimental: {
-    // Tree-shake icon libs so we don't ship every icon in the bundle.
-    optimizePackageImports: [
-      '@iconify/react',
-      'lucide-react',
-      'motion',
-    ],
+    optimizePackageImports: ['@iconify/react', 'lucide-react', 'motion'],
+  },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 
   async headers() {
     return [
-      // ── Security headers across the whole site ──────────────────────
+      // ── Security (no Cache-Control here — don't clobber route caches) ──
       {
         source: '/(.*)',
         headers: [
@@ -45,7 +60,6 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
-          // Tell crawlers everything is indexable + image-rich.
           {
             key: 'X-Robots-Tag',
             value: 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -53,107 +67,97 @@ const nextConfig = {
         ],
       },
 
-      // ── Next's content-hashed JS / CSS chunks: cache forever ────────
-      // Filenames are like /_next/static/chunks/main-9f6b…hash.js → safe
-      // to mark immutable; any content change produces a new URL.
       {
-        source: '/_next/static/:path*',
+        source: '/sw.js',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=0, must-revalidate',
           },
+          { key: 'Service-Worker-Allowed', value: '/' },
         ],
       },
-
-      // ── Next-served images (after Image Optimization) ──────────────
       {
         source: '/_next/image(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
+        headers: immutableHeaders,
       },
 
-      // ── Static images, fonts in /public ─────────────────────────────
+      // ── Public media / icons — forever ───────────────────────────────
       {
         source: '/images/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
+        headers: immutableHeaders,
       },
       {
         source: '/fonts/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          ...immutableHeaders,
           { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
       {
         source: '/favicon.ico',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=604800, immutable',
-          },
-        ],
+        headers: immutableHeaders,
       },
       {
         source: '/apple-touch-icon.png',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=604800, immutable',
-          },
-        ],
+        headers: immutableHeaders,
       },
       {
         source: '/manifest.json',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=86400',
+            value:
+              'public, max-age=604800, s-maxage=31536000, stale-while-revalidate=31536000',
           },
+          { key: 'CDN-Cache-Control', value: VERCEL_CDN },
+          { key: 'Vercel-CDN-Cache-Control', value: VERCEL_CDN },
         ],
       },
 
-      // ── SEO files: short browser cache, longer CDN cache ───────────
+      // ── SEO / text discovery files ───────────────────────────────────
       {
         source: '/sitemap.xml',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400',
-          },
-        ],
+        headers: htmlCacheHeaders,
       },
       {
         source: '/robots.txt',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400',
-          },
-        ],
+        headers: htmlCacheHeaders,
+      },
+      {
+        source: '/humans.txt',
+        headers: htmlCacheHeaders,
+      },
+      {
+        source: '/llms.txt',
+        headers: htmlCacheHeaders,
       },
 
-      // ── Home page — ISR-friendly: CDN serves cached HTML to crawlers
-      //    instantly, revalidates in background. Browser doesn't cache.
+      // ── HTML pages — max CDN + day-long browser ──────────────────────
       {
         source: '/',
+        headers: htmlCacheHeaders,
+      },
+      {
+        source: '/about',
+        headers: htmlCacheHeaders,
+      },
+      {
+        source: '/contact',
+        headers: htmlCacheHeaders,
+      },
+
+      // ── Static JSON APIs ─────────────────────────────────────────────
+      {
+        source: '/api/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
+            value:
+              'public, max-age=86400, s-maxage=31536000, stale-while-revalidate=31536000, stale-if-error=31536000',
           },
+          { key: 'CDN-Cache-Control', value: VERCEL_CDN },
+          { key: 'Vercel-CDN-Cache-Control', value: VERCEL_CDN },
         ],
       },
     ]
