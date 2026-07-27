@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 
 const avatarList = [
   {
-    image: '/images/home/avatar_1.jpg',
-    title: 'Team Member',
+    image: '/images/home/satwik.jpg',
+    title: 'Satwik Kanhere',
   },
   {
     image: '/images/home/avatar_2.jpg',
