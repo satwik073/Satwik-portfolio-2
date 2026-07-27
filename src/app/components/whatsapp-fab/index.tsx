@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { SOCIAL_PRIMARY } from '@/constants'
 
@@ -54,19 +54,11 @@ const extraIds = ['linkedin', 'github', 'x', 'email', 'resume'] as const
 
 function WhatsAppFab() {
   const [open, setOpen] = useState(false)
-  const [showTop, setShowTop] = useState(false)
 
   const extras = extraIds
     .map((id) => SOCIAL_PRIMARY.find((s) => s.id === id))
     .filter(Boolean)
   const whatsapp = SOCIAL_PRIMARY.find((s) => s.id === 'whatsapp')
-
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 280)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <div className='fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-[1000] flex flex-col items-end'>
@@ -83,26 +75,6 @@ function WhatsAppFab() {
               transition={{ duration: 0.35 }}
               className='absolute bottom-16 top-0 w-px origin-bottom bg-gradient-to-t from-[#25D366] via-[#ff7a1a] to-transparent'
             />
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {open && showTop && (
-            <motion.button
-              key='top'
-              type='button'
-              initial={{ opacity: 0, y: 24, rotate: -12, scale: 0.6 }}
-              animate={{ opacity: 1, y: 0, rotate: -4, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.7 }}
-              transition={{ type: 'spring', stiffness: 420, damping: 22 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              aria-label='Back to top'
-              title='Back to top'
-              className={`${iconWrap} mb-3 bg-wiz_ink text-white hover:bg-black -rotate-3`}>
-              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden>
-                <path d='M12 19V5M5 12l7-7 7 7' strokeLinecap='round' strokeLinejoin='round' />
-              </svg>
-            </motion.button>
           )}
         </AnimatePresence>
 
@@ -141,6 +113,23 @@ function WhatsAppFab() {
               )
             })}
         </AnimatePresence>
+
+        {/* Back to top — always visible, just above + */}
+        <motion.button
+          type='button'
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0, rotate: -4 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 22 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label='Back to top'
+          title='Back to top'
+          whileHover={{ scale: 1.08, rotate: 0 }}
+          whileTap={{ scale: 0.94 }}
+          className={`${iconWrap} mb-3 bg-wiz_ink text-white hover:bg-black`}>
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden>
+            <path d='M12 19V5M5 12l7-7 7 7' strokeLinecap='round' strokeLinejoin='round' />
+          </svg>
+        </motion.button>
 
         {/* + sits ABOVE WhatsApp */}
         <motion.button
