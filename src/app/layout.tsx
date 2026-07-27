@@ -210,7 +210,13 @@ export default function RootLayout({
         <meta name="owner" content="Satwik Kanhere" />
         <meta name="contact" content="satwikkanhere2003@gmail.com" />
         <link rel="author" href="/humans.txt" />
-        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM context" />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="llms.txt — AI agent site index"
+        />
+        <link rel="describedby" href="/llms.txt" />
 
         {/* Language & region */}
         <meta httpEquiv="content-language" content="en-US" />
