@@ -130,7 +130,13 @@ const nextConfig = {
       },
       {
         source: '/llms.txt',
-        headers: htmlCacheHeaders,
+        headers: [
+          ...htmlCacheHeaders,
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8',
+          },
+        ],
       },
 
       // ── HTML pages — max CDN + day-long browser ──────────────────────
