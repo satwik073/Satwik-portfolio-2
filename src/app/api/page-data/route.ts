@@ -83,27 +83,27 @@ const innovationList = [
 const onlinePresenceList = [
   {
     image: '/images/home/onlinePresence/online_img_1.jpg',
-    title: 'Arobix: Enterprise Design Studio',
+    title: 'Assembly — Enterprise Design Studio',
     tag: ['Next.js', 'Prisma', 'MySQL', 'Cloudflare'],
-    link: 'https://github.com/satwik073',
+    link: 'https://assembly-stack.vercel.app',
   },
   {
     image: '/images/home/onlinePresence/online_img_2.jpg',
-    title: 'Priscus: AI Project Analysis Platform',
-    tag: ['React Flow', 'Kanban', 'MCP Server', 'Cursor IDE'],
-    link: 'https://priscus.vercel.app',
+    title: 'Flux — AI-Powered Code IDE',
+    tag: ['Next.js', 'WebContainers', 'MCP', 'AI'],
+    link: 'https://flux-code.vercel.app',
   },
   {
     image: '/images/home/onlinePresence/online_img_3.jpg',
-    title: 'Product Information Management (PIM)',
-    tag: ['Ag-Grid', 'SSRM', 'Real-time Sync', '10K+ SKUs'],
-    link: 'https://github.com/satwik073',
+    title: 'Enterprise PIM — WizCommerce',
+    tag: ['React', 'TypeScript', 'PIM', '100K+ SKUs'],
+    link: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     image: '/images/home/onlinePresence/online_img_4.jpg',
-    title: 'iOS Assistive Technology App',
-    tag: ['iOS', 'Accessibility', 'Braille Alternative', '300+ Students'],
-    link: 'https://github.com/satwik073',
+    title: 'iOS Assistive Technology — with Apple',
+    tag: ['iOS', 'Accessibility', 'Apple', '300+ Students'],
+    link: 'https://linkedin.com/in/satwikkanhere0730',
   },
 ]
 
@@ -111,28 +111,28 @@ const creativeMindList = [
   {
     image: '/images/home/creative/creative_img_1.png',
     name: 'WizCommerce, Gurugram',
-    position: 'SDE 1 | July 2025 - Present',
+    position: 'SDE 1 | July 2024 - Present',
     twitterLink: 'https://github.com/satwik073',
     linkedinLink: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     image: '/images/home/creative/creative_img_2.png',
     name: 'Infosys, Mysuru',
-    position: 'App Developer Intern | May - June 2024',
+    position: 'App Developer Intern & Scrum Master | May - June 2024',
     twitterLink: 'https://github.com/satwik073',
     linkedinLink: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     image: '/images/home/creative/creative_img_3.png',
     name: 'Chitkara University',
-    position: 'B.Tech CSE | 2021 - 2025',
+    position: 'B.Tech CSE | 2021 - 2025 | 9.41 CGPA',
     twitterLink: 'https://github.com/satwik073',
     linkedinLink: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     image: '/images/home/creative/creative_img_4.png',
-    name: 'Springer Publication',
-    position: 'Lead Author | Research Paper',
+    name: 'Apple Collaboration',
+    position: 'Assistive Tech | 300+ Students',
     twitterLink: 'https://github.com/satwik073',
     linkedinLink: 'https://linkedin.com/in/satwikkanhere0730',
   },
@@ -171,10 +171,10 @@ const startupPlanList = [
     icon_img: '/images/home/startupPlan/white_tick.svg',
     plan_feature: [
       'Full-Stack Web Development',
+      'Java · Spring Boot · Hibernate',
       'React.js & Next.js Applications',
       'Node.js Backend APIs',
       'Database Design & Optimization',
-      'Real-time Data Sync',
       'Post-launch Support',
     ],
   },
@@ -202,32 +202,32 @@ const faqList = [
   {
     faq_que: 'What technologies do you specialize in?',
     faq_ans:
-      'I specialize in JavaScript, TypeScript, Java, React.js, Next.js, Node.js, Express.js, PostgreSQL, MongoDB, and have experience with Kafka, Prisma, Ag-Grid, and performance monitoring tools like Sentry and Grafana.',
+      'Java, Spring Boot, Hibernate, JPA, JavaScript (ES6+), TypeScript, SQL; React.js, Next.js, React Native, Tailwind CSS, Ag-Grid; Node.js, Express.js, REST APIs, Kafka; MongoDB, MySQL; GCP CDN, Cloudflare, Sentry, Grafana; eBizCharge, Finix, ACH, CyberSource; Git, GitHub, Docker, Postman, Jira.',
   },
   {
     faq_que: 'What is your professional experience?',
     faq_ans:
-      'I am currently working as a Software Development Engineer 1 at WizCommerce, Gurugram, where I built a complete PIM system handling 10,000+ SKUs daily for 85+ US clients. Previously, I interned at Infosys as an Application Developer and Scrum Master.',
+      'Software Development Engineer 1 at WizCommerce (Jul 2024–Present): CRM Kanban, PIM for 100K+ SKUs, Ag-Grid SSRM (500K+ records), payments, 65% faster loads for 120+ clients. Previously Application Developer Intern & Scrum Master at Infosys Mysuru (May–Jun 2024).',
   },
   {
     faq_que: 'What notable projects have you built?',
     faq_ans:
-      'I have built Arobix - an Enterprise Design Studio Platform with subdomain hosting and funnel building tools, and Priscus - an AI-Powered Project Analysis Platform with automated Kanban boards and React Flow workflow generators. I also contributed to an iOS assistive technology app serving 300+ visually impaired students.',
+      'Assembly (assembly-stack.vercel.app) — Enterprise Design Studio with Next.js, Prisma, MySQL, Cloudflare. Flux (flux-code.vercel.app) — AI code IDE with WebContainers and MCP. Plus WizCommerce PIM, CRM Kanban, and an Apple-collaborated iOS assistive app for 300+ students.',
   },
   {
-    faq_que: 'Do you have any research publications?',
+    faq_que: 'Do you have any research or leadership work?',
     faq_ans:
-      'Yes, I am a Lead Author of "Blockchain and IoT for Healthcare: A Systematic Analysis" published in Springer\'s Algorithms for Intelligent Systems. The paper explores blockchain integration with IoT for healthcare systems.',
+      'Yes. Led an iOS assistive learning app in collaboration with Apple Asia Head Ashish Chowdhary — modern Braille alternative supporting 300+ visually impaired students in Chandigarh.',
   },
   {
     faq_que: 'What is your educational background?',
     faq_ans:
-      'I completed my Bachelor of Technology in Computer Science and Engineering from Chitkara University, Chandigarh (2021-2025) with a CGPA of 9.41.',
+      'Bachelor of Technology in Computer Science and Engineering from Chitkara University Institute of Engineering and Technology, Chandigarh (2021–2025), CGPA 9.41.',
   },
   {
     faq_que: 'How can I get in touch with you?',
     faq_ans:
-      'You can reach me via email at satwikkanhere2003@gmail.com, connect on LinkedIn at linkedin.com/in/satwikkanhere0730, or call me at +91-6284486063. You can also check out my work on GitHub at github.com/satwik073.',
+      'Email satwikkanhere2003@gmail.com, LinkedIn linkedin.com/in/satwikkanhere0730, GitHub github.com/satwik073, phone +91 6284486063, resume satwik073.github.io/SatwikPortFolio/.',
   },
 ]
 
@@ -235,27 +235,28 @@ const achievementsList = [
   {
     icon: '/images/home/achievement/framer_award.svg',
     dark_icon: '/images/home/achievement/dark_framer_award.svg',
-    sub_title: 'Springer Publication',
+    sub_title: 'Performance at Scale',
     title:
-      'Lead Author - "Blockchain and IoT for Healthcare: A Systematic Analysis" in Algorithms for Intelligent Systems.',
-    year: '2024',
+      'Content hashing, cache-busting, and CDN optimization with GCP and Cloudflare — reduced page load times by over 65% for 120+ enterprise clients.',
+    year: '2024–Present',
     url: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     icon: '/images/home/achievement/dribble_award.svg',
     dark_icon: '/images/home/achievement/dribble_award.svg',
-    sub_title: 'Social Impact Initiative',
-    title: 'Built iOS assistive technology app for visually impaired students, deployed across schools serving 300+ students in Chandigarh.',
-    year: '2024',
-    url: 'https://github.com/satwik073',
+    sub_title: 'Assistive Technology · Apple',
+    title:
+      'Led iOS assistive learning app with Apple Asia Head Ashish Chowdhary — supporting 300+ visually impaired students in Chandigarh.',
+    year: 'Leadership',
+    url: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     icon: '/images/home/achievement/awward_award.svg',
     dark_icon: '/images/home/achievement/dark_awward_award.svg',
-    sub_title: 'Enterprise Solution',
+    sub_title: 'Data-Intensive UIs',
     title:
-      'Built PIM system at WizCommerce processing 50,000+ product updates monthly with 99.8% uptime for 85+ US clients.',
-    year: '2025',
+      'Developed and optimized 10+ enterprise apps with Ag-Grid SSRM, handling datasets exceeding 500K+ records.',
+    year: '2024–Present',
     url: 'https://linkedin.com/in/satwikkanhere0730',
   },
 ]

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const headerData = [
-    { label: 'About', href: '/#aboutus' },
+    { label: 'About', href: '/about' },
     { label: 'Skills', href: '/#services' },
     { label: 'Projects', href: '/#work' },
     { label: 'Experience', href: '/#team' },
@@ -12,7 +12,7 @@ const headerData = [
 const footerData = {
     brand: {
         name: "Satwik",
-        tagline: "Software Development Engineer building scalable enterprise solutions. Passionate about creating high-performance applications that drive real business impact.",
+        tagline: "Full-stack SDE 1 at WizCommerce. Java, Spring Boot, Hibernate, React, Next.js, TypeScript — enterprise products for 120+ clients. B.Tech CSE, Chitkara University (9.41 CGPA).",
         socialLinks: [
             {
                 icon: "/images/home/footerSocialIcon/twitter.svg",
@@ -40,7 +40,7 @@ const footerData = {
         name: "Navigation",
         links: [
             { name: "Contact Me", url: "/contact" },
-            { name: "About", url: "/#aboutus" },
+            { name: "About", url: "/about" },
             { name: "Projects", url: "/#work" },
             { name: "Skills", url: "/#services" },
             { name: "Achievements", url: "/#awards" }

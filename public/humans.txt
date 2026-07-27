@@ -1,0 +1,15 @@
+/* TEAM */
+Creator: Satwik Kanhere
+Contact: satwikkanhere2003@gmail.com
+LinkedIn: https://linkedin.com/in/satwikkanhere0730
+GitHub: https://github.com/satwik073
+From: Chandigarh / Gurugram, India
+
+/* SITE */
+Last update: 2026-07-27
+Language: English
+Standards: HTML5, CSS3, Schema.org
+Software: Next.js, React, TypeScript
+URL: https://satwikkanhere.dev
+About: https://satwikkanhere.dev/about
+Contact: https://satwikkanhere.dev/contact

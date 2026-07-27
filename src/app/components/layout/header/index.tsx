@@ -98,7 +98,7 @@ const Header = () => {
                 target='_blank'
                 rel='noopener noreferrer'
                 className='hidden lg:inline-flex text-[15px] font-medium text-wiz_ink/85 dark:text-white/85 hover:text-wiz_ink dark:hover:text-white px-1'>
-                Log In
+                GitHub
               </Link>
               <Link
                 href='/contact'
@@ -287,7 +287,7 @@ const Header = () => {
               rel='noopener noreferrer'
               onClick={() => setSidebarOpen(false)}
               className='w-full inline-flex items-center justify-center text-[15px] font-medium text-wiz_ink dark:text-white py-3'>
-              Log In
+              GitHub
             </Link>
             <Link
               href='/contact'

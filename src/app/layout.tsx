@@ -5,6 +5,7 @@ import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
+import { personSchema, websiteSchema, SCHEMA_IDS } from '@/constants'
 
 const siteUrl = 'https://satwikkanhere.dev'
 
@@ -55,18 +56,23 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Satwik Kanhere | Software Development Engineer | Full-Stack Developer',
-    template: '%s | Satwik Kanhere - Software Developer',
+    default: 'Satwik Kanhere | Full-Stack SDE | Java Spring Boot React Next.js',
+    template: '%s | Satwik Kanhere - Full-Stack Developer',
   },
-  description: 'Satwik Kanhere (Satvik Kanhere) - Software Development Engineer at WizCommerce. Full-stack developer: React.js, Next.js, Node.js, TypeScript. Building enterprise systems for 85+ US clients. Published researcher. Chandigarh, India.',
+  description: 'Satwik Kanhere — Full-Stack Software Development Engineer 1 at WizCommerce. Java, Spring Boot, Hibernate, React, Next.js, TypeScript. CRM, PIM, Ag-Grid, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Chandigarh, India.',
   applicationName: 'Satwik Kanhere Portfolio',
   referrer: 'origin-when-cross-origin',
   keywords: [
-    'Satwik Kanhere', 'Satvik Kanhere', 'Satwik', 'Satvik', 'satwikkanhere',
-    'Satwik Kanhere developer', 'Satwik Kanhere portfolio', 'Satwik Kanhere software engineer',
-    'Software Developer', 'SDE', 'Full Stack Developer', 'React Developer',
-    'Next.js Developer', 'Node.js Developer', 'WizCommerce',
-    'Software Engineer India', 'Developer Chandigarh', 'Hire developer India',
+    'Satwik Kanhere', 'Satvik Kanhere', 'Satwik', 'Satvik', 'satwikkanhere', 'satwik073',
+    'Satwik Kanhere developer', 'Satwik Kanhere full stack', 'Satwik Kanhere Java',
+    'Satwik Kanhere Spring Boot', 'Satwik Kanhere React', 'Satwik Kanhere Next.js',
+    'Full Stack Developer', 'Java Developer', 'Spring Boot Developer', 'Hibernate',
+    'Software Developer', 'SDE', 'SDE 1', 'Frontend Developer',
+    'React Developer', 'Next.js Developer', 'TypeScript Developer', 'Node.js Developer',
+    'WizCommerce', 'Infosys', 'Chitkara University',
+    'Software Engineer India', 'Developer Chandigarh', 'Developer Gurugram',
+    'Hire Full Stack Developer India', 'Hire Spring Boot Developer', 'Ag-Grid SSRM',
+    'Product Information Management', 'satwikkanhere.dev',
   ],
   authors: [
     { name: 'Satwik Kanhere', url: 'https://linkedin.com/in/satwikkanhere0730' },
@@ -85,8 +91,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Satwik Kanhere - Software Development Engineer',
-    title: 'Satwik Kanhere | Software Development Engineer at WizCommerce',
-    description: 'SDE at WizCommerce | Architecting enterprise systems for 85+ US clients | React.js, Next.js, Node.js, TypeScript | Published Researcher',
+    title: 'Satwik Kanhere | Full-Stack Software Development Engineer at WizCommerce',
+    description: 'Full-stack SDE 1 at WizCommerce | Java · Spring Boot · Hibernate · React · Next.js · TypeScript | Assembly & Flux | Apple assistive tech',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -104,8 +110,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@satwikkanhere',
     creator: '@satwikkanhere',
-    title: 'Satwik Kanhere | Software Development Engineer',
-    description: 'SDE at WizCommerce | Full-stack engineer building enterprise systems at scale | React, Next.js, Node.js | Published researcher',
+    title: 'Satwik Kanhere | Full-Stack Software Development Engineer',
+    description: 'Full-stack SDE 1 | Java/Spring Boot/Hibernate + React/Next.js/TypeScript | Ag-Grid · payments · CDN | Assembly · Flux',
     images: ['/images/og-image.jpg'],
   },
 
@@ -143,7 +149,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: 'your-google-verification-code',
+    google: 'bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw',
   },
 
   other: {
@@ -220,6 +226,8 @@ export default function RootLayout({
         <meta name="designer" content="Satwik Kanhere" />
         <meta name="owner" content="Satwik Kanhere" />
         <meta name="contact" content="satwikkanhere2003@gmail.com" />
+        <link rel="author" href="/humans.txt" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM context" />
 
         {/* Language & region */}
         <meta httpEquiv="content-language" content="en-US" />
@@ -229,6 +237,16 @@ export default function RootLayout({
         <meta name="theme-color" content="#4928fd" />
       </head>
       <body>
+        <Script
+          id={SCHEMA_IDS.person}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <Script
+          id={SCHEMA_IDS.website}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <Providers>
           <Header />
           {children}

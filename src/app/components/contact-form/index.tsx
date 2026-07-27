@@ -1,8 +1,50 @@
 'use client'
-import { Icon } from '@iconify/react/dist/iconify.js'
 import Link from 'next/link'
 import { useState } from 'react'
-import { TextGenerateEffect } from '../ui/text-generate-effect'
+
+const interestOptions = [
+  { value: 'web development', label: 'Web Development' },
+  { value: 'mobile development', label: 'Mobile Development' },
+  { value: 'consulting', label: 'Technical Consulting' },
+  { value: 'full-time', label: 'Full-Time Opportunity' },
+]
+
+const timelineOptions = [
+  { value: '', label: 'Select timeline' },
+  { value: '1-2 weeks', label: '1–2 Weeks' },
+  { value: '1-3 months', label: '1–3 Months' },
+  { value: '3-6 months', label: '3–6 Months' },
+  { value: 'ongoing', label: 'Ongoing' },
+]
+
+const contactLinks = [
+  {
+    label: 'Email',
+    value: 'satwikkanhere2003@gmail.com',
+    href: 'mailto:satwikkanhere2003@gmail.com',
+  },
+  {
+    label: 'Phone',
+    value: '+91 6284486063',
+    href: 'tel:+916284486063',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'satwikkanhere0730',
+    href: 'https://linkedin.com/in/satwikkanhere0730',
+  },
+  {
+    label: 'GitHub',
+    value: 'satwik073',
+    href: 'https://github.com/satwik073',
+  },
+]
+
+const fieldClass =
+  'w-full mt-2 border border-wiz_border dark:border-white/15 bg-white dark:bg-dark_black px-4 py-3 text-[14px] sm:text-[15px] text-wiz_ink dark:text-white outline-none transition focus:border-wiz_ink dark:focus:border-white/50 placeholder:text-wiz_muted/70'
+
+const labelClass =
+  'wiz-eyebrow text-[10px] tracking-[0.16em] text-wiz_muted dark:text-white/55'
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,232 +56,278 @@ function ContactForm() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loader, setLoader] = useState(false)
-  const handleChange = (e: any) => {
+  const [error, setError] = useState(false)
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const reset = () => {
-    formData.name = ''
-    formData.email = ''
-    formData.interest = 'web development'
-    formData.budget = ''
-    formData.message = ''
+    setFormData({
+      name: '',
+      email: '',
+      interest: 'web development',
+      budget: '',
+      message: '',
+    })
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoader(true)
+    setError(false)
 
-    fetch('https://formsubmit.co/ajax/satwikkanhere2003@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        interest: formData.interest,
-        budget: formData.budget,
-        message: formData.message,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-
-        setSubmitted(data.success)
-        reset()
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
+    try {
+      const response = await fetch(
+        'https://formsubmit.co/ajax/satwikkanhere2003@gmail.com',
+        {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            interest: formData.interest,
+            budget: formData.budget,
+            message: formData.message,
+          }),
+        }
+      )
+      const data = await response.json()
+      setSubmitted(Boolean(data.success))
+      if (data.success) reset()
+      else setError(true)
+    } catch {
+      setError(true)
+    } finally {
+      setLoader(false)
+    }
   }
 
   return (
-    <section>
-      <div className='relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10 before:rounded-full before:top-24 before:blur-3xl  before:-z-10'>
-        <div className='container relative z-10'>
-          <div className='flex flex-col gap-10 md:gap-20'>
-            <div className='relative flex flex-col text-center items-center'>
-              <h2 className='font-medium w-full max-w-32'>
-                <TextGenerateEffect words="Love to hear from you, Get in" duration={0.5}  />
-                <TextGenerateEffect
-                  words="touch"
-                  delay={1.5}
-                  className="italic font-normal instrument-font"
-                />
-              </h2>
-            </div>
-            {submitted ? (
-              <div className='flex flex-col items-center gap-5 text-center max-w-xl mx-auto p-6 rounded-lg bg-green/20 dark:bg-white/5'>
-                <div className='flex'>
-                  <Icon
-                    icon='ix:success-filled'
-                    width='30'
-                    height='30'
-                    style={{ color: '#79D45E' }}
-                  />
-                  <h5 className='text-green dark:text-green'>
-                    Thank you for reaching out! I'll get back to you as soon as possible.
-                  </h5>
-                </div>
+    <section className='wiz-font bg-white dark:bg-dark_black pt-48 sm:pt-52 lg:pt-56 pb-12 sm:pb-16 lg:pb-24 overflow-visible'>
+      <div className='container'>
+        <div className='max-w-4xl'>
+          <p className='wiz-eyebrow text-wiz_ink dark:text-white/70'>
+            Contact
+          </p>
+          <h1 className='wiz-display mt-4 sm:mt-5 text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.12] sm:leading-[1.1] text-wiz_ink dark:text-white overflow-visible'>
+            Let&rsquo;s Build Something
+            <br className='hidden sm:block' />
+            <span className='sm:hidden'> </span>
+            Worth Shipping.
+          </h1>
+          <p className='mt-4 sm:mt-5 max-w-xl text-[14.5px] sm:text-[16px] leading-[1.55] text-wiz_muted dark:text-white/60'>
+            Open to full-time roles, contract work, and technical conversations.
+            Based in India (IST). Usually replies within 24 hours.
+          </p>
+        </div>
 
+        <div className='mt-10 sm:mt-14 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
+          {/* Left — direct contact */}
+          <div className='lg:col-span-4 bg-wiz_cream dark:bg-white/[0.03] p-6 sm:p-8 lg:p-10 flex flex-col gap-8'>
+            <div>
+              <p className='wiz-eyebrow text-wiz_muted text-[10px]'>
+                Direct Channels
+              </p>
+              <p className='wiz-serif text-[24px] sm:text-[28px] text-wiz_ink dark:text-white mt-3 leading-tight'>
+                Reach me anytime.
+              </p>
+            </div>
+
+            <ul className='flex flex-col gap-0 border border-wiz_border dark:border-white/10'>
+              {contactLinks.map((item) => (
+                <li
+                  key={item.label}
+                  className='border-b last:border-b-0 border-wiz_border dark:border-white/10'>
+                  <Link
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      item.href.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
+                    className='flex flex-col gap-1 px-4 py-4 hover:bg-white/70 dark:hover:bg-white/5 transition-colors'>
+                    <span className='wiz-eyebrow text-[9px] tracking-[0.16em] text-wiz_muted'>
+                      {item.label}
+                    </span>
+                    <span className='text-[14px] sm:text-[15px] text-wiz_ink dark:text-white break-all'>
+                      {item.value}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className='grid grid-cols-2 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10 mt-auto'>
+              <div className='bg-white dark:bg-dark_black p-4'>
+                <p className='wiz-eyebrow text-wiz_muted text-[9px]'>Reply</p>
+                <p className='wiz-serif text-[22px] text-wiz_ink dark:text-white leading-none mt-2'>
+                  &lt; 24h
+                </p>
+              </div>
+              <div className='bg-white dark:bg-dark_black p-4'>
+                <p className='wiz-eyebrow text-wiz_muted text-[9px]'>Timezone</p>
+                <p className='wiz-serif text-[22px] text-wiz_ink dark:text-white leading-none mt-2'>
+                  IST
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — form */}
+          <div className='lg:col-span-8 bg-white dark:bg-dark_black p-6 sm:p-8 lg:p-10'>
+            {submitted ? (
+              <div className='flex flex-col gap-6 max-w-lg py-6'>
+                <p className='wiz-eyebrow text-emerald-700 dark:text-emerald-400 inline-flex items-center gap-2'>
+                  <span className='inline-block h-1.5 w-1.5 rounded-full bg-emerald-500' />
+                  Message sent
+                </p>
+                <h2 className='wiz-serif text-[28px] sm:text-[34px] text-wiz_ink dark:text-white leading-tight'>
+                  Thanks for reaching out — I&rsquo;ll get back to you soon.
+                </h2>
                 <Link
                   href='/'
-                  className='group w-fit text-black font-medium bg-transparent dark:bg-white/20 dark:hover:bg-white rounded-full flex items-center gap-4 py-2 pl-5 pr-2 hover:bg-transparent border border-dark_black'>
-                  <span className='group-hover:dark:text-dark_black dark:text-white transform transition-transform duration-200 ease-in-out'>
-                    Back to home
-                  </span>
-                  <svg
-                    width='32'
-                    height='32'
-                    viewBox='0 0 32 32'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='transition-all duration-200 ease-in-out group-hover:rotate-45'>
-                    <rect
-                      width='32'
-                      height='32'
-                      rx='16'
-                      fill='white'
-                      className=' transition-colors duration-200 ease-in-out fill-black'
-                    />
+                  className='inline-flex w-fit items-center gap-2.5 bg-wiz_ink text-white text-[14px] font-medium px-5 py-3.5 hover:bg-black transition-colors'>
+                  Back to home
+                  <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
                     <path
-                      d='M11.832 11.3334H20.1654M20.1654 11.3334V19.6668M20.1654 11.3334L11.832 19.6668'
-                      stroke='#1B1D1E'
-                      strokeWidth='1.42857'
+                      d='M5 12h14M13 6l6 6-6 6'
+                      stroke='currentColor'
+                      strokeWidth='2'
                       strokeLinecap='round'
                       strokeLinejoin='round'
-                      className=' transition-colors duration-200 ease-in-out stroke-white'
                     />
                   </svg>
                 </Link>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className='flex flex-col bg-white dark:bg-dark_black rounded-2xl p-8 gap-8'>
-                <div className='flex flex-col md:flex md:flex-row gap-6'>
-                  <div className='w-full'>
-                    <label htmlFor='name'>Your Name</label>
+              <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
+                <div>
+                  <p className='wiz-eyebrow text-wiz_muted text-[10px]'>
+                    Send a message
+                  </p>
+                  <p className='wiz-serif text-[24px] sm:text-[28px] text-wiz_ink dark:text-white mt-2 leading-tight'>
+                    Tell me about the opportunity.
+                  </p>
+                </div>
+
+                <div className='grid sm:grid-cols-2 gap-5'>
+                  <div>
+                    <label htmlFor='name' className={labelClass}>
+                      Your Name
+                    </label>
                     <input
-                      className='w-full mt-2 rounded-full border px-5 py-3 outline-hidden transition dark:border-white/20
-                                                focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40'
+                      className={fieldClass}
                       id='name'
                       type='text'
                       name='name'
+                      required
                       value={formData.name}
                       onChange={handleChange}
                       placeholder='Enter your name'
                     />
                   </div>
-                  <div className='w-full'>
-                    <label htmlFor='email'>Your Email</label>
+                  <div>
+                    <label htmlFor='email' className={labelClass}>
+                      Your Email
+                    </label>
                     <input
-                      className='w-full mt-2 rounded-full border px-5 py-3 outline-hidden transition dark:border-white/20
-                                                focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40'
+                      className={fieldClass}
                       id='email'
                       type='email'
                       name='email'
+                      required
                       value={formData.email}
                       onChange={handleChange}
                       placeholder='Enter your email'
                     />
                   </div>
                 </div>
-                <div className='flex flex-col md:flex md:flex-row gap-6'>
-                  <div className='w-full'>
-                    <label htmlFor='interest'>
-                      What are you interested in?
+
+                <div className='grid sm:grid-cols-2 gap-5'>
+                  <div>
+                    <label htmlFor='interest' className={labelClass}>
+                      Interest
                     </label>
                     <select
-                      className='w-full mt-2 text-base px-4 rounded-full py-2.5 border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40'
+                      className={fieldClass}
                       name='interest'
                       id='interest'
                       value={formData.interest}
                       onChange={handleChange}>
-                      <option value='web development'>
-                        Web Development
-                      </option>
-                      <option value='mobile development'>Mobile Development</option>
-                      <option value='consulting'>Technical Consulting</option>
-                      <option value='full-time'>Full-Time Opportunity</option>
+                      {interestOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
-                  <div className='w-full'>
-                    <label htmlFor='budget'>Project Timeline</label>
+                  <div>
+                    <label htmlFor='budget' className={labelClass}>
+                      Timeline
+                    </label>
                     <select
-                      className='w-full mt-2 text-base px-4 rounded-full py-2.5 border transition-all duration-500 dark:text-white border-solid dark:border-white/20 focus:outline-0 dark:bg-black/40'
+                      className={fieldClass}
                       name='budget'
                       id='budget'
                       value={formData.budget}
                       onChange={handleChange}>
-                      <option value=''>Select timeline</option>
-                      <option value='1-2 weeks'>1-2 Weeks</option>
-                      <option value='1-3 months'>1-3 Months</option>
-                      <option value='3-6 months'>3-6 Months</option>
-                      <option value='ongoing'>Ongoing</option>
+                      {timelineOptions.map((opt) => (
+                        <option key={opt.value || 'empty'} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
-                <div className='w-full'>
-                  <label htmlFor='message'>Message</label>
+
+                <div>
+                  <label htmlFor='message' className={labelClass}>
+                    Message
+                  </label>
                   <textarea
-                    className='w-full mt-2 rounded-3xl border px-5 py-3 outline-hidden transition dark:border-white/20
-                                        focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40'
+                    className={`${fieldClass} min-h-[140px] resize-y`}
                     name='message'
                     id='message'
+                    required
                     value={formData.message}
                     onChange={handleChange}
                     placeholder='Tell me about your project or opportunity'
-                    rows={4}
+                    rows={5}
                   />
                 </div>
+
+                {error && (
+                  <p className='text-[13px] text-red-600 dark:text-red-400'>
+                    Something went wrong. Email me directly at
+                    satwikkanhere2003@gmail.com.
+                  </p>
+                )}
+
                 <div>
-                  {!loader ? (
-                    <button
-                      type='submit'
-                      className='group w-fit text-white dark:text-dark_black font-medium bg-dark_black dark:bg-white rounded-full flex items-center gap-4 py-2 pl-5 pr-2 transition-all duration-200 ease-in-out  hover:bg-transparent border hover:text-dark_black border-dark_black'>
-                      <span className='transform transition-transform duration-200 ease-in-out'>
-                        Send Message
-                      </span>
-                      <svg
-                        width='32'
-                        height='32'
-                        viewBox='0 0 32 32'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='transform transition-transform duration-200 ease-in-out group-hover:rotate-45'>
-                        <rect
-                          width='32'
-                          height='32'
-                          rx='16'
-                          fill='white'
-                          className='fill-white dark:fill-black transition-colors duration-200 ease-in-out group-hover:fill-black '
-                        />
+                  <button
+                    type='submit'
+                    disabled={loader}
+                    className='inline-flex items-center gap-2.5 bg-[#ff7a1a] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[#ff8c39] transition disabled:opacity-60'>
+                    {loader ? 'Sending…' : 'Send Message'}
+                    {!loader && (
+                      <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
                         <path
-                          d='M11.832 11.3334H20.1654M20.1654 11.3334V19.6668M20.1654 11.3334L11.832 19.6668'
-                          stroke='#1B1D1E'
-                          strokeWidth='1.42857'
+                          d='M5 12h14M13 6l6 6-6 6'
+                          stroke='currentColor'
+                          strokeWidth='2'
                           strokeLinecap='round'
                           strokeLinejoin='round'
-                          className='stroke-dark_black dark:stroke-white transition-colors duration-200 ease-in-out group-hover:stroke-white'
                         />
                       </svg>
-                    </button>
-                  ) : (
-                    <button className='bg-grey item-center flex gap-2 py-3 px-7 rounded-sm'>
-                      <div
-                        className='animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500'
-                        role='status'
-                        aria-label='loading'>
-                        <span className='sr-only'>Loading...</span>
-                      </div>{' '}
-                      Submitting
-                    </button>
-                  )}
+                    )}
+                  </button>
                 </div>
               </form>
             )}

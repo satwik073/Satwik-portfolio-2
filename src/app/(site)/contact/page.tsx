@@ -4,27 +4,30 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Contact Satwik Kanhere | Hire a Software Developer",
-  description: "Get in touch with Satwik Kanhere for software development projects, freelance work, or full-time opportunities. Expert in React.js, Next.js, Node.js, and enterprise solutions.",
+  title: "Contact Satwik Kanhere | Hire Full-Stack Java / React Developer",
+  description:
+    "Contact Satwik Kanhere — Full-Stack SDE 1 at WizCommerce. Hire for Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript in India (IST). Email satwikkanhere2003@gmail.com · +91 6284486063.",
   keywords: [
-    "Hire Software Developer",
+    "Hire Satwik Kanhere",
     "Contact Satwik Kanhere",
-    "Freelance Developer India",
-    "React Developer for Hire",
-    "Next.js Developer",
-    "Full Stack Developer Contact",
-    "Software Development Services"
+    "Hire Full Stack Developer India",
+    "Hire Java Spring Boot Developer",
+    "Hire React Developer India",
+    "Hire Next.js Developer",
+    "Hire TypeScript Developer",
+    "Software Development Engineer contact",
   ],
   openGraph: {
-    title: "Contact Satwik Kanhere | Software Development Engineer",
-    description: "Reach out for software development projects, consulting, or career opportunities",
+    title: "Contact Satwik Kanhere | Full-Stack Software Development Engineer",
+    description:
+      "Reach Satwik Kanhere for full-time SDE roles, contract Java/Spring Boot + React/Next.js work, or technical conversations.",
     url: "https://satwikkanhere.dev/contact",
     type: "website",
   },
   twitter: {
     card: "summary",
     title: "Contact Satwik Kanhere",
-    description: "Get in touch for software development projects",
+    description: "Hire a full-stack Java / Spring Boot / React developer — India · IST",
   },
   alternates: {
     canonical: "https://satwikkanhere.dev/contact",

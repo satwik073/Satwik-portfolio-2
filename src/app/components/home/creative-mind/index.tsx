@@ -11,38 +11,38 @@ type Industry = {
 const industries: Industry[] = [
   {
     name: 'Wholesale Commerce',
-    role: 'SDE @ WizCommerce',
+    role: 'SDE 1 @ WizCommerce · Jul 2024–Present · Gurugram',
     description:
-      'PIM, ERP integrations, rep-led + online + EDI in one platform. Shipped to 85+ US clients.',
-    usedBy: ['WizCommerce', 'PIM', 'ERP Sync', 'B2B'],
+      'Built CRM Kanban from scratch; designed PIM product-detail UX for 100K+ SKUs; optimized 10+ apps with Ag-Grid SSRM (500K+ records); cut loads 65% with GCP/Cloudflare; integrated eBizCharge, Finix, ACH, CyberSource; migrated WordPress/PHP → Next.js. Full-stack across Java/Spring Boot services and React/Next.js UIs.',
+    usedBy: ['Java', 'Spring Boot', 'React', 'Next.js', 'Hibernate'],
   },
   {
     name: 'Enterprise Apps',
-    role: 'Application Developer @ Infosys',
+    role: 'App Developer Intern & Scrum Master @ Infosys · May–Jun 2024',
     description:
-      'Led a 9-member agile team, owned 4 sprint milestones, built Ag-Grid SSRM tables over $10M+ in data.',
-    usedBy: ['Infosys', 'Ag-Grid', 'SSRM', '$10M+'],
+      'Backend services with Node.js, Express.js, MongoDB, and SQL. Led daily standups for a 9-member Agile team and delivered 4 sprint milestones with peer code reviews.',
+    usedBy: ['Node.js', 'Express', 'MongoDB', 'SQL'],
   },
   {
-    name: 'AI / MCP Tooling',
-    role: 'Priscus (side project)',
+    name: 'SaaS Design Studio',
+    role: 'Assembly · assembly-stack.vercel.app',
     description:
-      'Natural-language → Kanban + React Flow workflows over an MCP server, with deterministic fallbacks.',
-    usedBy: ['MCP', 'React Flow', 'RAG', 'LLM'],
+      'Frontend for a SaaS platform for agency owners: subdomain hosting, drag-and-drop funnel builder, and project management. Next.js, Prisma, MySQL, Cloudflare, Sentry.',
+    usedBy: ['Next.js', 'Prisma', 'MySQL', 'Cloudflare'],
   },
   {
-    name: 'Multi-Tenant SaaS',
-    role: 'Arobix (founding engineer)',
+    name: 'AI Developer Tools',
+    role: 'Flux · flux-code.vercel.app',
     description:
-      'Subdomain-based tenancy, drag-and-drop funnel builder, Stripe billing, custom RBAC auth layer.',
-    usedBy: ['Next.js', 'Prisma', 'Stripe', 'Cloudflare'],
+      'AI-powered, Cursor-like code editor UI in Next.js with WebContainers for in-browser environments and MCP server integration for AI-assisted coding.',
+    usedBy: ['Next.js', 'WebContainers', 'MCP', 'AI'],
   },
   {
     name: 'Assistive Technology',
-    role: 'iOS Braille app',
+    role: 'iOS app · Collaboration with Apple Asia Head',
     description:
-      'Accessibility-first companion deployed across schools serving 300+ visually-impaired students daily.',
-    usedBy: ['Swift', 'iOS A11y', '300+ users'],
+      'Led development of an iOS-based assistive learning app as a modern Braille alternative — deployed across Chandigarh schools, supporting 300+ visually impaired students. Collaboration with Ashish Chowdhary.',
+    usedBy: ['iOS', 'Accessibility', 'Apple', '300+ users'],
   },
 ]
 
@@ -58,18 +58,16 @@ function CreativeMind() {
         <div className='grid lg:grid-cols-12 gap-6 sm:gap-10 items-start'>
           <div className='lg:col-span-4'>
             <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>
-              Industries
+              Experience
             </p>
             <h2 className='wiz-display mt-4 sm:mt-5 text-[28px] sm:text-[38px] md:text-[44px] lg:text-[54px] text-wiz_ink dark:text-white'>
-              Powering Engineering Teams Across Industries
+              Professional Work Across Products &amp; Impact
             </h2>
           </div>
 
           <div className='lg:col-span-8'>
             <div className='grid md:grid-cols-12 gap-0 items-stretch border border-wiz_border dark:border-white/10 bg-white dark:bg-white/5'>
-              {/* LEFT — visual panel that feels editorial */}
               <div className='md:col-span-5 relative aspect-[4/3] sm:aspect-[16/10] md:aspect-auto md:min-h-[420px] overflow-hidden border-b md:border-b-0 md:border-r border-wiz_border dark:border-white/10'>
-                {/* warm radial backdrop */}
                 <div
                   aria-hidden
                   className='absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#ffe2cf_0%,#f5e6d3_45%,#e9d8c2_100%)] dark:hidden'
@@ -78,8 +76,6 @@ function CreativeMind() {
                   aria-hidden
                   className='absolute inset-0 hidden dark:block bg-[radial-gradient(circle_at_30%_30%,rgba(255,122,26,0.18)_0%,rgba(0,0,0,0)_55%)]'
                 />
-
-                {/* faint grid texture */}
                 <svg
                   aria-hidden
                   className='absolute inset-0 w-full h-full opacity-[0.07] dark:opacity-[0.12]'>
@@ -101,18 +97,15 @@ function CreativeMind() {
                 </svg>
 
                 <div className='relative h-full flex flex-col justify-between p-6 sm:p-8'>
-                  {/* Top: "Now Featured" pill */}
                   <div className='inline-flex self-start items-center gap-2 bg-white dark:bg-dark_black border border-wiz_border dark:border-white/10 px-3 py-1.5 shadow-sm'>
                     <span className='inline-block h-1.5 w-1.5 rounded-full bg-[#ff7a1a]' />
                     <span className='wiz-eyebrow text-[10px] text-wiz_ink dark:text-white/85'>
                       Now Featured
                     </span>
                   </div>
-
-                  {/* Bottom: serif label */}
                   <div>
                     <p className='wiz-eyebrow text-wiz_muted text-[10px]'>
-                      Most Recent · 2025
+                      Resume · Verified
                     </p>
                     <p className='wiz-serif text-[28px] sm:text-[36px] lg:text-[44px] text-wiz_ink dark:text-white mt-2 leading-[1.05]'>
                       {current.name}
@@ -124,7 +117,6 @@ function CreativeMind() {
                 </div>
               </div>
 
-              {/* RIGHT — accordion list */}
               <div className='md:col-span-7'>
                 {industries.map((ind, i) => {
                   const isOpen = i === active
@@ -163,11 +155,10 @@ function CreativeMind() {
                           <p className='text-[14px] leading-[1.55] text-wiz_ink/75 dark:text-white/65 max-w-prose'>
                             {ind.description}
                           </p>
-                          {/* USED BY badges row */}
                           <div className='mt-5 bg-[#fff3e1] dark:bg-white/5 border border-[#ffd9b5] dark:border-white/10 px-3 py-2.5 flex items-center gap-3 flex-wrap'>
                             <span className='inline-flex items-center gap-2 wiz-eyebrow text-[10px] text-wiz_ink/85'>
                               <span className='inline-block h-2 w-2 bg-[#ff7a1a]' />
-                              Used:
+                              Stack:
                             </span>
                             {ind.usedBy.map((u, ui) => (
                               <span

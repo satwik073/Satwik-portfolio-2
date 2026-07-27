@@ -11,6 +11,9 @@ import WebResult from './components/home/web-result'
 const Innovation = dynamic(() => import('./components/home/innovation'), {
   loading: () => <div className='min-h-[400px]' />,
 })
+const AboutSeo = dynamic(() => import('./components/home/about-seo'), {
+  loading: () => <div className='min-h-[400px]' />,
+})
 const OnlinePresence = dynamic(() => import('./components/home/online-presence'), {
   loading: () => <div className='min-h-[600px]' />,
 })
@@ -35,8 +38,6 @@ const Solutions = dynamic(() => import('./components/home/solution'), {
 
 import {
   getMetadata,
-  personSchema,
-  websiteSchema,
   webPageSchema,
   professionalServiceSchema,
   projectsSchema,
@@ -60,17 +61,7 @@ export const dynamicParams = false
 export default function Home() {
   return (
     <>
-      {/* Schema.org JSON-LD structured data */}
-      <Script
-        id={SCHEMA_IDS.person}
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <Script
-        id={SCHEMA_IDS.website}
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
+      {/* Page-specific Schema.org JSON-LD (Person + WebSite live in root layout) */}
       <Script
         id={SCHEMA_IDS.webpage}
         type='application/ld+json'
@@ -111,6 +102,7 @@ export default function Home() {
         <HeroSection />
         <Brand />
         <WebResult />
+        <AboutSeo />
         <Innovation />
         <OnlinePresence />
         <CreativeMind />

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { SITE_URL, OG_IMAGE_URL, OG_IMAGE_SQUARE_URL } from "./site";
 
 export const META = {
-  title: "Satwik Kanhere | Software Development Engineer | Full-Stack Developer Portfolio",
+  title: "Satwik Kanhere | Full-Stack SDE | Java Spring Boot React Next.js",
   description:
-    "Satwik Kanhere (Satvik Kanhere) - Software Development Engineer at WizCommerce, Gurugram. Full-stack developer specializing in React.js, Next.js, Node.js, TypeScript, PostgreSQL. Architected enterprise PIM system handling 10,000+ SKUs daily for 85+ US B2B clients with 99.8% uptime. Published researcher in Springer. B.Tech CSE from Chitkara University (9.41 CGPA). Open to SDE roles and contract work. Based in Chandigarh, India.",
+    "Satwik Kanhere is a Full-Stack Software Development Engineer 1 at WizCommerce — Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. CRM, PIM, Ag-Grid SSRM, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Hire: satwikkanhere2003@gmail.com · +91 6284486063 · satwikkanhere.dev/about",
   keywords: [
     // === Name variations (CRITICAL for ranking) ===
     "Satwik Kanhere",
@@ -46,15 +46,23 @@ export const META = {
     "TypeScript Developer",
     "JavaScript Developer",
     "Java Developer",
+    "Spring Boot Developer",
+    "Hibernate Developer",
+    "JPA Developer",
     "MERN Stack Developer",
+    "Full Stack Java Developer",
 
     // === Technology keywords ===
     "React.js",
     "Next.js",
     "Node.js",
     "Express.js",
+    "Spring Boot",
+    "Hibernate",
+    "JPA",
     "TypeScript",
     "JavaScript",
+    "Java",
     "PostgreSQL",
     "MongoDB",
     "Prisma",
@@ -96,27 +104,49 @@ export const META = {
     "Enterprise software developer",
     "Springer published developer",
     "Blockchain IoT Healthcare",
-    "iOS accessibility app developer",
-    "Arobix",
-    "Priscus AI",
+    "Assembly design studio",
+    "Flux AI IDE",
+    "Ag-Grid SSRM",
+    "eBizCharge Finix CyberSource",
+    "Apple assistive technology",
+    "100000 SKUs PIM",
+    "120 enterprise clients",
 
     // === Hiring intent keywords ===
     "Hire Full Stack Developer",
     "Hire React Developer India",
+    "Hire Next.js Developer",
+    "Hire TypeScript Developer",
+    "Hire Frontend Developer India",
     "Hire Node.js Developer",
     "Freelance developer India",
-    "Contract developer React",
+    "Contract React developer",
+    "Contract frontend engineer",
+    "Software engineer for hire India",
     "Best software developer portfolio",
     "Top software engineer portfolio",
     "Developer portfolio website",
+    "satwikkanhere.dev",
+
+    // === Long-tail search phrases ===
+    "Satwik Kanhere software development engineer",
+    "Satwik Kanhere React Next.js TypeScript",
+    "Satwik Kanhere Chitkara University",
+    "Satwik Kanhere Infosys",
+    "Satwik Kanhere Gurugram",
+    "Satwik Kanhere Chandigarh developer",
+    "frontend engineer WizCommerce",
+    "Ag-Grid SSRM developer India",
+    "PIM developer React TypeScript",
+    "enterprise frontend developer India",
   ],
   siteName: "Satwik Kanhere - Software Development Engineer",
   ogTitle: "Satwik Kanhere | Software Development Engineer at WizCommerce",
   ogDescription:
-    "SDE at WizCommerce | Architecting enterprise systems for 85+ US clients | React.js, Next.js, Node.js, TypeScript | Published Researcher | 9.41 CGPA",
-  twitterTitle: "Satwik Kanhere | Software Development Engineer",
+    "Full-stack SDE 1 at WizCommerce | Java · Spring Boot · Hibernate · React · Next.js · TypeScript | Assembly & Flux | Apple assistive tech | 9.41 CGPA",
+  twitterTitle: "Satwik Kanhere | Full-Stack Software Development Engineer",
   twitterDescription:
-    "SDE at WizCommerce | Full-stack engineer building enterprise systems at scale | React, Next.js, Node.js | Published researcher in Springer",
+    "Full-stack SDE 1 at WizCommerce | Java/Spring Boot/Hibernate + React/Next.js/TypeScript | Ag-Grid · payments · CDN",
   author: "Satwik Kanhere",
   authorUrl: "https://linkedin.com/in/satwikkanhere0730",
   twitterHandle: "@satwikkanhere",
@@ -205,12 +235,8 @@ export function getMetadata(): Metadata {
     category: META.category,
     classification: META.classification,
     verification: {
-      google: "your-google-site-verification-code",
-      yandex: "your-yandex-verification-code",
-      other: {
-        "msvalidate.01": "your-bing-verification-code",
-        "facebook-domain-verification": "your-facebook-verification-code",
-      },
+      /** Matches <meta name="google-site-verification"> in root layout */
+      google: "bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw",
     },
     other: {
       "linkedin:owner": "satwikkanhere0730",

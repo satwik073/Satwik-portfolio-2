@@ -2,25 +2,27 @@
 
 type Company = {
   name: string
-  /** Optional serif-italic flourish for the logo treatment */
   italic?: boolean
-  /** What I did there / shipped with */
   caption: string
 }
 
 const companies: Company[] = [
-  { name: 'WizCommerce', italic: true, caption: 'BUILT · PIM SYSTEM' },
-  { name: 'Infosys', caption: 'SHIPPED · 4 SPRINTS' },
-  { name: 'Chitkara', italic: true, caption: 'CGPA · 9.41 / 10' },
-  { name: 'Springer', caption: 'PUBLISHED · 2024' },
-  { name: 'Arobix', italic: true, caption: 'BUILT · SAAS PLATFORM' },
-  { name: 'Priscus', caption: 'BUILT · AI TOOLING' },
-  { name: 'iOS Ally', italic: true, caption: 'SHIPPED · A11Y APP' },
-  { name: 'React.js', caption: 'PROD · 4 YRS' },
-  { name: 'Next.js', italic: true, caption: 'PROD · SSR / ISR' },
-  { name: 'Node.js', caption: 'PROD · APIs' },
-  { name: 'PostgreSQL', italic: true, caption: 'SCHEMA · 500K REC' },
-  { name: 'TypeScript', caption: 'PROD · 4 YRS' },
+  { name: 'WizCommerce', italic: true, caption: 'SDE 1 · JUL 2024–NOW' },
+  { name: 'Infosys', caption: 'INTERN · SCRUM MASTER' },
+  { name: 'Chitkara', italic: true, caption: 'B.TECH · 9.41 CGPA' },
+  { name: 'Apple', caption: 'ASSISTIVE TECH COLLAB' },
+  { name: 'Assembly', italic: true, caption: 'DESIGN STUDIO SAAS' },
+  { name: 'Flux', caption: 'AI CODE IDE' },
+  { name: 'React.js', italic: true, caption: 'PROD · COMPONENTS' },
+  { name: 'Next.js', caption: 'MIGRATIONS · SSR' },
+  { name: 'Java', italic: true, caption: 'SPRING · SERVICES' },
+  { name: 'Spring Boot', caption: 'REST · MICROSERVICES' },
+  { name: 'Hibernate', italic: true, caption: 'JPA · ORM' },
+  { name: 'TypeScript', caption: 'ENTERPRISE APPS' },
+  { name: 'Ag-Grid', italic: true, caption: 'SSRM · 500K+ ROWS' },
+  { name: 'Cloudflare', caption: 'CDN · −65% LOAD' },
+  { name: 'Payments', italic: true, caption: 'FINIX · CYBERSOURCE' },
+  { name: 'Kafka', caption: 'EVENT STREAMING' },
 ]
 
 function Brand() {
@@ -30,7 +32,7 @@ function Brand() {
         <div className='grid lg:grid-cols-12 gap-6 lg:gap-10 items-start'>
           <div className='lg:col-span-4'>
             <p className='wiz-eyebrow text-wiz_ink dark:text-white/70'>
-              Our Customers
+              Experience &amp; Stack
             </p>
           </div>
           <div className='lg:col-span-8'>
@@ -42,7 +44,6 @@ function Brand() {
           </div>
         </div>
 
-        {/* Logo grid — wizcommerce-style with cyan caption band */}
         <div className='mt-8 sm:mt-12 grid grid-cols-2 Xsm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
           {companies.map((c, i) => (
             <div

@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { achievementsList } from '@/constants'
 
 const featured = {
-  eyebrow: 'Research',
+  eyebrow: 'Research & Leadership',
   title:
-    'Blockchain & IoT for Healthcare — A Systematic Analysis (Springer, Algorithms for Intelligent Systems)',
-  date: 'September 2024',
+    'Assistive Technology Initiative for Visually Impaired Students — in collaboration with Apple Asia Head Ashish Chowdhary. iOS learning app as a modern Braille alternative; 300+ students across Chandigarh schools.',
+  date: 'Leadership · Apple Collaboration',
   bg: '#e9d8ff',
   href: 'https://linkedin.com/in/satwikkanhere0730',
 }
@@ -14,25 +14,24 @@ const featured = {
 const cards = [
   {
     eyebrow: 'WizCommerce',
-    title: 'Architecting the PIM system for 85+ B2B clients and 99.8% uptime',
-    date: 'May 14, 2026',
+    title: '65% faster page loads with GCP CDN, Cloudflare, content hashing & cache-busting for 120+ clients',
+    date: 'Performance Engineering',
     bg: '#f7e6d2',
     href: '/#work',
   },
   {
-    eyebrow: 'Performance',
-    title:
-      'Server-Side Row Model with Ag-Grid: rendering 500K+ records without choking',
-    date: 'May 6, 2026',
+    eyebrow: 'Assembly',
+    title: 'Enterprise Design Studio — subdomain hosting, funnel builder, project tooling',
+    date: 'assembly-stack.vercel.app',
     bg: '#cfeaf2',
-    href: '/#work',
+    href: 'https://assembly-stack.vercel.app',
   },
   {
-    eyebrow: 'AI tooling',
-    title: 'Priscus — building an MCP-server-backed Kanban generator in a weekend',
-    date: 'May 5, 2026',
+    eyebrow: 'Flux',
+    title: 'AI-Powered Code IDE — WebContainers + MCP for in-browser AI coding',
+    date: 'flux-code.vercel.app',
     bg: '#ffd9c0',
-    href: '/#work',
+    href: 'https://flux-code.vercel.app',
   },
 ]
 
@@ -41,15 +40,14 @@ function Achievements() {
     <section id='awards' className='wiz-font bg-white dark:bg-dark_black py-12 sm:py-16 lg:py-24'>
       <div className='container'>
         <div className='flex flex-col items-center text-center'>
-          <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>Resources</p>
+          <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>Achievements</p>
           <h2 className='wiz-display mt-4 sm:mt-5 text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white max-w-3xl'>
-            Learn What&rsquo;s Working
+            Impact, Products &amp;
             <br />
-            in Modern Engineering
+            Leadership Work
           </h2>
         </div>
 
-        {/* Featured */}
         <div className='mt-10 sm:mt-14 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
           <Link
             href={featured.href}
@@ -60,9 +58,9 @@ function Achievements() {
               className='aspect-[16/10] flex items-end p-5 sm:p-8'
               style={{ background: featured.bg }}>
               <p className='wiz-serif text-[22px] sm:text-[32px] md:text-[40px] lg:text-[44px] text-wiz_ink leading-[1.05] max-w-md'>
-                Algorithms for
+                Apple Collaboration
                 <br />
-                Intelligent Systems
+                300+ Students
               </p>
             </div>
           </Link>
@@ -82,35 +80,39 @@ function Achievements() {
           </div>
         </div>
 
-        {/* 3 cards */}
         <div className='mt-px grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border-x border-b border-wiz_border dark:border-white/10'>
-          {cards.map((c, i) => (
-            <Link
-              key={i}
-              href={c.href}
-              className='bg-white dark:bg-dark_black group block'>
-              <div
-                className='aspect-[16/11] flex items-center justify-center px-4 sm:px-6 text-center'
-                style={{ background: c.bg }}>
-                <p className='wiz-serif text-[18px] sm:text-[22px] lg:text-[26px] text-wiz_ink leading-[1.15]'>
-                  {c.title}
-                </p>
-              </div>
-              <div className='p-5 sm:p-6 flex flex-col gap-2'>
-                <p className='wiz-eyebrow text-wiz_muted'>{c.eyebrow}</p>
-                <h3 className='wiz-serif text-[18px] text-wiz_ink dark:text-white leading-snug'>
-                  {c.title}
-                </h3>
-                <p className='wiz-eyebrow text-wiz_muted mt-1'>{c.date}</p>
-                <span className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white mt-3'>
-                  Learn More →
-                </span>
-              </div>
-            </Link>
-          ))}
+          {cards.map((c, i) => {
+            const external = c.href.startsWith('http')
+            return (
+              <Link
+                key={i}
+                href={c.href}
+                {...(external
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+                className='bg-white dark:bg-dark_black group block'>
+                <div
+                  className='aspect-[16/11] flex items-center justify-center px-4 sm:px-6 text-center'
+                  style={{ background: c.bg }}>
+                  <p className='wiz-serif text-[18px] sm:text-[22px] lg:text-[26px] text-wiz_ink leading-[1.15]'>
+                    {c.title}
+                  </p>
+                </div>
+                <div className='p-5 sm:p-6 flex flex-col gap-2'>
+                  <p className='wiz-eyebrow text-wiz_muted'>{c.eyebrow}</p>
+                  <h3 className='wiz-serif text-[18px] text-wiz_ink dark:text-white leading-snug'>
+                    {c.title}
+                  </h3>
+                  <p className='wiz-eyebrow text-wiz_muted mt-1'>{c.date}</p>
+                  <span className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white mt-3'>
+                    Learn More →
+                  </span>
+                </div>
+              </Link>
+            )
+          })}
         </div>
 
-        {/* silence unused import */}
         <div className='hidden'>{achievementsList.length}</div>
       </div>
     </section>
