@@ -65,7 +65,7 @@ function AboutSeo() {
               <p className='wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]'>
                 {item.label}
               </p>
-              <p className='mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors'>
+              <p className='mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors'>
                 {item.value}
               </p>
             </Link>

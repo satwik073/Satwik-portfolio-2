@@ -3,43 +3,37 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
-import Script from 'next/script'
 import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
-import { personSchema, websiteSchema, SCHEMA_IDS } from '@/constants'
+import { personSchema, websiteSchema } from '@/constants'
+import { COLOR_THEME_BOOTSTRAP_SCRIPT } from '@/constants/theme-bootstrap'
 
 const siteUrl = 'https://satwik-kanhere.vercel.app'
 
-// Self-host fonts via next/font — eliminates external Google Fonts request,
-// kills FOUT, and gives a tighter FCP. General Sans is still loaded via
-// Fontshare in globals.css since it isn't on Google Fonts.
+// Self-hosted via next/font — zero third-party font CSS for these faces.
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-  weight: ['400', '500', '600', '700'],
+  preload: true,
 })
 
-// Playfair Display — primary heading face. Classic editorial display serif
-// with variable weights and elegant italics.
 const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-display',
   weight: 'variable',
   style: ['normal', 'italic'],
+  preload: true,
 })
 
-// Instrument Serif — kept for the existing .instrument-font utility (italic
-// accent on a few words in the hero).
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-instrument',
   weight: '400',
   style: ['normal', 'italic'],
+  preload: false,
 })
-
-const CACHE_VERSION = process.env.NEXT_PUBLIC_BUILD_ID || '1.0.0'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -188,25 +182,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
       <head>
-        {/* Resource Hints */}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="//code.tidio.co" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
-        
-        {/* Preload LCP images */}
-        <link rel="preload" href="/images/home/avatar_1.jpg" as="image" type="image/jpeg" />
-        
+
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Preconnect — only the origins we actually hit at runtime. */}
-        <link rel="preconnect" href="https://api.fontshare.com" />
-        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://api.fontshare.com" />
-        <link rel="dns-prefetch" href="https://cdn.fontshare.com" />
-        {/* LCP image preload is injected by next/image's `priority` prop on
-            the hero <Image> — it uses the matching /_next/image?... URL. */}
 
         {/* Social meta tags */}
         <meta property="og:image:type" content="image/jpeg" />
@@ -232,20 +214,20 @@ export default function RootLayout({
         {/* Language & region */}
         <meta httpEquiv="content-language" content="en-US" />
         <meta name="language" content="English" />
-        <meta name="target" content="all" />
-        <meta name="audience" content="all" />
-        <meta name="theme-color" content="#4928fd" />
+        <meta name="theme-color" content="#ff7a1a" />
+        <script
+          dangerouslySetInnerHTML={{ __html: COLOR_THEME_BOOTSTRAP_SCRIPT }}
+        />
       </head>
       <body>
-        <Script
-          id={SCHEMA_IDS.person}
+        <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
-        <Script
-          id={SCHEMA_IDS.website}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [personSchema, websiteSchema],
+            }),
+          }}
         />
         <Providers>
           <Header />

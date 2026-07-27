@@ -1,10 +1,5 @@
-/* Inter + Fraunces are loaded via next/font (see layout.tsx) — exposed as
-   --font-inter and --font-fraunces CSS variables for zero-runtime requests.
-   Instrument Serif kept for the existing .instrument-font utility, and
-   General Sans is loaded from Fontshare since it isn't on Google Fonts. */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap')
-layer(base);
-@import url('https://api.fontshare.com/v2/css?f[]=general-sans@300,301,400,401,500,501,600,601&display=swap')
+/* General Sans — body face (Fontshare). Instrument Serif via next/font. */
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap')
 layer(base);
 
 /* ---------------------------------------------------------------------------
@@ -44,11 +39,22 @@ layer(base);
 
 @custom-variant dark (&:is(.dark *));
 
+/* Brand tokens — Classic (default). Overridden by ColorThemeProvider. */
+:root {
+  --brand: #ff7a1a;
+  --brand-soft: #ffe2cf;
+  --brand-hover: #e86a10;
+  --brand-pink: #ff7bb0;
+  --brand-navy: #0a0820;
+  --brand-peach: #f7e6d2;
+  --brand-accent: #4928fd;
+}
+
 @theme {
   --shadow-header_shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 
   --color-dark_black: #1b1d1e;
-  --color-purple_blue: #4928fd;
+  --color-purple_blue: var(--brand-accent);
 
   /* wizcommerce-style tokens (from screenshots) */
   --color-wiz_ink: #0a0a0a;
@@ -61,11 +67,11 @@ layer(base);
   --color-wiz_accent: #1f2937;
   --color-wiz_cream: #f5efe5;
   --color-wiz_cream_soft: #f9f4eb;
-  --color-wiz_orange: #ff7a1a;
-  --color-wiz_orange_soft: #ffe2cf;
-  --color-wiz_pink: #ff7bb0;
-  --color-wiz_navy: #0a0820;
-  --color-wiz_peach: #f7e6d2;
+  --color-wiz_orange: var(--brand);
+  --color-wiz_orange_soft: var(--brand-soft);
+  --color-wiz_pink: var(--brand-pink);
+  --color-wiz_navy: var(--brand-navy);
+  --color-wiz_peach: var(--brand-peach);
 
   --shadow-wiz_dropdown: 0 24px 48px -16px rgba(15, 17, 21, 0.18),
     0 2px 8px -2px rgba(15, 17, 21, 0.08);
@@ -170,11 +176,10 @@ layer(base);
 
 @layer utilities {
   .instrument-font {
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-instrument), 'Instrument Serif', Georgia, serif;
   }
 
   .wiz-font {
-    /* Wizcommerce uses General Sans for body. Inter (next/font) as fallback. */
     font-family: 'General Sans', var(--font-inter), 'Inter', system-ui,
       -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: 'kern', 'ss01';
@@ -182,8 +187,8 @@ layer(base);
   }
 
   .wiz-serif {
-    /* Heading font — Fraunces, the first display serif we landed on. */
-    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display), 'Playfair Display',
+      var(--font-instrument), Georgia, serif;
     font-feature-settings: 'kern', 'liga', 'ss01';
     font-variation-settings: 'wght' 300;
     font-weight: 300;
@@ -192,7 +197,8 @@ layer(base);
   }
 
   .wiz-display {
-    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display), 'Playfair Display',
+      var(--font-instrument), Georgia, serif;
     font-feature-settings: 'kern', 'liga', 'ss01';
     font-variation-settings: 'wght' 300;
     font-weight: 300;
@@ -264,11 +270,61 @@ layer(base);
       transparent
     );
   }
+
+  @keyframes hero-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .hero-enter {
+    animation: hero-enter 0.55s ease-out both;
+  }
+
+  .hero-enter-delay {
+    animation: hero-enter 0.65s ease-out 0.08s both;
+  }
+
+  .hero-peach-slab {
+    background-color: color-mix(in srgb, var(--brand-peach) 28%, transparent);
+  }
+
+  .hero-marquee {
+    animation: hero-marquee 18s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-enter,
+    .hero-enter-delay,
+    .hero-marquee {
+      animation: none;
+    }
+  }
+
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 480px;
+  }
 }
 
 @layer components {
   body {
-    font-family: 'General Sans', 'Inter', 'Inter Tight', system-ui,
+    font-family: 'General Sans', var(--font-inter), 'Inter', system-ui,
       -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: 'kern', 'ss01';
     -webkit-font-smoothing: antialiased;
@@ -304,7 +360,8 @@ layer(base);
   }
 
   h1 {
-    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display), 'Playfair Display',
+      var(--font-instrument), Georgia, serif;
     font-feature-settings: 'kern', 'liga', 'ss01';
     font-variation-settings: 'wght' 500;
     font-weight: 500;
@@ -314,7 +371,8 @@ layer(base);
   }
 
   h2 {
-    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display), 'Playfair Display',
+      var(--font-instrument), Georgia, serif;
     font-feature-settings: 'kern', 'liga', 'ss01';
     font-variation-settings: 'wght' 500;
     font-weight: 500;
@@ -324,7 +382,8 @@ layer(base);
   }
 
   h3 {
-    font-family: var(--font-display), 'Playfair Display', 'Instrument Serif', Georgia, serif;
+    font-family: var(--font-display), 'Playfair Display',
+      var(--font-instrument), Georgia, serif;
     font-feature-settings: 'kern', 'liga';
     font-variation-settings: 'opsz' 96, 'SOFT' 0, 'wght' 350;
     font-weight: 350;

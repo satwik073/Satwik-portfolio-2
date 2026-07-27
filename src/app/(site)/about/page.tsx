@@ -144,7 +144,7 @@ export default function AboutPage() {
                   <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
                     {item.label}
                   </p>
-                  <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors">
+                  <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
                     {item.value}
                   </p>
                 </Link>
@@ -234,7 +234,7 @@ export default function AboutPage() {
                       <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
                         Project
                       </p>
-                      <p className="mt-3 wiz-serif text-[20px] sm:text-[22px] text-wiz_ink dark:text-white group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors">
+                      <p className="mt-3 wiz-serif text-[20px] sm:text-[22px] text-wiz_ink dark:text-white group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
                         {project.name}
                       </p>
                       <p className="mt-3 text-[14px] leading-relaxed text-wiz_ink/70 dark:text-white/60">

@@ -32,6 +32,10 @@ const nextConfig = {
     ],
   },
 
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
   async headers() {
     return [
       // ── Security headers across the whole site ──────────────────────

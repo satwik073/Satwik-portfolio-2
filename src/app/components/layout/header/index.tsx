@@ -150,7 +150,7 @@ const Header = () => {
                       onClick={closeImmediate}
                       className='group flex items-start gap-4 bg-white dark:bg-dark_black px-5 py-4 lg:px-6 lg:py-5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition-colors'>
                       {child.icon && (
-                        <span className='inline-flex shrink-0 items-center justify-center h-11 w-11 bg-wiz_chip dark:bg-white/5 text-wiz_ink dark:text-white group-hover:bg-[#ff7a1a]/15 group-hover:text-[#ff7a1a] transition-colors'>
+                        <span className='inline-flex shrink-0 items-center justify-center h-11 w-11 bg-wiz_chip dark:bg-white/5 text-wiz_ink dark:text-white group-hover:bg-[var(--brand)]/15 group-hover:text-[var(--brand)] transition-colors'>
                           <svg
                             width='20'
                             height='20'
@@ -200,7 +200,7 @@ const Header = () => {
                   <Link
                     href='/contact'
                     onClick={closeImmediate}
-                    className='inline-flex items-center gap-1.5 text-[13px] font-medium text-wiz_ink dark:text-white hover:text-[#ff7a1a]'>
+                    className='inline-flex items-center gap-1.5 text-[13px] font-medium text-wiz_ink dark:text-white hover:text-[var(--brand)]'>
                     Talk to Satwik
                     <svg width='12' height='12' viewBox='0 0 24 24' fill='none'>
                       <path

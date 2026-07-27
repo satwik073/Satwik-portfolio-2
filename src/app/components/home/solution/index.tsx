@@ -21,7 +21,7 @@ function Solutions() {
             <div className='mt-7'>
               <Link
                 href='/contact'
-                className='inline-flex items-center gap-3 bg-[#ff7a1a] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[#ff8c39] transition'>
+                className='inline-flex items-center gap-3 bg-[var(--brand)] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[var(--brand-hover)] transition'>
                 Get In Touch
                 <svg width='16' height='16' viewBox='0 0 24 24' fill='none'>
                   <path

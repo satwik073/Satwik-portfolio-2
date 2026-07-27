@@ -46,8 +46,8 @@ const fabColors: Record<string, string> = {
   linkedin: 'bg-[#0A66C2] text-white hover:bg-[#0958a8]',
   github: 'bg-[#24292f] text-white hover:bg-black',
   x: 'bg-[#111111] text-white hover:bg-black',
-  email: 'bg-[#ff7a1a] text-wiz_ink hover:bg-[#ff8c39]',
-  resume: 'bg-wiz_peach text-wiz_ink hover:bg-[#ffe8d2]',
+  email: 'bg-[var(--brand)] text-wiz_ink hover:bg-[var(--brand-hover)]',
+  resume: 'bg-wiz_peach text-wiz_ink hover:bg-[var(--brand-peach)]',
 }
 
 const extraIds = ['linkedin', 'github', 'x', 'email', 'resume'] as const
@@ -73,7 +73,7 @@ function WhatsAppFab() {
               animate={{ scaleY: 1, opacity: 1 }}
               exit={{ scaleY: 0, opacity: 0 }}
               transition={{ duration: 0.35 }}
-              className='absolute bottom-16 top-0 w-px origin-bottom bg-gradient-to-t from-[#25D366] via-[#ff7a1a] to-transparent'
+              className='absolute bottom-16 top-0 w-px origin-bottom bg-gradient-to-t from-[#25D366] via-[var(--brand)] to-transparent'
             />
           )}
         </AnimatePresence>
@@ -141,7 +141,7 @@ function WhatsAppFab() {
           whileTap={{ scale: 0.92 }}
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ type: 'spring', stiffness: 380, damping: 18 }}
-          className={`${iconWrap} mb-3 bg-white text-wiz_ink border-2 border-wiz_ink hover:bg-[#ff7a1a] hover:border-[#ff7a1a] hover:text-white`}>
+          className={`${iconWrap} mb-3 bg-white text-wiz_ink border-2 border-wiz_ink hover:bg-[var(--brand)] hover:border-[var(--brand)] hover:text-white`}>
           <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.4' aria-hidden>
             <path d='M12 5v14M5 12h14' strokeLinecap='round' />
           </svg>
@@ -168,7 +168,7 @@ function WhatsAppFab() {
             />
             <span
               aria-hidden
-              className='absolute -inset-2 border-2 border-[#ff7a1a]/25 -rotate-6 pointer-events-none'
+              className='absolute -inset-2 border-2 border-[var(--brand)]/25 -rotate-6 pointer-events-none'
             />
             <span className='pointer-events-none absolute right-full mr-3 wiz-eyebrow text-[10px] tracking-[0.16em] uppercase bg-wiz_ink text-white px-3 py-2 whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all'>
               WhatsApp · say hi

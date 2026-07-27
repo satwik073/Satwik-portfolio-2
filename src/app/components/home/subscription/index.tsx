@@ -44,7 +44,7 @@ const grid: Cell[] = [
   { icon: 'simple-icons:sentry', label: 'Sentry' },
 ]
 
-const ORANGE = '#ff7a1a'
+const ORANGE = 'var(--brand)'
 
 function Subscription() {
   return (

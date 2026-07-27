@@ -329,7 +329,7 @@ function ContactForm() {
                   <button
                     type='submit'
                     disabled={loader}
-                    className='inline-flex items-center gap-2.5 bg-[#ff7a1a] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[#ff8c39] transition disabled:opacity-60'>
+                    className='inline-flex items-center gap-2.5 bg-[var(--brand)] text-wiz_ink text-[14px] font-medium px-6 py-3.5 hover:bg-[var(--brand-hover)] transition disabled:opacity-60'>
                     {loader ? 'Sending…' : 'Send Message'}
                     {!loader && (
                       <svg width='14' height='14' viewBox='0 0 24 24' fill='none'>
