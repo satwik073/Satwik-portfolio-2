@@ -11,13 +11,11 @@ function Solutions() {
               Get in Touch
             </p>
             <h2 className='wiz-display mt-4 sm:mt-5 text-[30px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white'>
-              Finally, An Engineer
+              Let&rsquo;s Build Something
               <br />
-              Who Adapts To Your
+              Worth Shipping —
               <br />
-              Workflow — Not The
-              <br />
-              Other Way Around.
+              Together.
             </h2>
 
             <div className='mt-7'>
@@ -76,10 +74,10 @@ function Solutions() {
                       </div>
                       <div className='border border-wiz_border dark:border-white/10 px-3 py-2'>
                         <p className='wiz-eyebrow text-wiz_muted text-[9px]'>
-                          Based In
+                          Timezone
                         </p>
                         <p className='wiz-serif text-[18px] text-wiz_ink dark:text-white leading-none mt-1'>
-                          IN · UTC+5:30
+                          IST
                         </p>
                       </div>
                     </div>

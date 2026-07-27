@@ -1,0 +1,46 @@
+# Satwik Kanhere
+
+> Full-Stack Software Development Engineer 1 at WizCommerce. Java, Spring Boot, Hibernate, React.js, Next.js, TypeScript.
+> Official site: https://satwikkanhere.dev
+> About: https://satwikkanhere.dev/about
+> Contact: https://satwikkanhere.dev/contact
+
+## Identity
+- Name: Satwik Kanhere (also Satvik Kanhere)
+- Role: Software Development Engineer 1 (SDE 1) — Full-Stack
+- Company: WizCommerce, Gurugram, India
+- Previous: Application Developer Intern & Scrum Master, Infosys Mysuru
+- Education: B.Tech CSE, Chitkara University (2021–2025), CGPA 9.41
+- Location: Chandigarh / Gurugram, India · Timezone IST
+- Email: satwikkanhere2003@gmail.com
+- Phone: +91 6284486063
+- LinkedIn: https://linkedin.com/in/satwikkanhere0730
+- GitHub: https://github.com/satwik073
+- Portfolio: https://satwikkanhere.dev
+- About page: https://satwikkanhere.dev/about
+- Resume: https://satwik073.github.io/SatwikPortFolio/
+
+## Summary
+Satwik Kanhere is a full-stack software developer specializing in Java, Spring Boot, Hibernate/JPA backends and React.js, Next.js, TypeScript frontends for enterprise B2B commerce. Production work includes CRM Kanban, Product Information Management (PIM), Ag-Grid Server-Side Row Model tables, payment integrations (eBizCharge, Finix, ACH, CyberSource), and CDN performance with GCP and Cloudflare.
+
+## Skills
+Java, Spring Boot, Hibernate, JPA, JavaScript (ES6+), TypeScript, SQL, React.js, Next.js, React Native, HTML5, CSS3, Tailwind CSS, Ag-Grid, Node.js, Express.js, REST APIs, Kafka, MongoDB, MySQL, GCP CDN, Cloudflare, Sentry, Grafana, eBizCharge, Finix, ACH, CyberSource, Git, GitHub, Docker, Postman, Jira, Agile
+
+## Experience highlights
+- Full-stack delivery across Java/Spring Boot services and React/Next.js UIs
+- CRM Kanban board built from scratch
+- PIM product-detail UX for enterprise catalogs
+- Enterprise Ag-Grid SSRM data-grid applications
+- Faster page loads via GCP/Cloudflare CDN caching
+- Payment workflows: eBizCharge, Finix, ACH, CyberSource
+- WordPress/PHP → Next.js migration
+- Infosys: Node/Express/MongoDB/SQL; Agile delivery as Scrum Master
+
+## Projects
+- Assembly: https://assembly-stack.vercel.app
+- Flux: https://flux-code.vercel.app
+- iOS assistive learning app (Apple collaboration)
+
+## Hire / contact
+Open to full-time Software Development Engineer roles and contract full-stack work (Java/Spring Boot/Hibernate + React/Next.js/TypeScript) — India or remote · IST.
+https://satwikkanhere.dev/contact

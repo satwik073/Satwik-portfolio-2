@@ -1,16 +1,11 @@
 /**
- * Static page data — imported by client components.
- * (Previously fetched from /api/page-data; consolidated here for simplicity.)
+ * Static page data — sourced from Satwik Kanhere's resume.
  */
 
-// ─────────────────────────────────────────────────────────────
-// Header data — mega-menu structure
-// ─────────────────────────────────────────────────────────────
 export type HeaderChild = {
   label: string
   description: string
   href: string
-  /** 24x24 viewBox path-d for the icon */
   icon?: string
 }
 
@@ -18,11 +13,9 @@ export type HeaderItem = {
   label: string
   href: string
   children?: HeaderChild[]
-  /** number of columns in the dropdown panel */
   columns?: 2 | 3
 }
 
-// Lucide-style 24x24 SVG path-d strings
 const I = {
   layers: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
   code: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
@@ -59,15 +52,15 @@ export const headerData: HeaderItem[] = [
     href: '/#services',
     columns: 3,
     children: [
-      { label: 'Frontend Engineering', description: 'React, Next.js & production UI systems', href: '/#services', icon: I.layers },
-      { label: 'Backend Engineering', description: 'Node.js, Express, REST APIs & services', href: '/#services', icon: I.code },
-      { label: 'Databases', description: 'PostgreSQL, MongoDB, Prisma & query tuning', href: '/#services', icon: I.database },
-      { label: 'System Architecture', description: 'Microservices, Kafka, SSR & CI/CD', href: '/#services', icon: I.cpu },
-      { label: 'AI Tooling', description: 'MCP servers, RAG & LLM-powered workflows', href: '/#services', icon: I.sparkles },
-      { label: 'Performance', description: 'Bundle size, query tuning & uptime SLAs', href: '/#services', icon: I.bolt },
-      { label: 'Testing & QA', description: 'Jest, Playwright, integration tests & CI gates', href: '/#services', icon: I.award },
-      { label: 'Observability', description: 'Sentry, Grafana, OpenTelemetry tracing', href: '/#services', icon: I.cpu },
-      { label: 'Developer Experience', description: 'Tooling, monorepos, ESLint, ergonomic APIs', href: '/#services', icon: I.rocket },
+      { label: 'Languages', description: 'Java, JavaScript (ES6+), TypeScript, SQL', href: '/#services', icon: I.code },
+      { label: 'Frontend', description: 'React.js, Next.js, React Native, Ag-Grid, Tailwind', href: '/#services', icon: I.layers },
+      { label: 'Backend', description: 'Java, Spring Boot, Hibernate, Node.js, Kafka', href: '/#services', icon: I.cpu },
+      { label: 'Databases', description: 'MongoDB, MySQL & SQL data operations', href: '/#services', icon: I.database },
+      { label: 'Performance', description: 'GCP CDN, Cloudflare, cache-busting, Sentry', href: '/#services', icon: I.bolt },
+      { label: 'Payments', description: 'eBizCharge, Finix, ACH, CyberSource', href: '/#services', icon: I.box },
+      { label: 'Tools', description: 'Git, GitHub, Docker, Postman, Jira', href: '/#services', icon: I.rocket },
+      { label: 'Practices', description: 'Agile, code reviews, responsive & cross-browser', href: '/#services', icon: I.award },
+      { label: 'Data Grids', description: 'Ag-Grid SSRM for 500K+ record interfaces', href: '/#services', icon: I.sparkles },
     ],
   },
   {
@@ -75,12 +68,12 @@ export const headerData: HeaderItem[] = [
     href: '/#work',
     columns: 3,
     children: [
-      { label: 'Arobix', description: 'Multi-tenant SaaS with funnel builder & Stripe billing', href: '/#work', icon: I.box },
-      { label: 'Priscus', description: 'AI project analysis with React Flow & MCP server', href: '/#work', icon: I.sparkles },
-      { label: 'Enterprise PIM', description: '10K+ SKUs, 85+ B2B clients, 99.8% uptime', href: '/#work', icon: I.database },
-      { label: 'iOS Assistive App', description: 'Accessibility-first Braille companion for students', href: '/#work', icon: I.rocket },
-      { label: 'Springer Research', description: 'Lead-author paper on Blockchain & IoT for Healthcare', href: '/#work', icon: I.book },
-      { label: 'Open Source', description: 'SSRM Ag-Grid, Prisma sharding & Next.js streaming demos', href: '/#work', icon: I.github },
+      { label: 'Enterprise PIM', description: 'Product detail UX for 100,000+ SKUs', href: '/#work', icon: I.database },
+      { label: 'CRM Kanban', description: 'Drag-and-drop sales board built from scratch', href: '/#work', icon: I.layers },
+      { label: 'Assembly', description: 'Enterprise design studio — assembly-stack.vercel.app', href: 'https://assembly-stack.vercel.app', icon: I.box },
+      { label: 'Flux', description: 'AI code IDE — flux-code.vercel.app', href: 'https://flux-code.vercel.app', icon: I.sparkles },
+      { label: 'iOS Assistive App', description: 'Apple-collaborated app for 300+ students', href: '/#awards', icon: I.rocket },
+      { label: 'Payment Flows', description: 'eBizCharge, Finix, ACH & CyberSource', href: '/#work', icon: I.bolt },
     ],
   },
   {
@@ -88,141 +81,220 @@ export const headerData: HeaderItem[] = [
     href: '/#team',
     columns: 3,
     children: [
-      { label: 'WizCommerce', description: 'SDE — Building the PIM system from the ground up', href: '/#team', icon: I.briefcase },
-      { label: 'Infosys', description: 'Application Developer & Scrum Master, 9-person team', href: '/#team', icon: I.user },
-      { label: 'Chitkara University', description: 'B.Tech CSE — CGPA 9.41/10, distributed systems', href: '/#team', icon: I.graduation },
-      { label: 'Springer Publication', description: 'Lead author — Blockchain & IoT for Healthcare', href: '/#team', icon: I.book },
-      { label: 'Mentorship', description: 'Code reviews, architecture sessions & onboarding', href: '/#team', icon: I.award },
-      { label: 'Open-source Work', description: 'Public GitHub, talks and engineering write-ups', href: '/#team', icon: I.github },
+      { label: 'WizCommerce', description: 'SDE 1 · July 2024 – Present · Gurugram', href: '/#team', icon: I.briefcase },
+      { label: 'Infosys', description: 'App Developer Intern & Scrum Master · May–Jun 2024', href: '/#team', icon: I.user },
+      { label: 'Chitkara University', description: 'B.Tech CSE · CGPA 9.41 · 2021–2025', href: '/#team', icon: I.graduation },
+      { label: 'Apple Collaboration', description: 'Assistive tech for visually impaired students', href: '/#awards', icon: I.award },
+      { label: 'Publications', description: 'Springer & IEI papers on Blockchain + IoT', href: '/#awards', icon: I.book },
+      { label: 'Open Source', description: 'GitHub · satwik073', href: 'https://github.com/satwik073', icon: I.github },
     ],
   },
   { label: 'Achievements', href: '/#awards' },
-  { label: 'About', href: '/#aboutus' },
+  { label: 'About', href: '/about' },
   {
     label: 'Resources',
-    href: '/#aboutus',
+    href: '/about',
     columns: 3,
     children: [
-      { label: 'Resume', description: 'Latest CV and credentials in one place', href: 'https://satwik073.github.io/SatwikPortFolio/', icon: I.file },
-      { label: 'GitHub', description: 'Open-source work and side projects', href: 'https://github.com/satwik073', icon: I.github },
-      { label: 'LinkedIn', description: 'Career history and professional updates', href: 'https://linkedin.com/in/satwikkanhere0730', icon: I.linkedin },
-      { label: 'Documentation', description: 'Engineering notes and walkthroughs', href: '/documentation', icon: I.book },
-      { label: 'Engineering Blog', description: 'Deep-dives on architecture & migrations', href: '/#awards', icon: I.book },
-      { label: 'Press Kit', description: 'Bio, headshots and brand assets for media use', href: '/contact', icon: I.file },
+      { label: 'About', description: 'Who is Satwik Kanhere — bio & background', href: '/about', icon: I.user },
+      { label: 'Resume', description: 'Latest CV and credentials', href: 'https://satwik073.github.io/SatwikPortFolio/', icon: I.file },
+      { label: 'GitHub', description: 'github.com/satwik073', href: 'https://github.com/satwik073', icon: I.github },
+      { label: 'LinkedIn', description: 'linkedin.com/in/satwikkanhere0730', href: 'https://linkedin.com/in/satwikkanhere0730', icon: I.linkedin },
+      { label: 'Assembly', description: 'assembly-stack.vercel.app', href: 'https://assembly-stack.vercel.app', icon: I.box },
+      { label: 'Flux', description: 'flux-code.vercel.app', href: 'https://flux-code.vercel.app', icon: I.sparkles },
+      { label: 'Contact', description: 'satwikkanhere2003@gmail.com', href: '/contact', icon: I.file },
     ],
   },
   { label: 'Contact', href: '/contact' },
 ]
 
-// ─────────────────────────────────────────────────────────────
-// Hero avatar list
-// ─────────────────────────────────────────────────────────────
 export const avatarList = [
-  { image: '/images/home/avatar_1.jpg', title: 'Team Member' },
-  { image: '/images/home/avatar_2.jpg', title: 'Colleague' },
-  { image: '/images/home/avatar_3.jpg', title: 'Collaborator' },
-  { image: '/images/home/avatar_4.jpg', title: 'Mentor' },
+  { image: '/images/home/avatar_1.jpg', title: 'WizCommerce' },
+  { image: '/images/home/avatar_2.jpg', title: 'Infosys' },
+  { image: '/images/home/avatar_3.jpg', title: 'Chitkara University' },
+  { image: '/images/home/avatar_4.jpg', title: 'Apple Collaboration' },
 ]
 
-// ─────────────────────────────────────────────────────────────
-// FAQ list
-// ─────────────────────────────────────────────────────────────
 export const faqList = [
   {
-    faq_que: 'What is your core tech stack?',
+    faq_que: 'Who is Satwik Kanhere?',
     faq_ans:
-      'My primary stack is TypeScript across the board — React.js and Next.js on the frontend, Node.js and Express.js on the backend, with PostgreSQL and MongoDB for persistence. I also work with Java for enterprise systems, Kafka for event streaming, Prisma as an ORM, Ag-Grid for complex data grids, and Sentry + Grafana for observability.',
+      'Satwik Kanhere (also spelled Satvik Kanhere) is a Full-Stack Software Development Engineer 1 at WizCommerce in Gurugram, India. He builds with Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. Official portfolio: satwikkanhere.dev. LinkedIn: linkedin.com/in/satwikkanhere0730. GitHub: github.com/satwik073.',
   },
   {
-    faq_que: 'What kind of systems have you built in production?',
+    faq_que: 'What does Satwik Kanhere do as a software developer?',
     faq_ans:
-      'At WizCommerce, I built the entire Product Information Management system from the ground up — it handles 10,000+ SKUs daily for 85+ US-based B2B clients with 99.8% uptime. This includes server-side rendered data grids displaying 500K+ records, real-time WebSocket sync, and optimized PostgreSQL queries.',
+      'Satwik Kanhere is a full-stack engineer — Java / Spring Boot / Hibernate backends and React.js / Next.js / TypeScript frontends. He ships reusable UI systems, REST APIs, Ag-Grid SSRM data grids, payment workflows, and CDN performance improvements for B2B commerce products at WizCommerce.',
   },
   {
-    faq_que: 'What sets your engineering approach apart?',
+    faq_que: 'Is Satwik Kanhere a full-stack Java and React developer?',
     faq_ans:
-      'I think in systems, not just features. Every piece of code I write considers scale, maintainability, and performance from day one. I obsess over query performance, bundle sizes, and developer experience.',
+      'Yes. Satwik Kanhere works full-stack with Java, Spring Boot, Hibernate, and JPA on the backend, and React.js, Next.js, and TypeScript on the frontend — plus Node.js / Express where the product needs it.',
   },
   {
-    faq_que: 'Do you have published research?',
+    faq_que: 'Where does Satwik Kanhere work?',
     faq_ans:
-      'Yes. I am the Lead Author of "Blockchain and IoT for Healthcare: A Systematic Analysis" published by Springer in Algorithms for Intelligent Systems.',
+      'Satwik Kanhere works as Software Development Engineer 1 at WizCommerce (Gurugram, July 2024–Present). He previously worked at Infosys Mysuru as Application Developer Intern and Scrum Master (May–June 2024).',
   },
   {
-    faq_que: 'What is your educational background?',
+    faq_que: 'What is Satwik Kanhere’s education?',
     faq_ans:
-      'B.Tech in Computer Science & Engineering from Chitkara University, Chandigarh (2021–2025) with a CGPA of 9.41/10.',
+      'B.Tech in Computer Science and Engineering from Chitkara University Institute of Engineering and Technology, Chandigarh (2021–2025), CGPA 9.41/10.',
   },
   {
-    faq_que: 'Are you open to opportunities?',
+    faq_que: 'What is Satwik Kanhere’s tech stack?',
     faq_ans:
-      'Always open to conversations with engineering teams building meaningful products. Reach me at satwikkanhere2003@gmail.com, or connect on LinkedIn at linkedin.com/in/satwikkanhere0730.',
+      'Java, Spring Boot, Hibernate, JPA, JavaScript (ES6+), TypeScript, SQL, React.js, Next.js, React Native, HTML5, CSS3, Tailwind CSS, Ag-Grid, Node.js, Express.js, REST APIs, Kafka, MongoDB, MySQL, GCP CDN, Cloudflare, Sentry, Grafana, eBizCharge, Finix, ACH, CyberSource, Git, GitHub, Docker, Postman, Jira.',
+  },
+  {
+    faq_que: 'What projects has Satwik Kanhere built?',
+    faq_ans:
+      'Assembly (assembly-stack.vercel.app) — enterprise design studio SaaS. Flux (flux-code.vercel.app) — AI-powered code IDE. Production work at WizCommerce includes CRM Kanban and PIM product experiences. He also led an Apple-collaborated iOS assistive learning app for students in Chandigarh.',
+  },
+  {
+    faq_que: 'How do I hire or contact Satwik Kanhere?',
+    faq_ans:
+      'Email satwikkanhere2003@gmail.com, phone +91 6284486063, LinkedIn linkedin.com/in/satwikkanhere0730, GitHub github.com/satwik073, about page satwikkanhere.dev/about, or contact form satwikkanhere.dev/contact. Based in India (IST). Open to full-time SDE and contract full-stack roles (Java/Spring Boot + React/Next.js).',
+  },
+  {
+    faq_que: 'Is Satwik Kanhere available for remote software engineering roles?',
+    faq_ans:
+      'Yes. Satwik Kanhere is open to conversations about full-time Software Development Engineer roles and contract full-stack work (Java, Spring Boot, Hibernate, React, Next.js, TypeScript), including remote collaboration in IST timezone.',
+  },
+  {
+    faq_que: 'How is Satwik Kanhere different from other full-stack developers?',
+    faq_ans:
+      'Satwik Kanhere combines Java / Spring Boot / Hibernate backend skills with React / Next / TypeScript frontend ownership (PIM, CRM, payments, CDN performance), Agile delivery from Infosys, and side projects in SaaS and AI developer tooling (Assembly, Flux).',
   },
 ]
 
-// ─────────────────────────────────────────────────────────────
-// Online presence (projects) — referenced but not heavily used by the new design
-// ─────────────────────────────────────────────────────────────
 export const onlinePresenceList = [
   {
     image: '/images/home/onlinePresence/online_img_1.jpg',
-    title: 'Arobix — Enterprise Design Studio',
-    description: 'Full-stack SaaS platform with subdomain-based multi-tenancy, drag-and-drop funnel builder, and Stripe-integrated billing.',
+    title: 'Assembly — Enterprise Design Studio',
+    description:
+      'Frontend for a SaaS platform serving agency owners: subdomain hosting, drag-and-drop funnel builder, and project management. Next.js, Prisma, MySQL, Cloudflare, Sentry.',
     tag: ['Next.js', 'Prisma', 'MySQL', 'Cloudflare'],
-    link: 'https://github.com/satwik073',
+    link: 'https://assembly-stack.vercel.app',
   },
   {
     image: '/images/home/onlinePresence/online_img_2.jpg',
-    title: 'Priscus — AI Project Analysis',
-    description: 'AI-powered development tool with automated Kanban board generation and MCP server integration.',
-    tag: ['React Flow', 'Kanban', 'MCP Server', 'AI/ML'],
-    link: 'https://priscus.vercel.app',
+    title: 'Flux — AI-Powered Code IDE',
+    description:
+      'Cursor-like code editor UI in Next.js with WebContainers for in-browser environments and MCP server integration for AI-assisted coding.',
+    tag: ['Next.js', 'WebContainers', 'MCP', 'AI'],
+    link: 'https://flux-code.vercel.app',
   },
   {
     image: '/images/home/onlinePresence/online_img_3.jpg',
-    title: 'Enterprise PIM System',
-    description: 'Production system serving 85+ US B2B clients. 500K+ records, real-time WebSocket sync, 99.8% uptime.',
-    tag: ['Ag-Grid', 'SSRM', 'WebSockets', '10K+ SKUs'],
-    link: 'https://github.com/satwik073',
+    title: 'Enterprise PIM — WizCommerce',
+    description:
+      'Product-detail experience from scratch: product creation, media management, variant configuration, and attribute editing for 100,000+ SKUs.',
+    tag: ['React', 'TypeScript', 'PIM', '100K+ SKUs'],
+    link: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     image: '/images/home/onlinePresence/online_img_4.jpg',
-    title: 'iOS Assistive Technology',
-    description: 'Accessibility-first iOS application for visually-impaired students. Deployed across schools serving 300+ daily users.',
-    tag: ['Swift', 'Accessibility', 'Node.js', 'MongoDB'],
-    link: 'https://github.com/satwik073',
+    title: 'iOS Assistive Technology — with Apple',
+    description:
+      'Led an iOS assistive learning app as a modern Braille alternative, in collaboration with Apple Asia Head Ashish Chowdhary — 300+ students in Chandigarh schools.',
+    tag: ['iOS', 'Accessibility', 'Apple', '300+ Students'],
+    link: 'https://linkedin.com/in/satwikkanhere0730',
   },
 ]
 
-// ─────────────────────────────────────────────────────────────
-// Achievements
-// ─────────────────────────────────────────────────────────────
 export const achievementsList = [
   {
     icon: '/images/home/achievement/framer_award.svg',
     dark_icon: '/images/home/achievement/dark_framer_award.svg',
-    sub_title: 'Springer Publication',
+    sub_title: 'Performance at Scale',
     title:
-      'Lead Author — "Blockchain and IoT for Healthcare: A Systematic Analysis" published in Springer\'s Algorithms for Intelligent Systems series.',
-    year: '2024',
+      'Content hashing, cache-busting, and CDN optimization with GCP and Cloudflare — reduced page load times by over 65% for 120+ enterprise clients.',
+    year: '2024–Present',
     url: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     icon: '/images/home/achievement/dribble_award.svg',
     dark_icon: '/images/home/achievement/dribble_award.svg',
-    sub_title: 'Social Impact',
+    sub_title: 'Assistive Technology · Apple',
     title:
-      'Engineered iOS assistive technology app for visually-impaired students — deployed across schools, serving 300+ students daily.',
-    year: '2024',
-    url: 'https://github.com/satwik073',
+      'Led iOS assistive learning app with Apple Asia Head Ashish Chowdhary — modern Braille alternative supporting 300+ visually impaired students in Chandigarh.',
+    year: 'Leadership',
+    url: 'https://linkedin.com/in/satwikkanhere0730',
   },
   {
     icon: '/images/home/achievement/awward_award.svg',
     dark_icon: '/images/home/achievement/dark_awward_award.svg',
-    sub_title: 'Production at Scale',
+    sub_title: 'Data-Intensive UIs',
     title:
-      'Architected and shipped WizCommerce PIM system — 50,000+ product updates monthly with 99.8% uptime across 85+ clients.',
-    year: '2025',
+      'Developed and optimized 10+ enterprise apps with Ag-Grid Server-Side Row Model, handling datasets exceeding 500K+ records responsively.',
+    year: '2024–Present',
     url: 'https://linkedin.com/in/satwikkanhere0730',
+  },
+]
+
+/** Full skill inventory from resume — used by Skills section */
+export const skillGroups = [
+  {
+    title: 'Languages',
+    items: ['Java', 'JavaScript (ES6+)', 'TypeScript', 'SQL'],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      'React.js',
+      'Next.js',
+      'React Native',
+      'HTML5',
+      'CSS3',
+      'Tailwind CSS',
+      'Ag-Grid',
+    ],
+  },
+  {
+    title: 'Backend',
+    items: [
+      'Spring Boot',
+      'Hibernate',
+      'JPA',
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'Kafka',
+    ],
+  },
+  {
+    title: 'Databases',
+    items: ['MySQL', 'MongoDB', 'SQL'],
+  },
+  {
+    title: 'Performance & Monitoring',
+    items: [
+      'CDN Caching (GCP)',
+      'Cloudflare',
+      'Content Hashing',
+      'Cache-Busting',
+      'Sentry',
+      'Grafana',
+    ],
+  },
+  {
+    title: 'Payments',
+    items: ['eBizCharge', 'Finix', 'ACH', 'CyberSource'],
+  },
+  {
+    title: 'Tools',
+    items: ['Git', 'GitHub', 'Docker', 'Postman', 'Jira'],
+  },
+  {
+    title: 'Practices',
+    items: [
+      'Agile Development',
+      'Component-Based Architecture',
+      'Code Reviews',
+      'Debugging',
+      'Responsive Design',
+      'Cross-Browser Compatibility',
+    ],
   },
 ]

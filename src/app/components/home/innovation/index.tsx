@@ -1,107 +1,99 @@
 'use client'
-import Link from 'next/link'
+import { skillGroups } from '@/constants'
 
-type Product = {
-  title: string
-  description: string
-  pillLabel: string
-  pillBg: string
-  iconBg: string
-  iconColor: string
-  iconPath: string
-  href: string
+const CATEGORY_CAPTION: Record<string, string> = {
+  Languages: 'LANGUAGE',
+  Frontend: 'FRONTEND',
+  Backend: 'BACKEND',
+  Databases: 'DATABASE',
+  'Performance & Monitoring': 'PERFORMANCE',
+  Payments: 'PAYMENTS',
+  Tools: 'TOOLING',
+  Practices: 'PRACTICE',
 }
-
-const products: Product[] = [
-  {
-    title: 'Modernize the frontend stack',
-    description: 'React, Next.js & production UI systems',
-    pillLabel: 'Frontend Engineering',
-    pillBg: 'bg-[#ffe2cf]',
-    iconBg: 'bg-[#ff7a1a]/15',
-    iconColor: 'text-[#ff7a1a]',
-    iconPath: 'M3 7h18M3 12h18M3 17h18',
-    href: '/#services',
-  },
-  {
-    title: 'Turn ideas into shipped APIs',
-    description: 'Node.js, Express & event-driven services',
-    pillLabel: 'Backend Engineering',
-    pillBg: 'bg-[#cfeaf2]',
-    iconBg: 'bg-[#26a3c2]/15',
-    iconColor: 'text-[#26a3c2]',
-    iconPath:
-      'M16 18l6-6-6-6M8 6l-6 6 6 6',
-    href: '/#services',
-  },
-  {
-    title: 'Design data models that scale',
-    description: 'PostgreSQL, MongoDB & query optimisation',
-    pillLabel: 'Databases',
-    pillBg: 'bg-[#e9d8ff]',
-    iconBg: 'bg-[#7c4dff]/15',
-    iconColor: 'text-[#7c4dff]',
-    iconPath:
-      'M12 2C7 2 3 3.79 3 6v12c0 2.21 4 4 9 4s9-1.79 9-4V6c0-2.21-4-4-9-4zM3 12c0 2.21 4 4 9 4s9-1.79 9-4',
-    href: '/#services',
-  },
-  {
-    title: 'Architect for real-world load',
-    description: 'Microservices, Kafka, SSR & CI/CD',
-    pillLabel: 'System Architecture',
-    pillBg: 'bg-[#d6f5dc]',
-    iconBg: 'bg-[#1ea34c]/15',
-    iconColor: 'text-[#1ea34c]',
-    iconPath:
-      'M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3M5 5h14v14H5z',
-    href: '/#services',
-  },
-]
 
 function Innovation() {
   return (
     <section id='services' className='wiz-font bg-white dark:bg-dark_black py-12 sm:py-16 lg:py-24'>
       <div className='container'>
-        <div className='flex flex-col items-center text-center'>
-          <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>
-            Products
-          </p>
-          <h2 className='wiz-display mt-4 sm:mt-5 text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white max-w-4xl'>
-            All Your Engineering Workflows,
-            <br className='hidden sm:inline' />{' '}
-            In One Production Platform
-          </h2>
+        <div className='grid lg:grid-cols-12 gap-6 lg:gap-10 items-start'>
+          <div className='lg:col-span-4'>
+            <p className='wiz-eyebrow text-wiz_ink dark:text-white/70'>
+              Technical Skills
+            </p>
+          </div>
+          <div className='lg:col-span-8'>
+            <h2 className='wiz-display text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] text-wiz_ink dark:text-white'>
+              Languages to Delivery.
+              <br />
+              The Full Stack.
+            </h2>
+          </div>
         </div>
 
-        <div className='mt-10 sm:mt-14 grid grid-cols-1 Xsm:grid-cols-2 lg:grid-cols-4 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10'>
-          {products.map((p, i) => (
-            <Link
-              key={i}
-              href={p.href}
-              className='bg-white dark:bg-dark_black flex flex-col items-center text-center gap-4 sm:gap-5 p-6 sm:p-8 hover:bg-wiz_chip/40 dark:hover:bg-white/5 transition-colors'>
-              <span
-                className={`inline-flex items-center justify-center h-14 w-14 ${p.iconBg} ${p.iconColor}`}>
-                <svg
-                  width='26'
-                  height='26'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.8'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'>
-                  <path d={p.iconPath} />
-                </svg>
-              </span>
-              <p className='text-[14px] text-wiz_muted dark:text-white/70 max-w-[24ch] leading-relaxed'>
-                {p.description}
-              </p>
-              <span
-                className={`inline-flex ${p.pillBg} text-wiz_ink wiz-eyebrow px-4 py-2 mt-2`}>
-                {p.pillLabel}
-              </span>
-            </Link>
-          ))}
+        <div className='mt-8 sm:mt-12 border border-wiz_border dark:border-white/10'>
+          {skillGroups.map((group, groupIndex) => {
+            const caption = CATEGORY_CAPTION[group.title] ?? group.title.toUpperCase()
+            const cols = 6
+            const remainder = group.items.length % cols
+            const padCount = remainder === 0 ? 0 : cols - remainder
+
+            return (
+              <div
+                key={group.title}
+                className={
+                  groupIndex < skillGroups.length - 1
+                    ? 'border-b border-wiz_border dark:border-white/10'
+                    : ''
+                }>
+                {/* Category row — full width */}
+                <div className='flex items-center justify-between gap-4 bg-[#cfeae8] dark:bg-white/10 px-4 sm:px-5 py-2.5 sm:py-3'>
+                  <p className='wiz-eyebrow text-[10px] sm:text-[11px] tracking-[0.2em] text-wiz_ink dark:text-white/90'>
+                    {String(groupIndex + 1).padStart(2, '0')} — {group.title}
+                  </p>
+                  <p className='wiz-eyebrow text-[9px] sm:text-[10px] tracking-[0.16em] text-wiz_ink/45 dark:text-white/40'>
+                    {String(group.items.length).padStart(2, '0')}
+                  </p>
+                </div>
+
+                {/* Same Brand cell grid */}
+                <div className='grid grid-cols-2 Xsm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-wiz_border dark:bg-white/10'>
+                  {group.items.map((item, itemIndex) => (
+                    <div
+                      key={item}
+                      className='bg-white dark:bg-dark_black aspect-[4/3] flex flex-col group hover:bg-wiz_chip/30 dark:hover:bg-white/5 transition-colors'>
+                      <div className='flex-1 flex items-center justify-center px-3 sm:px-4 text-center'>
+                        <span
+                          className={`wiz-serif text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-wiz_ink dark:text-white leading-tight ${
+                            itemIndex % 2 === 1 ? 'italic' : ''
+                          }`}>
+                          {item}
+                        </span>
+                      </div>
+                      <div className='w-full bg-[#cfeae8] dark:bg-white/10 py-2 px-2'>
+                        <p className='wiz-eyebrow text-[8px] sm:text-[9px] md:text-[10px] text-wiz_ink/85 dark:text-white/80 text-center tracking-[0.16em] sm:tracking-[0.18em]'>
+                          {caption}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Pad last row so the category block stays even on large screens */}
+                  {Array.from({ length: padCount }).map((_, i) => (
+                    <div
+                      key={`pad-${group.title}-${i}`}
+                      aria-hidden
+                      className='hidden lg:flex bg-white dark:bg-dark_black aspect-[4/3] flex-col'>
+                      <div className='flex-1' />
+                      <div className='w-full bg-[#cfeae8]/50 dark:bg-white/5 py-2 px-2'>
+                        <p className='wiz-eyebrow text-[10px] text-transparent text-center'>·</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

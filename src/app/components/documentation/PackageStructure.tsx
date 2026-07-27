@@ -18,7 +18,7 @@ export const PackageStructure = () => {
       <div className='rounded-md p-6 pt-3 border border-border dark:border-dark_border mt-6'>
         <div className='flex items-center gap-4'>
           <h5 className='text-base font-medium mt-3 mb-1'>
-            Awake Tailwind Nextjs Templates
+            Satwik Kanhere Portfolio
           </h5>
         </div>
         <ul className='ps-3 md:ps-5 list-unstyled'>
@@ -199,21 +199,7 @@ export const PackageStructure = () => {
                                                 icon='tabler:folder'
                                                 className='text-primary text-base inline-block me-2'
                                               />
-                                              privacy-policy
-                                            </span>
-                                          </div>
-                                        </li>
-                                        <li className='py-2'>
-                                          <div className='flex items-center gap-3'>
-                                            <p className='text-xl dark:text-grey'>
-                                              |—
-                                            </p>
-                                            <span className='font-medium text-midnight_text dark:text-grey'>
-                                              <Icon
-                                                icon='tabler:folder'
-                                                className='text-primary text-base inline-block me-2'
-                                              />
-                                              terms-and-conditions
+                                              contact
                                             </span>
                                           </div>
                                         </li>

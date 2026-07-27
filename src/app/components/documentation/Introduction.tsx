@@ -82,15 +82,13 @@ export const Introduction = () => {
         </div>
         <div className='mt-5'>
           <p className='text-base font-medium text-midnight_text dark:text-grey'>
-            Awake Tailwind NextJs Template is built with Tailwindcss and Nextjs.
+            This portfolio site for Satwik Kanhere is built with Tailwind CSS and Next.js.
           </p>
           <p className='text-base font-medium text-midnight_text dark:text-grey'>
-            These theme is ready to use and you can totally customize as per
-            your requirement.
+            Content is sourced from public LinkedIn, GitHub, Springer, and patent records.
           </p>
           <p className='text-base font-medium text-midnight_text dark:text-grey'>
-            For Customize, You should have knowledge of NextJs, ReactJs,
-            Tailwind and JSX to be able to modify these template.
+            To customize, you should know Next.js, React, Tailwind, and TypeScript.
           </p>
         </div>
       </div>

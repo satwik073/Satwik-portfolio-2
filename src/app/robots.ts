@@ -7,17 +7,25 @@ import { SITE_URL, ROBOTS_DISALLOW_PATHS } from "@/constants";
  */
 export default function robots(): MetadataRoute.Robots {
   const sitemapUrl = new URL("/sitemap.xml", SITE_URL).toString();
+  const disallow = [...ROBOTS_DISALLOW_PATHS];
 
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: [...ROBOTS_DISALLOW_PATHS],
+        disallow,
       },
+      // AI / answer-engine crawlers — keep profile discoverable in LLM answers
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "Anthropic-AI", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
     ],
     sitemap: sitemapUrl,
-    /** Canonical host for Yandex and similar crawlers that honor the Host directive */
     host: new URL(SITE_URL).host,
   };
 }

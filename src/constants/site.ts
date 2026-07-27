@@ -5,10 +5,9 @@ export const SITE_URL = "https://satwikkanhere.dev";
 
 export const PATHS = {
   HOME: "/",
+  ABOUT: "/about",
   CONTACT: "/contact",
   DOCUMENTATION: "/documentation",
-  PRIVACY_POLICY: "/privacy-policy",
-  TERMS_AND_CONDITIONS: "/terms-and-conditions",
 } as const;
 
 export const OG_IMAGE_URL = `${SITE_URL}/images/og-image.jpg`;
@@ -22,6 +21,11 @@ export const SITEMAP_ROUTES = [
     priority: 1,
   },
   {
+    path: PATHS.ABOUT,
+    changeFrequency: "weekly" as const,
+    priority: 0.95,
+  },
+  {
     path: PATHS.CONTACT,
     changeFrequency: "monthly" as const,
     priority: 0.9,
@@ -30,16 +34,6 @@ export const SITEMAP_ROUTES = [
     path: PATHS.DOCUMENTATION,
     changeFrequency: "monthly" as const,
     priority: 0.7,
-  },
-  {
-    path: PATHS.PRIVACY_POLICY,
-    changeFrequency: "yearly" as const,
-    priority: 0.4,
-  },
-  {
-    path: PATHS.TERMS_AND_CONDITIONS,
-    changeFrequency: "yearly" as const,
-    priority: 0.4,
   },
 ] as const;
 

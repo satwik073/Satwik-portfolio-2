@@ -5,19 +5,19 @@ const cols = [
   {
     title: 'Skills',
     links: [
-      { name: 'Frontend Engineering', url: '/#services' },
-      { name: 'Backend Engineering', url: '/#services' },
-      { name: 'Databases', url: '/#services' },
-      { name: 'System Architecture', url: '/#services' },
+      { name: 'Languages', url: '/#services' },
+      { name: 'Frontend', url: '/#services' },
+      { name: 'Backend & Databases', url: '/#services' },
+      { name: 'Performance & Payments', url: '/#services' },
     ],
   },
   {
     title: 'Projects',
     links: [
-      { name: 'Arobix', url: '/#work' },
-      { name: 'Priscus', url: '/#work' },
       { name: 'Enterprise PIM', url: '/#work' },
-      { name: 'iOS Assistive App', url: '/#work' },
+      { name: 'Assembly', url: 'https://assembly-stack.vercel.app' },
+      { name: 'Flux', url: 'https://flux-code.vercel.app' },
+      { name: 'iOS Assistive App', url: '/#awards' },
     ],
   },
   {
@@ -26,26 +26,25 @@ const cols = [
       { name: 'WizCommerce', url: '/#team' },
       { name: 'Infosys', url: '/#team' },
       { name: 'Chitkara University', url: '/#team' },
-      { name: 'Springer Publication', url: '/#team' },
+      { name: 'Apple Collaboration', url: '/#awards' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { name: 'Blog', url: '/#awards' },
-      { name: 'Documentation', url: '/documentation' },
-      { name: 'Resume', url: 'https://satwik073.github.io/SatwikPortFolio/' },
-      { name: 'Privacy Policy', url: '/privacy-policy' },
-      { name: 'Terms & Conditions', url: '/terms-and-conditions' },
+      { name: 'Achievements', url: '/#awards' },
+      { name: 'Resume Site', url: 'https://satwik073.github.io/SatwikPortFolio/' },
+      { name: 'Contact', url: '/contact' },
     ],
   },
   {
-    title: 'Satwik vs Others',
+    title: 'Connect',
     links: [
-      { name: 'vs Junior Devs', url: '/#aboutus' },
-      { name: 'vs Contractors', url: '/#aboutus' },
-      { name: 'vs Agencies', url: '/#aboutus' },
-      { name: 'vs Outsourced Teams', url: '/#aboutus' },
+      { name: 'LinkedIn', url: 'https://linkedin.com/in/satwikkanhere0730' },
+      { name: 'GitHub', url: 'https://github.com/satwik073' },
+      { name: 'Email', url: 'mailto:satwikkanhere2003@gmail.com' },
+      { name: 'About Satwik', url: '/about' },
+      { name: 'Contact', url: '/contact' },
     ],
   },
 ]
@@ -85,8 +84,9 @@ const Footer: React.FC = () => {
         <div className='mt-8 sm:mt-12 grid grid-cols-2 Xsm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10'>
           <div className='col-span-2 Xsm:col-span-3 lg:col-span-1 max-w-xs'>
             <p className='text-[14px] leading-[1.6] text-white/60'>
-              Software Development Engineer · Building enterprise systems at
-              WizCommerce. Architecting reliable products for 85+ B2B clients.
+              Full-stack SDE 1 at WizCommerce. Java, Spring Boot, Hibernate,
+              React, Next.js, TypeScript — enterprise products for 120+ clients.
+              B.Tech CSE, Chitkara University (9.41 CGPA).
             </p>
           </div>
 
@@ -150,13 +150,6 @@ const Footer: React.FC = () => {
           </div>
           <div className='flex items-center gap-6'>
             <Link
-              href='https://github.com/satwik073'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-[14px] text-white/70 hover:text-white transition'>
-              Log In
-            </Link>
-            <Link
               href='/contact'
               className='inline-flex items-center gap-2 border border-white text-white text-[14px] font-medium px-5 py-2.5 hover:bg-white hover:text-wiz_ink transition'>
               Get In Touch
@@ -167,7 +160,7 @@ const Footer: React.FC = () => {
         {/* Copyright */}
         <div className='mt-10 flex flex-col lg:flex-row justify-between gap-3 text-[13px] text-white/40'>
           <p>© {new Date().getFullYear()} Satwik Kanhere. All rights reserved.</p>
-          <p>Chandigarh, India · satwikkanhere2003@gmail.com</p>
+          <p>Chandigarh, India · IST · satwikkanhere2003@gmail.com</p>
         </div>
       </div>
     </footer>

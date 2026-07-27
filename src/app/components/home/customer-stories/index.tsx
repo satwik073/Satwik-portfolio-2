@@ -3,40 +3,40 @@ import Link from 'next/link'
 
 const stories = [
   {
-    eyebrow: 'WizCommerce',
+    eyebrow: 'WizCommerce · SDE 1',
     quote:
-      'Building the PIM from scratch removed a huge amount of manual work for us. Orders, inventory and product data are connected — the whole operation just runs.',
-    name: 'Rishabh Jain',
-    role: 'VP of Operations',
+      'Built CRM Kanban from scratch, designed PIM product-detail UX for 100,000+ SKUs, optimized 10+ apps with Ag-Grid SSRM (500K+ records), and cut page loads by 65% with GCP and Cloudflare for 120+ enterprise clients.',
+    name: 'Jul 2024 – Present',
+    role: 'Gurugram, India',
     stats: [
-      { value: '40+', label: 'Hours saved per week' },
-      { value: '9×', label: 'Faster order & quote creation' },
+      { value: '120+', label: 'Enterprise clients' },
+      { value: '100K+', label: 'SKUs in PIM UX' },
     ],
     href: '/#work',
   },
   {
-    eyebrow: 'Howard Elliott',
+    eyebrow: 'Infosys · Mysuru',
     quote:
-      'In an industry that usually gets outdated tech, this is the first engineer who feels current, listens, and brings real innovation to the workflow.',
-    name: 'Colleen Daly',
-    role: 'VP at Howard Elliott',
+      'Application Developer Intern & Scrum Master — Node.js, Express, MongoDB, SQL backends. Led daily standups for a 9-member Agile team and delivered 4 sprint milestones with peer code reviews.',
+    name: 'May – Jun 2024',
+    role: 'Mysuru, India',
     stats: [
-      { value: '20%', label: 'Revenue growth from new storefront' },
-      { value: '90%', label: 'Drop in navigation queries' },
+      { value: '4', label: 'Sprint milestones' },
+      { value: '9', label: 'Team members led' },
     ],
-    href: '/#work',
+    href: '/#team',
   },
   {
-    eyebrow: 'Jaipur Living',
+    eyebrow: 'Apple Collaboration',
     quote:
-      'Switching to a unified stack drastically improved efficiency — seamless ERP integration and tooling that eliminates manual work, giving reps more time to sell.',
-    name: 'Nitesh Chaudhary',
-    role: 'Director of Innovation',
+      'Led an iOS assistive learning app as a modern Braille alternative, in collaboration with Apple Asia Head Ashish Chowdhary — deployed across Chandigarh schools supporting 300+ visually impaired students.',
+    name: 'Research & Leadership',
+    role: 'Assistive Technology',
     stats: [
-      { value: '10+', label: 'Increase in revenue' },
-      { value: '2-5', label: 'Hours saved per rep / week' },
+      { value: '300+', label: 'Students supported' },
+      { value: 'iOS', label: 'Assistive learning app' },
     ],
-    href: '/#work',
+    href: '/#awards',
   },
 ]
 
@@ -47,16 +47,16 @@ function CustomerStories() {
         <div className='flex items-end justify-between gap-4 sm:gap-6 flex-wrap'>
           <div>
             <p className='wiz-eyebrow text-wiz_ink dark:text-white/80'>
-              Customer Stories
+              Career Highlights
             </p>
             <h2 className='wiz-display mt-3 sm:mt-4 text-[28px] sm:text-[38px] md:text-[46px] lg:text-[52px] text-wiz_ink dark:text-white max-w-3xl'>
-              Outcomes from real production systems.
+              Outcomes from the resume — production, delivery, impact.
             </h2>
           </div>
           <Link
             href='/#work'
             className='wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white border-b border-wiz_ink dark:border-white pb-1'>
-            View all stories →
+            View projects →
           </Link>
         </div>
 
@@ -68,7 +68,7 @@ function CustomerStories() {
               <div>
                 <p className='wiz-eyebrow text-wiz_muted'>{s.eyebrow}</p>
                 <p className='mt-5 wiz-serif text-[20px] lg:text-[22px] leading-[1.35] text-wiz_ink dark:text-white'>
-                  &ldquo;{s.quote}&rdquo;
+                  {s.quote}
                 </p>
               </div>
               <div>
@@ -94,7 +94,7 @@ function CustomerStories() {
                 <Link
                   href={s.href}
                   className='mt-5 wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white'>
-                  Read Full Story →
+                  Learn more →
                 </Link>
               </div>
             </article>
