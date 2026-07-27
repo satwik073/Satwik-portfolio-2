@@ -111,7 +111,7 @@ export const headerData: HeaderItem[] = [
 ]
 
 export const avatarList = [
-  { image: '/images/home/avatar_1.jpg', title: 'WizCommerce' },
+  { image: '/images/home/satwik.jpg', title: 'Satwik Kanhere' },
   { image: '/images/home/avatar_2.jpg', title: 'Infosys' },
   { image: '/images/home/avatar_3.jpg', title: 'Chitkara University' },
   { image: '/images/home/avatar_4.jpg', title: 'Apple Collaboration' },

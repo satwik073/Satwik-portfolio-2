@@ -56,7 +56,7 @@ function HeroSection() {
 
               <div className='mt-8 sm:mt-10 bg-wiz_peach/70 dark:bg-white/5 p-4 sm:p-5 lg:p-6 max-w-xl'>
                 <div className='flex items-start gap-4'>
-                  <div className='shrink-0'>
+                  <div className='shrink-0 h-14 w-14 overflow-hidden bg-wiz_chip'>
                     <Image
                       src={avatarList[0].image}
                       alt={avatarList[0].title}
@@ -64,8 +64,9 @@ function HeroSection() {
                       height={56}
                       priority
                       fetchPriority='high'
+                      quality={75}
                       sizes='56px'
-                      className='object-cover'
+                      className='h-full w-full object-cover'
                     />
                   </div>
                   <div>
