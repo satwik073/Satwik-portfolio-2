@@ -7,7 +7,7 @@ import Script from 'next/script'
 import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
 import { personSchema, websiteSchema, SCHEMA_IDS } from '@/constants'
 
-const siteUrl = 'https://satwikkanhere.dev'
+const siteUrl = 'https://satwik-kanhere.vercel.app'
 
 // Self-host fonts via next/font — eliminates external Google Fonts request,
 // kills FOUT, and gives a tighter FCP. General Sans is still loaded via
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     'WizCommerce', 'Infosys', 'Chitkara University',
     'Software Engineer India', 'Developer Chandigarh', 'Developer Gurugram',
     'Hire Full Stack Developer India', 'Hire Spring Boot Developer', 'Ag-Grid SSRM',
-    'Product Information Management', 'satwikkanhere.dev',
+    'Product Information Management', 'satwik-kanhere.vercel.app',
   ],
   authors: [
     { name: 'Satwik Kanhere', url: 'https://linkedin.com/in/satwikkanhere0730' },

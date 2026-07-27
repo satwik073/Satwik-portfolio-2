@@ -189,7 +189,7 @@ export const websiteSchema = {
     "Satwik Kanhere Portfolio",
     "Satvik Kanhere Portfolio",
     "Satwik Developer Portfolio",
-    "satwikkanhere.dev",
+    "satwik-kanhere.vercel.app",
   ],
   url: SITE_URL,
   description: SEO.shortBio,

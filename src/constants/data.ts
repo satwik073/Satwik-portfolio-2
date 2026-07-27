@@ -119,7 +119,7 @@ export const faqList = [
   {
     faq_que: 'Who is Satwik Kanhere?',
     faq_ans:
-      'Satwik Kanhere (also spelled Satvik Kanhere) is a Full-Stack Software Development Engineer 1 at WizCommerce in Gurugram, India. He builds with Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. Official portfolio: satwikkanhere.dev. LinkedIn: linkedin.com/in/satwikkanhere0730. GitHub: github.com/satwik073.',
+      'Satwik Kanhere (also spelled Satvik Kanhere) is a Full-Stack Software Development Engineer 1 at WizCommerce in Gurugram, India. He builds with Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. Official portfolio: satwik-kanhere.vercel.app. LinkedIn: linkedin.com/in/satwikkanhere0730. GitHub: github.com/satwik073.',
   },
   {
     faq_que: 'What does Satwik Kanhere do as a software developer?',
@@ -154,7 +154,7 @@ export const faqList = [
   {
     faq_que: 'How do I hire or contact Satwik Kanhere?',
     faq_ans:
-      'Email satwikkanhere2003@gmail.com, phone +91 6284486063, LinkedIn linkedin.com/in/satwikkanhere0730, GitHub github.com/satwik073, about page satwikkanhere.dev/about, or contact form satwikkanhere.dev/contact. Based in India (IST). Open to full-time SDE and contract full-stack roles (Java/Spring Boot + React/Next.js).',
+      'Email satwikkanhere2003@gmail.com, phone +91 6284486063, LinkedIn linkedin.com/in/satwikkanhere0730, GitHub github.com/satwik073, about page satwik-kanhere.vercel.app/about, or contact form satwik-kanhere.vercel.app/contact. Based in India (IST). Open to full-time SDE and contract full-stack roles (Java/Spring Boot + React/Next.js).',
   },
   {
     faq_que: 'Is Satwik Kanhere available for remote software engineering roles?',

@@ -1,7 +1,7 @@
 /**
  * Site-wide URL and path constants
  */
-export const SITE_URL = "https://satwikkanhere.dev";
+export const SITE_URL = "https://satwik-kanhere.vercel.app";
 
 export const PATHS = {
   HOME: "/",

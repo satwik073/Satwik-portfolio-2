@@ -12,7 +12,7 @@ export const SEO = {
   timezone: "IST",
   email: "satwikkanhere2003@gmail.com",
   phone: "+91 6284486063",
-  site: "https://satwikkanhere.dev",
+  site: "https://satwik-kanhere.vercel.app",
   linkedin: "https://linkedin.com/in/satwikkanhere0730",
   github: "https://github.com/satwik073",
   resume: "https://satwik073.github.io/SatwikPortFolio/",
