@@ -4,10 +4,10 @@ import { avatarList } from '@/constants'
 
 function HeroSection() {
   return (
-    <section className='wiz-font bg-white dark:bg-dark_black pt-[80px]'>
+    <section className='wiz-font bg-white dark:bg-dark_black pt-[64px] sm:pt-[80px]'>
       <div className='grid lg:grid-cols-2 items-stretch'>
-        <div className='flex items-center bg-white dark:bg-dark_black hero-enter'>
-          <div className='w-full px-5 sm:px-8 lg:px-12 xl:pl-[max(48px,calc((100vw-1536px)/2+48px))] xl:pr-16 py-10 lg:py-14'>
+        <div className='flex items-center bg-white dark:bg-dark_black'>
+          <div className='w-full px-5 sm:px-8 lg:px-12 xl:pl-[max(48px,calc((100vw-1536px)/2+48px))] xl:pr-16 py-8 sm:py-10 lg:py-14'>
             <div className='max-w-xl'>
               <p className='wiz-eyebrow text-wiz_ink dark:text-white/80 text-[10px]'>
                 Full-Stack Software Engineer · 2+ Years
@@ -23,7 +23,7 @@ function HeroSection() {
                 Products That Ship.
               </h1>
 
-              <p className='mt-5 sm:mt-6 max-w-xl text-[14.5px] sm:text-[16px] leading-[1.55] text-wiz_muted dark:text-white/60'>
+              <p className='mt-5 sm:mt-6 max-w-xl text-[14.5px] sm:text-[16px] leading-[1.55] text-wiz_muted dark:text-white/80'>
                 I&rsquo;m Satwik Kanhere — SDE 1 at WizCommerce. Full-stack across
                 React/Next.js frontends and Java · Spring Boot · Hibernate
                 backends, plus Ag-Grid, payments, and CDN performance for 120+
@@ -88,7 +88,7 @@ function HeroSection() {
           </div>
         </div>
 
-        <div className='relative bg-wiz_navy text-white overflow-hidden min-h-[520px] lg:min-h-full flex flex-col hero-enter-delay'>
+        <div className='relative bg-wiz_navy text-white overflow-hidden min-h-[420px] sm:min-h-[520px] lg:min-h-full flex flex-col'>
           <div
             aria-hidden
             className='absolute -right-8 -top-16 z-[1] h-[55%] w-[70%] rotate-[14deg] pointer-events-none hero-peach-slab'
