@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL, ROBOTS_DISALLOW_PATHS } from "@/constants";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 /**
  * Do not disallow /_next/: crawlers need static assets for rendering.
  * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots

@@ -3,6 +3,10 @@ import Faq from "@/app/components/home/faq";
 import { Metadata } from "next";
 import Script from "next/script";
 
+/** Fully static until redeploy */
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title: "Contact Satwik Kanhere | Hire Full-Stack Java / React Developer",
   description:

@@ -6,6 +6,7 @@ import { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
 import { personSchema, websiteSchema } from '@/constants'
 import { COLOR_THEME_BOOTSTRAP_SCRIPT } from '@/constants/theme-bootstrap'
+import InstantCache from './components/instant-cache'
 
 const siteUrl = 'https://satwik-kanhere.vercel.app'
 
@@ -218,6 +219,30 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{ __html: COLOR_THEME_BOOTSTRAP_SCRIPT }}
         />
+        {/* Chrome/Edge: prerender primary routes for ~0ms navigations */}
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [
+                {
+                  where: {
+                    href_matches: ['/', '/about', '/contact'],
+                  },
+                  eagerness: 'moderate',
+                },
+              ],
+              prefetch: [
+                {
+                  where: {
+                    href_matches: ['/', '/about', '/contact'],
+                  },
+                  eagerness: 'eager',
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         <script
@@ -233,6 +258,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <InstantCache />
         </Providers>
       </body>
     </html>

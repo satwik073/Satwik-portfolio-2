@@ -11,6 +11,10 @@ import {
   SCHEMA_IDS,
 } from "@/constants";
 
+/** Fully static until redeploy */
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title: "About Satwik Kanhere | Software Development Engineer at WizCommerce",
   description: SEO.longBio[0],
