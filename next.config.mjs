@@ -40,12 +40,18 @@ const nextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ['@iconify/react', 'lucide-react', 'motion'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-accordion'],
   },
+
+  // Modern browsers only — drops legacy polyfills Lighthouse flags (~14 KiB)
+  transpilePackages: [],
 
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+
+  // Prefer modern JS output
+  productionBrowserSourceMaps: false,
 
   async headers() {
     return [
