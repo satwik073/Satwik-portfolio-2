@@ -4,7 +4,7 @@ import { SITE_URL, OG_IMAGE_URL, OG_IMAGE_SQUARE_URL } from "./site";
 export const META = {
   title: "Satwik Kanhere | Full-Stack SDE | Java Spring Boot React Next.js",
   description:
-    "Satwik Kanhere is a Full-Stack Software Development Engineer 1 at WizCommerce — Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. CRM, PIM, Ag-Grid SSRM, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Hire: satwikkanhere2003@gmail.com · +91 6284486063 · satwikkanhere.dev/about",
+    "Satwik Kanhere is a Full-Stack Software Development Engineer 1 at WizCommerce — Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. CRM, PIM, Ag-Grid SSRM, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Hire: satwikkanhere2003@gmail.com · +91 6284486063 · satwik-kanhere.vercel.app/about",
   keywords: [
     // === Name variations (CRITICAL for ranking) ===
     "Satwik Kanhere",
@@ -126,7 +126,7 @@ export const META = {
     "Best software developer portfolio",
     "Top software engineer portfolio",
     "Developer portfolio website",
-    "satwikkanhere.dev",
+    "satwik-kanhere.vercel.app",
 
     // === Long-tail search phrases ===
     "Satwik Kanhere software development engineer",

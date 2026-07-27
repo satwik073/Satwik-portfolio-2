@@ -102,13 +102,14 @@ function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.65, delay: 0.1 }}
           className='relative bg-wiz_navy text-white overflow-hidden min-h-[520px] lg:min-h-full flex flex-col'>
-          {/* Warm peach slab — one big shape, not cards */}
+          {/* Peach accent slab — same position, translucent (rgba so opacity always applies) */}
           <motion.div
             aria-hidden
             initial={{ x: '40%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className='absolute -right-8 -top-16 h-[55%] w-[70%] bg-wiz_peach rotate-[14deg]'
+            className='absolute -right-8 -top-16 z-[1] h-[55%] w-[70%] rotate-[14deg] pointer-events-none'
+            style={{ backgroundColor: 'rgba(255, 244, 232, 0.28)' }}
           />
           <motion.div
             aria-hidden

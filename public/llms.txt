@@ -1,9 +1,9 @@
 # Satwik Kanhere
 
 > Full-Stack Software Development Engineer 1 at WizCommerce. Java, Spring Boot, Hibernate, React.js, Next.js, TypeScript.
-> Official site: https://satwikkanhere.dev
-> About: https://satwikkanhere.dev/about
-> Contact: https://satwikkanhere.dev/contact
+> Official site: https://satwik-kanhere.vercel.app
+> About: https://satwik-kanhere.vercel.app/about
+> Contact: https://satwik-kanhere.vercel.app/contact
 
 ## Identity
 - Name: Satwik Kanhere (also Satvik Kanhere)
@@ -16,8 +16,8 @@
 - Phone: +91 6284486063
 - LinkedIn: https://linkedin.com/in/satwikkanhere0730
 - GitHub: https://github.com/satwik073
-- Portfolio: https://satwikkanhere.dev
-- About page: https://satwikkanhere.dev/about
+- Portfolio: https://satwik-kanhere.vercel.app
+- About page: https://satwik-kanhere.vercel.app/about
 - Resume: https://satwik073.github.io/SatwikPortFolio/
 
 ## Summary
@@ -43,4 +43,4 @@ Java, Spring Boot, Hibernate, JPA, JavaScript (ES6+), TypeScript, SQL, React.js,
 
 ## Hire / contact
 Open to full-time Software Development Engineer roles and contract full-stack work (Java/Spring Boot/Hibernate + React/Next.js/TypeScript) — India or remote · IST.
-https://satwikkanhere.dev/contact
+https://satwik-kanhere.vercel.app/contact

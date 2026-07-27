@@ -1,13 +1,12 @@
 /**
  * Site-wide URL and path constants
  */
-export const SITE_URL = "https://satwikkanhere.dev";
+export const SITE_URL = "https://satwik-kanhere.vercel.app";
 
 export const PATHS = {
   HOME: "/",
   ABOUT: "/about",
   CONTACT: "/contact",
-  DOCUMENTATION: "/documentation",
 } as const;
 
 export const OG_IMAGE_URL = `${SITE_URL}/images/og-image.jpg`;
@@ -29,11 +28,6 @@ export const SITEMAP_ROUTES = [
     path: PATHS.CONTACT,
     changeFrequency: "monthly" as const,
     priority: 0.9,
-  },
-  {
-    path: PATHS.DOCUMENTATION,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
   },
 ] as const;
 

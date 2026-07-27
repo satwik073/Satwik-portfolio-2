@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Contact Satwik Kanhere | Full-Stack Software Development Engineer",
     description:
       "Reach Satwik Kanhere for full-time SDE roles, contract Java/Spring Boot + React/Next.js work, or technical conversations.",
-    url: "https://satwikkanhere.dev/contact",
+    url: "https://satwik-kanhere.vercel.app/contact",
     type: "website",
   },
   twitter: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: "Hire a full-stack Java / Spring Boot / React developer — India · IST",
   },
   alternates: {
-    canonical: "https://satwikkanhere.dev/contact",
+    canonical: "https://satwik-kanhere.vercel.app/contact",
   },
 };
 
@@ -39,7 +39,7 @@ const contactJsonLd = {
   "@type": "ContactPage",
   name: "Contact Satwik Kanhere",
   description: "Contact page for Satwik Kanhere - Software Development Engineer",
-  url: "https://satwikkanhere.dev/contact",
+  url: "https://satwik-kanhere.vercel.app/contact",
   mainEntity: {
     "@type": "Person",
     name: "Satwik Kanhere",

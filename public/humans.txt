@@ -10,6 +10,6 @@ Last update: 2026-07-27
 Language: English
 Standards: HTML5, CSS3, Schema.org
 Software: Next.js, React, TypeScript
-URL: https://satwikkanhere.dev
-About: https://satwikkanhere.dev/about
-Contact: https://satwikkanhere.dev/contact
+URL: https://satwik-kanhere.vercel.app
+About: https://satwik-kanhere.vercel.app/about
+Contact: https://satwik-kanhere.vercel.app/contact
