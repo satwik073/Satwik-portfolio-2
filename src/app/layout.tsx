@@ -21,13 +21,13 @@ const inter = Inter({
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-display',
   weight: ['400', '500'],
   style: ['normal', 'italic'],
   preload: true,
   adjustFontFallback: true,
-  fallback: ['Georgia', 'serif'],
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
 })
 
 const instrumentSerif = Instrument_Serif({
@@ -38,7 +38,7 @@ const instrumentSerif = Instrument_Serif({
   style: ['italic'],
   preload: false,
   adjustFontFallback: true,
-  fallback: ['Georgia', 'serif'],
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
 })
 
 export const viewport: Viewport = {
