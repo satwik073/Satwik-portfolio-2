@@ -68,6 +68,29 @@ const projects = [
   },
 ];
 
+const channels = [
+  {
+    label: "Email",
+    value: SEO.email,
+    href: `mailto:${SEO.email}`,
+  },
+  {
+    label: "LinkedIn",
+    value: "satwikkanhere0730",
+    href: SEO.linkedin,
+  },
+  {
+    label: "GitHub",
+    value: "satwik073",
+    href: SEO.github,
+  },
+  {
+    label: "Resume",
+    value: "View CV",
+    href: SEO.resume,
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -83,137 +106,198 @@ export default function AboutPage() {
       />
 
       <main className="wiz-font bg-white dark:bg-dark_black">
-        <article className="container pt-48 sm:pt-52 pb-16 sm:pb-24">
-          <header className="max-w-3xl">
-            <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">About</p>
-            <h1 className="wiz-display mt-4 text-[40px] sm:text-[56px] md:text-[64px] leading-[1.05] text-wiz_ink dark:text-white">
-              Satwik Kanhere
-            </h1>
-            <p className="mt-4 wiz-serif text-[20px] sm:text-[24px] text-wiz_ink/70 dark:text-white/65 leading-snug">
-              {SEO.jobTitle} · {SEO.company} · India · {SEO.timezone}
-            </p>
-          </header>
+        <article className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-24">
+          <div className="container">
+            {/* Hero — matches contact / home section rhythm */}
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+              <div className="lg:col-span-4">
+                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
+                  About
+                </p>
+                <h1 className="wiz-display mt-4 sm:mt-5 text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.1] text-wiz_ink dark:text-white">
+                  Satwik Kanhere
+                </h1>
+                <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink/70 dark:text-white/65 leading-snug">
+                  {SEO.jobTitle} · India · {SEO.timezone}
+                </p>
+              </div>
 
-          <div className="mt-10 sm:mt-14 max-w-3xl space-y-5">
-            {SEO.longBio.map((paragraph) => (
-              <p
-                key={paragraph.slice(0, 48)}
-                className="text-[15px] sm:text-[17px] leading-[1.75] text-wiz_ink/80 dark:text-white/70">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+              <div className="lg:col-span-8 space-y-5">
+                {SEO.longBio.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 48)}
+                    className="text-[14.5px] sm:text-[16px] leading-[1.65] text-wiz_muted dark:text-white/60 max-w-2xl">
+                    {paragraph}
+                  </p>
+                ))}
 
-          <section className="mt-14 sm:mt-20" aria-labelledby="about-facts">
-            <h2
-              id="about-facts"
-              className="wiz-display text-[28px] sm:text-[36px] text-wiz_ink dark:text-white">
-              At a glance
-            </h2>
-            <dl className="mt-8 grid sm:grid-cols-2 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-              {facts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="bg-white dark:bg-dark_black p-5 sm:p-6">
-                  <dt className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          <section className="mt-14 sm:mt-20 max-w-3xl" aria-labelledby="about-stack">
-            <h2
-              id="about-stack"
-              className="wiz-display text-[28px] sm:text-[36px] text-wiz_ink dark:text-white">
-              Tech stack
-            </h2>
-            <p className="mt-5 text-[15px] sm:text-[17px] leading-[1.75] text-wiz_ink/80 dark:text-white/70">
-              {SEO.skillsLine}
-            </p>
-          </section>
-
-          <section className="mt-14 sm:mt-20" aria-labelledby="about-projects">
-            <h2
-              id="about-projects"
-              className="wiz-display text-[28px] sm:text-[36px] text-wiz_ink dark:text-white">
-              Selected work
-            </h2>
-            <ul className="mt-8 grid sm:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-              {projects.map((project) => (
-                <li key={project.name} className="bg-white dark:bg-dark_black">
+                <div className="pt-2 flex flex-wrap gap-3">
                   <Link
-                    href={project.href}
-                    target={project.href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      project.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="block p-5 sm:p-6 h-full hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors group">
-                    <p className="wiz-serif text-[20px] text-wiz_ink dark:text-white group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors">
-                      {project.name}
-                    </p>
-                    <p className="mt-3 text-[14px] leading-relaxed text-wiz_ink/70 dark:text-white/60">
-                      {project.blurb}
-                    </p>
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-wiz_ink dark:bg-white text-white dark:text-wiz_ink text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:opacity-90 transition">
+                    Contact
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="mt-14 sm:mt-20 max-w-3xl" aria-labelledby="about-hire">
-            <h2
-              id="about-hire"
-              className="wiz-display text-[28px] sm:text-[36px] text-wiz_ink dark:text-white">
-              Hire Satwik Kanhere
-            </h2>
-            <p className="mt-5 text-[15px] sm:text-[17px] leading-[1.75] text-wiz_ink/80 dark:text-white/70">
-              Looking for a full-stack developer, Java / Spring Boot engineer,
-              React developer, Next.js developer, TypeScript engineer, or
-              Software Development Engineer in India (Chandigarh, Gurugram, or
-              remote · IST)? Email{" "}
-              <a
-                href={`mailto:${SEO.email}`}
-                className="underline underline-offset-4 decoration-wiz_border dark:decoration-white/30 hover:text-[#ff7a1a]">
-                {SEO.email}
-              </a>
-              , call {SEO.phone}, or use the contact form.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-wiz_ink dark:bg-white text-white dark:text-wiz_ink text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:opacity-90 transition">
-                Contact
-              </Link>
-              <a
-                href={SEO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                LinkedIn
-              </a>
-              <a
-                href={SEO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                GitHub
-              </a>
-              <a
-                href={SEO.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                Resume
-              </a>
+                  <Link
+                    href="/#work"
+                    className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
+                    Projects
+                  </Link>
+                </div>
+              </div>
             </div>
-          </section>
+
+            {/* Channels — same link grid as home about */}
+            <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
+              {channels.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="bg-white dark:bg-dark_black p-5 sm:p-6 group hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors">
+                  <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                    {item.label}
+                  </p>
+                  <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors">
+                    {item.value}
+                  </p>
+                </Link>
+              ))}
+            </div>
+
+            {/* At a glance */}
+            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+              <div className="lg:col-span-4">
+                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
+                  Snapshot
+                </p>
+                <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
+                  At a glance
+                </h2>
+              </div>
+              <div className="lg:col-span-8">
+                <dl className="grid sm:grid-cols-2 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
+                  {facts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="bg-white dark:bg-dark_black p-5 sm:p-6">
+                      <dt className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                        {fact.label}
+                      </dt>
+                      <dd className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug">
+                        {fact.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+
+            {/* Stack */}
+            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+              <div className="lg:col-span-4">
+                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
+                  Stack
+                </p>
+                <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
+                  Languages to delivery
+                </h2>
+              </div>
+              <div className="lg:col-span-8">
+                <p className="text-[14.5px] sm:text-[16px] leading-[1.65] text-wiz_muted dark:text-white/60 max-w-2xl">
+                  {SEO.skillsLine}
+                </p>
+                <Link
+                  href="/#services"
+                  className="mt-6 inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
+                  View skills
+                </Link>
+              </div>
+            </div>
+
+            {/* Selected work */}
+            <div className="mt-14 sm:mt-20">
+              <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+                <div className="lg:col-span-4">
+                  <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
+                    Work
+                  </p>
+                  <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
+                    Selected work
+                  </h2>
+                </div>
+                <div className="lg:col-span-8">
+                  <p className="text-[14.5px] sm:text-[16px] leading-[1.55] text-wiz_muted dark:text-white/60 max-w-xl">
+                    Side projects and initiatives that sit alongside product work
+                    at WizCommerce.
+                  </p>
+                </div>
+              </div>
+
+              <ul className="mt-8 sm:mt-10 grid sm:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
+                {projects.map((project) => (
+                  <li key={project.name} className="bg-white dark:bg-dark_black">
+                    <Link
+                      href={project.href}
+                      target={
+                        project.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        project.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="block p-5 sm:p-6 h-full hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors group">
+                      <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                        Project
+                      </p>
+                      <p className="mt-3 wiz-serif text-[20px] sm:text-[22px] text-wiz_ink dark:text-white group-hover:text-[#ff7a1a] dark:group-hover:text-[#ffb38a] transition-colors">
+                        {project.name}
+                      </p>
+                      <p className="mt-3 text-[14px] leading-relaxed text-wiz_ink/70 dark:text-white/60">
+                        {project.blurb}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Hire CTA strip */}
+            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
+              <div className="lg:col-span-5 bg-wiz_cream dark:bg-white/[0.03] p-6 sm:p-8 lg:p-10">
+                <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                  Hire
+                </p>
+                <h2 className="wiz-serif mt-3 text-[28px] sm:text-[34px] text-wiz_ink dark:text-white leading-tight">
+                  Looking for a full-stack SDE?
+                </h2>
+              </div>
+              <div className="lg:col-span-7 bg-white dark:bg-dark_black p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-6">
+                <p className="text-[14.5px] sm:text-[16px] leading-[1.6] text-wiz_muted dark:text-white/60 max-w-xl">
+                  Java / Spring Boot / Hibernate + React / Next.js / TypeScript.
+                  Chandigarh, Gurugram, or remote · IST. Open to full-time and
+                  contract roles.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-wiz_ink dark:bg-white text-white dark:text-wiz_ink text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:opacity-90 transition">
+                    Get in touch
+                  </Link>
+                  <a
+                    href={`mailto:${SEO.email}`}
+                    className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
         <Faq />
