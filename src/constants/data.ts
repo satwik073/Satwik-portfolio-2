@@ -100,6 +100,8 @@ export const headerData: HeaderItem[] = [
       { label: 'Resume', description: 'Latest CV and credentials', href: 'https://satwik073.github.io/SatwikPortFolio/', icon: I.file },
       { label: 'GitHub', description: 'github.com/satwik073', href: 'https://github.com/satwik073', icon: I.github },
       { label: 'LinkedIn', description: 'linkedin.com/in/satwikkanhere0730', href: 'https://linkedin.com/in/satwikkanhere0730', icon: I.linkedin },
+      { label: 'X / Twitter', description: '@satwikkanhere', href: 'https://x.com/satwikkanhere', icon: I.sparkles },
+      { label: 'WhatsApp', description: '+91 6284486063', href: 'https://wa.me/916284486063', icon: I.bolt },
       { label: 'Assembly', description: 'assembly-stack.vercel.app', href: 'https://assembly-stack.vercel.app', icon: I.box },
       { label: 'Flux', description: 'flux-code.vercel.app', href: 'https://flux-code.vercel.app', icon: I.sparkles },
       { label: 'Contact', description: 'satwikkanhere2003@gmail.com', href: '/contact', icon: I.file },

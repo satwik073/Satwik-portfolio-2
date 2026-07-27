@@ -1,28 +1,12 @@
 import Link from 'next/link'
 import { SEO } from '@/constants'
+import { SOCIAL_PRIMARY } from '@/constants'
 
-const links = [
-  {
-    label: 'Email',
-    value: SEO.email,
-    href: `mailto:${SEO.email}`,
-  },
-  {
-    label: 'LinkedIn',
-    value: 'satwikkanhere0730',
-    href: SEO.linkedin,
-  },
-  {
-    label: 'GitHub',
-    value: 'satwik073',
-    href: SEO.github,
-  },
-  {
-    label: 'Full bio',
-    value: 'About page',
-    href: '/about',
-  },
-]
+const links = SOCIAL_PRIMARY.slice(0, 4).map((s) => ({
+  label: s.label,
+  value: s.handle,
+  href: s.href,
+}))
 
 function AboutSeo() {
   return (

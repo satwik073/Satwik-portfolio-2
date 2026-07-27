@@ -14,7 +14,8 @@ export {
 
 export * from './site'
 export * from './seo'
+export * from './socials'
 export * from './metadata'
-export * from './schemas'
 export * from './styles'
 export * from './tags'
+export * from './schemas'

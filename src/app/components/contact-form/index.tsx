@@ -24,6 +24,11 @@ const contactLinks = [
     href: 'mailto:satwikkanhere2003@gmail.com',
   },
   {
+    label: 'WhatsApp',
+    value: '+91 6284486063',
+    href: 'https://wa.me/916284486063?text=Hi%20Satwik%2C%20I%20came%20across%20your%20portfolio%20and%20wanted%20to%20connect.',
+  },
+  {
     label: 'Phone',
     value: '+91 6284486063',
     href: 'tel:+916284486063',
@@ -37,6 +42,16 @@ const contactLinks = [
     label: 'GitHub',
     value: 'satwik073',
     href: 'https://github.com/satwik073',
+  },
+  {
+    label: 'X / Twitter',
+    value: '@satwikkanhere',
+    href: 'https://x.com/satwikkanhere',
+  },
+  {
+    label: 'Resume',
+    value: 'View CV',
+    href: 'https://satwik073.github.io/SatwikPortFolio/',
   },
 ]
 

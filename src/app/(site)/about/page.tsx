@@ -5,6 +5,7 @@ import Faq from "@/app/components/home/faq";
 import {
   SEO,
   SITE_URL,
+  SOCIAL_PRIMARY,
   aboutPageSchema,
   faqSchema,
   SCHEMA_IDS,
@@ -68,28 +69,11 @@ const projects = [
   },
 ];
 
-const channels = [
-  {
-    label: "Email",
-    value: SEO.email,
-    href: `mailto:${SEO.email}`,
-  },
-  {
-    label: "LinkedIn",
-    value: "satwikkanhere0730",
-    href: SEO.linkedin,
-  },
-  {
-    label: "GitHub",
-    value: "satwik073",
-    href: SEO.github,
-  },
-  {
-    label: "Resume",
-    value: "View CV",
-    href: SEO.resume,
-  },
-];
+const channels = SOCIAL_PRIMARY.map((s) => ({
+  label: s.label,
+  value: s.handle,
+  href: s.href,
+}));
 
 export default function AboutPage() {
   return (
@@ -108,7 +92,6 @@ export default function AboutPage() {
       <main className="wiz-font bg-white dark:bg-dark_black">
         <article className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-24">
           <div className="container">
-            {/* Hero — matches contact / home section rhythm */}
             <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               <div className="lg:col-span-4">
                 <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
@@ -146,8 +129,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Channels — same link grid as home about */}
-            <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
+            <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
               {channels.map((item) => (
                 <Link
                   key={item.label}
@@ -169,7 +151,6 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* At a glance */}
             <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               <div className="lg:col-span-4">
                 <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
@@ -197,7 +178,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Stack */}
             <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
               <div className="lg:col-span-4">
                 <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
@@ -219,7 +199,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Selected work */}
             <div className="mt-14 sm:mt-20">
               <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
                 <div className="lg:col-span-4">
@@ -267,7 +246,6 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            {/* Hire CTA strip */}
             <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
               <div className="lg:col-span-5 bg-wiz_cream dark:bg-white/[0.03] p-6 sm:p-8 lg:p-10">
                 <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
