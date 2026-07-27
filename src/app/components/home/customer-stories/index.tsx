@@ -93,7 +93,8 @@ function CustomerStories() {
                 </div>
                 <Link
                   href={s.href}
-                  className='mt-5 wiz-eyebrow inline-flex items-center gap-2 text-wiz_ink dark:text-white'>
+                  aria-label={`Learn more about ${s.eyebrow}`}
+                  className='mt-5 wiz-eyebrow inline-flex min-h-12 items-center gap-2 text-wiz_ink dark:text-white'>
                   Learn more →
                 </Link>
               </div>

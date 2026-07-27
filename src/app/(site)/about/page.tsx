@@ -145,7 +145,7 @@ export default function AboutPage() {
                       : undefined
                   }
                   className="bg-white dark:bg-dark_black p-5 sm:p-6 group hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors">
-                  <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                  <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
                     {item.label}
                   </p>
                   <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
@@ -170,7 +170,7 @@ export default function AboutPage() {
                     <div
                       key={fact.label}
                       className="bg-white dark:bg-dark_black p-5 sm:p-6">
-                      <dt className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                      <dt className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
                         {fact.label}
                       </dt>
                       <dd className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug">
@@ -235,7 +235,7 @@ export default function AboutPage() {
                           : undefined
                       }
                       className="block p-5 sm:p-6 h-full hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors group">
-                      <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                      <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
                         Project
                       </p>
                       <p className="mt-3 wiz-serif text-[20px] sm:text-[22px] text-wiz_ink dark:text-white group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
@@ -252,7 +252,7 @@ export default function AboutPage() {
 
             <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
               <div className="lg:col-span-5 bg-wiz_cream dark:bg-white/[0.03] p-6 sm:p-8 lg:p-10">
-                <p className="wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]">
+                <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
                   Hire
                 </p>
                 <h2 className="wiz-serif mt-3 text-[28px] sm:text-[34px] text-wiz_ink dark:text-white leading-tight">

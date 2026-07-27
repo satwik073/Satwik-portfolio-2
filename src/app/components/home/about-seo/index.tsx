@@ -62,7 +62,7 @@ function AboutSeo() {
                   : undefined
               }
               className='bg-white dark:bg-dark_black p-5 sm:p-6 group hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors'>
-              <p className='wiz-eyebrow text-wiz_muted dark:text-white/45 text-[10px]'>
+              <p className='wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]'>
                 {item.label}
               </p>
               <p className='mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors'>

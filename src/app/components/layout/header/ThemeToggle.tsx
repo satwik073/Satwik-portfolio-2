@@ -39,7 +39,7 @@ const ThemeToggler = () => {
         aria-label='Theme settings'
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex h-10 items-center gap-2 border px-2.5 transition-colors ${
+        className={`inline-flex h-12 min-h-12 min-w-12 items-center justify-center gap-2 border px-3 transition-colors ${
           open
             ? 'border-wiz_ink dark:border-white bg-wiz_chip/50 dark:bg-white/5'
             : 'border-wiz_border dark:border-white/15 hover:border-wiz_ink/40 dark:hover:border-white/40'
@@ -74,7 +74,7 @@ const ThemeToggler = () => {
       {open && (
         <div className='absolute right-0 top-[calc(100%+12px)] z-[60] w-[272px] border border-wiz_border dark:border-white/10 bg-white dark:bg-dark_black shadow-wiz_dropdown'>
           <div className='px-4 pt-4 pb-3 border-b border-wiz_border dark:border-white/10'>
-            <p className='wiz-eyebrow text-[10px] text-wiz_muted dark:text-white/45 mb-3'>
+            <p className='wiz-eyebrow text-[10px] text-wiz_muted dark:text-white/70 mb-3'>
               Mode
             </p>
             <div className='grid grid-cols-2 gap-px bg-wiz_border dark:bg-white/15'>
@@ -114,7 +114,7 @@ const ThemeToggler = () => {
 
           <div className='px-4 py-4'>
             <div className='flex items-baseline justify-between gap-3 mb-3'>
-              <p className='wiz-eyebrow text-[10px] text-wiz_muted dark:text-white/45'>
+              <p className='wiz-eyebrow text-[10px] text-wiz_muted dark:text-white/70'>
                 Accent
               </p>
               <p className='text-[12px] text-wiz_ink dark:text-white/70'>
@@ -122,7 +122,7 @@ const ThemeToggler = () => {
               </p>
             </div>
 
-            <div className='flex flex-wrap gap-2.5'>
+            <div className='flex flex-wrap gap-3'>
               {themes.map((t) => {
                 const active = themeId === t.id
                 return (
@@ -133,7 +133,7 @@ const ThemeToggler = () => {
                     title={t.label}
                     aria-label={t.label}
                     aria-pressed={active}
-                    className={`relative h-8 w-8 transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wiz_ink dark:focus-visible:outline-white ${
+                    className={`relative h-12 w-12 min-h-12 min-w-12 transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wiz_ink dark:focus-visible:outline-white ${
                       active
                         ? 'ring-2 ring-wiz_ink dark:ring-white ring-offset-2 ring-offset-white dark:ring-offset-dark_black'
                         : ''

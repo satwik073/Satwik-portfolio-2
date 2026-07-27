@@ -9,7 +9,7 @@ import { faqList } from '@/constants'
 
 function Faq() {
   return (
-    <section className='wiz-font bg-white dark:bg-dark_black py-12 sm:py-16 lg:py-24'>
+    <section className='wiz-font bg-white dark:bg-dark_black py-10 sm:py-14 lg:py-20'>
       <div className='container'>
         <div className='grid lg:grid-cols-12 gap-6 sm:gap-10 items-start'>
           <div className='lg:col-span-4'>

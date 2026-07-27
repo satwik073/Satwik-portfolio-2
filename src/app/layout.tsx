@@ -16,24 +16,29 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
   preload: true,
+  adjustFontFallback: true,
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-display',
-  weight: 'variable',
+  weight: ['400', '500'],
   style: ['normal', 'italic'],
   preload: true,
+  adjustFontFallback: true,
+  fallback: ['Georgia', 'serif'],
 })
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-instrument',
   weight: '400',
-  style: ['normal', 'italic'],
+  style: ['italic'],
   preload: false,
+  adjustFontFallback: true,
+  fallback: ['Georgia', 'serif'],
 })
 
 export const viewport: Viewport = {
@@ -183,8 +188,6 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
       <head>
-        <link rel="preconnect" href="https://api.fontshare.com" />
-        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
 
         {/* Favicon */}

@@ -56,7 +56,7 @@ const contactLinks = [
 ]
 
 const fieldClass =
-  'w-full mt-2 border border-wiz_border dark:border-white/15 bg-white dark:bg-dark_black px-4 py-3 text-[14px] sm:text-[15px] text-wiz_ink dark:text-white outline-none transition focus:border-wiz_ink dark:focus:border-white/50 placeholder:text-wiz_muted/70'
+  'w-full mt-2 border border-wiz_border dark:border-white/15 bg-white dark:bg-dark_black px-4 py-3 text-[14px] sm:text-[15px] text-wiz_ink dark:text-white outline-none transition focus:border-wiz_ink dark:focus:border-white/50 placeholder:text-wiz_muted'
 
 const labelClass =
   'wiz-eyebrow text-[10px] tracking-[0.16em] text-wiz_muted dark:text-white/55'
@@ -124,7 +124,7 @@ function ContactForm() {
   }
 
   return (
-    <section className='wiz-font bg-white dark:bg-dark_black pt-48 sm:pt-52 lg:pt-56 pb-12 sm:pb-16 lg:pb-24 overflow-visible'>
+    <section className='wiz-font bg-white dark:bg-dark_black pt-28 sm:pt-36 lg:pt-44 pb-10 sm:pb-14 lg:pb-20 overflow-visible'>
       <div className='container'>
         <div className='max-w-4xl'>
           <p className='wiz-eyebrow text-wiz_ink dark:text-white/70'>
