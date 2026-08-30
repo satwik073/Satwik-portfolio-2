@@ -8,6 +8,7 @@ import { personSchema, websiteSchema } from '@/constants'
 import { COLOR_THEME_BOOTSTRAP_SCRIPT } from '@/constants/theme-bootstrap'
 import InstantCache from './components/instant-cache'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 
 const siteUrl = 'https://satwik-kanhere.vercel.app'
 
@@ -270,6 +271,7 @@ export default function RootLayout({
           <Footer />
           <InstantCache />
           <SpeedInsights />
+          <Analytics />
         </Providers>
       </body>
     </html>
