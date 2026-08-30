@@ -7,6 +7,7 @@ import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
 import { personSchema, websiteSchema } from '@/constants'
 import { COLOR_THEME_BOOTSTRAP_SCRIPT } from '@/constants/theme-bootstrap'
 import InstantCache from './components/instant-cache'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const siteUrl = 'https://satwik-kanhere.vercel.app'
 
@@ -268,6 +269,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <InstantCache />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
