@@ -14,7 +14,7 @@ const siteUrl = SITE_URL
 // Self-hosted via next/font — zero third-party font CSS.
 const geist = Geist({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-geist',
   weight: ['400', '500'],
   preload: true,
@@ -27,7 +27,7 @@ const serif = Instrument_Serif({
   display: 'swap',
   variable: '--font-serif',
   weight: '400',
-  style: ['normal', 'italic'],
+  style: ['italic'],
   preload: true,
   adjustFontFallback: true,
   fallback: ['Georgia', 'Times New Roman', 'serif'],
@@ -56,11 +56,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f2f4f1' },
-    { media: '(prefers-color-scheme: dark)', color: '#090e13' },
-  ],
-  colorScheme: 'light dark',
+  themeColor: '#f2f4f1',
+  colorScheme: 'light',
 }
 
 export const metadata: Metadata = {
@@ -234,7 +231,13 @@ export default function RootLayout({
         {/* Language & region */}
         <meta httpEquiv="content-language" content="en-US" />
         <meta name="language" content="English" />
-        <meta name="theme-color" content="#f2f4f1" />
+        {/* First paint: our paper white (or dark) before any stylesheet loads */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              'html,body{background:#f2f4f1;color:#202623}html.dark,html.dark body{background:#10161b;color:#f2f4f1;color-scheme:dark}',
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT + A11Y_BOOT_SCRIPT }}
         />

@@ -1,99 +1,32 @@
 {
-  "name": "Satwik Kanhere - Software Development Engineer",
+  "name": "Satwik Kanhere — Software Engineer",
   "short_name": "Satwik K",
-  "description": "Portfolio of Satwik Kanhere — Software Development Engineer 1 at WizCommerce. React.js, Next.js, TypeScript, Ag-Grid, enterprise frontend systems. Hire a software developer in India.",
+  "description": "Portfolio of Satwik Kanhere — Software Engineer (SDE 1) at WizCommerce. Next.js, React.js, TypeScript, FastAPI. PIM, CRM and AI Web Studio.",
   "start_url": "/",
   "id": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "browser"],
-  "background_color": "#ffffff",
-  "theme_color": "#4928fd",
-  "orientation": "portrait-primary",
+  "background_color": "#f2f4f1",
+  "theme_color": "#f2f4f1",
+  "orientation": "any",
   "icons": [
-    {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-maskable-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    { "src": "/favicon.ico", "sizes": "64x64 32x32 24x24 16x16", "type": "image/x-icon" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "screenshots": [
-    {
-      "src": "/images/screenshot-desktop.jpg",
-      "sizes": "1920x1080",
-      "type": "image/jpeg",
-      "form_factor": "wide",
-      "label": "Satwik Kanhere Portfolio - Desktop View"
-    },
-    {
-      "src": "/images/screenshot-mobile.jpg",
-      "sizes": "750x1334",
-      "type": "image/jpeg",
-      "form_factor": "narrow",
-      "label": "Satwik Kanhere Portfolio - Mobile View"
-    }
+    { "src": "/images/screenshot-desktop.jpg", "sizes": "1920x1080", "type": "image/jpeg", "form_factor": "wide", "label": "Satwik Kanhere portfolio — desktop" },
+    { "src": "/images/screenshot-mobile.jpg", "sizes": "750x1334", "type": "image/jpeg", "form_factor": "narrow", "label": "Satwik Kanhere portfolio — mobile" }
   ],
-  "categories": ["portfolio", "technology", "software", "development", "business"],
+  "categories": ["portfolio", "technology", "business"],
   "lang": "en-US",
   "dir": "ltr",
   "prefer_related_applications": false,
   "shortcuts": [
-    {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Get in touch with Satwik",
-      "url": "/contact",
-      "icons": [{ "src": "/icon-contact.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Projects",
-      "short_name": "Projects",
-      "description": "View portfolio projects",
-      "url": "/#work",
-      "icons": [{ "src": "/icon-projects.png", "sizes": "192x192" }]
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "web",
-      "url": "https://satwik-kanhere.vercel.app"
-    },
-    {
-      "platform": "play",
-      "url": "https://github.com/satwik073"
-    }
-  ],
-  "share_target": {
-    "action": "/contact",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  }
+    { "name": "Contact", "short_name": "Contact", "description": "Get in touch with Satwik", "url": "/contact", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Experience", "short_name": "Experience", "description": "Work experience", "url": "/#experience", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Résumé", "short_name": "Résumé", "description": "Download the résumé (PDF)", "url": "/satwik-kanhere-resume.pdf", "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
 }

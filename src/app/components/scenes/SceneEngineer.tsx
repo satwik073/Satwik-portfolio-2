@@ -55,15 +55,10 @@ export default function SceneEngineer() {
             return (
               <span
                 key={i}
-                className='absolute inset-x-0 top-1/2 text-center font-medium leading-[0.8] tracking-[-0.04em] transition-transform duration-700 ease-[var(--ease-out-3)]'
+                className='ship-slice'
                 style={{
-                  fontSize: 'clamp(110px, 25.5vw, 460px)',
                   clipPath: `inset(-10% ${r}% -10% ${l}%)`,
                   transform: `translateY(calc(-50% + ${dy}%)) rotateY(${ry}deg) scaleY(${sx})`,
-                  backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #dfe5e6 45%, #8d989b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  color: 'transparent',
                 }}>
                 {WORD}
               </span>

@@ -37,7 +37,8 @@ export default function CountUp({ value, className = '' }: { value: string; clas
 
   if (!m) return <span className={className}>{value}</span>
   return (
-    <span ref={ref} className={`tabular-nums ${className}`} aria-label={value}>
+    <span ref={ref} className={`tabular-nums ${className}`}>
+      <span className='sr-only'>{value}</span>
       <span aria-hidden>
         {m[1]}
         {Math.round(n).toLocaleString('en-US')}
