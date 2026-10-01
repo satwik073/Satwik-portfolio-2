@@ -1,410 +1,481 @@
-/* Body/display fonts via next/font in layout.tsx — no external @import. */
-
-/* ---------------------------------------------------------------------------
-   Recife Text (the actual wizcommerce heading font, paid via indestructible.co)
-   The font-family stack across headings starts with "Recife Text TEST" so it
-   renders if the font is available — installed locally on your machine, OR
-   self-hosted by dropping the woff2 files into /public/fonts/ and uncommenting
-   the @font-face declarations below.
---------------------------------------------------------------------------- */
-/*
-@font-face {
-  font-family: 'Recife Text TEST';
-  src: url('/fonts/RecifeText-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Recife Text TEST';
-  src: url('/fonts/RecifeText-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Recife Text TEST';
-  src: url('/fonts/RecifeText-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-*/
+/* Editorial "exhibition" design system.
+   Fonts via next/font in layout.tsx (Geist + Geist Mono) — no external @import. */
 
 @import 'tailwindcss';
 
-@plugin 'tailwindcss-animate';
-
-@custom-variant dark (&:is(.dark *));
-
-/* Brand tokens — Classic (default). Overridden by ColorThemeProvider. */
-:root {
-  --brand: #ff7a1a;
-  --brand-soft: #ffe2cf;
-  --brand-hover: #e86a10;
-  --brand-pink: #ff7bb0;
-  --brand-navy: #0a0820;
-  --brand-peach: #f7e6d2;
-  --brand-accent: #4928fd;
+/* Semantic, tone-aware colors — inlined so each section resolves its own vars. */
+@theme inline {
+  --color-ink: var(--fg);
+  --color-ink-2: var(--fg-2);
+  --color-surface: var(--bg);
+  --color-line: var(--hair);
+  --color-blue: var(--accent);
 }
 
 @theme {
-  --shadow-header_shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  --color-paper: #f2f4f1;
+  --color-carbon: #202623;
+  --color-night: #090e13;
+  --color-ink2: #5a625e;
+  --color-silver: #b8c4c5;
+  --color-coral: #c44d40;
+  --color-hair: #20262329;
+  --color-hair-dark: #f2f4f129;
 
-  --color-dark_black: #1b1d1e;
-  --color-purple_blue: var(--brand-accent);
-
-  /* wizcommerce-style tokens (from screenshots) */
-  --color-wiz_ink: #0a0a0a;
-  --color-wiz_promo: #0a0a0a;
-  --color-wiz_promo_text: #f5f5f5;
-  --color-wiz_muted: #52555c;
-  --color-wiz_border: #e9e7e2;
-  --color-wiz_surface: #ffffff;
-  --color-wiz_chip: #f5f1ea;
-  --color-wiz_accent: #1f2937;
-  --color-wiz_cream: #f5efe5;
-  --color-wiz_cream_soft: #f9f4eb;
-  --color-wiz_orange: var(--brand);
-  --color-wiz_orange_soft: var(--brand-soft);
-  --color-wiz_pink: var(--brand-pink);
-  --color-wiz_navy: var(--brand-navy);
-  --color-wiz_peach: var(--brand-peach);
-
-  --shadow-wiz_dropdown: 0 24px 48px -16px rgba(15, 17, 21, 0.18),
-    0 2px 8px -2px rgba(15, 17, 21, 0.08);
-  --shadow-wiz_header: 0 1px 0 0 rgba(15, 17, 21, 0.06);
-  --color-purple: #ba81ee;
-  --color-blue: #70b5ff;
-  --color-orange: #ffaf68;
-  --color-green: #79d45e;
-  --color-pink: #f4889a;
-  --color-blue_gradient: #d9f3fc;
-  --color-yellow_gradient: #fdf1d3;
-  --color-pale-yellow: #f6e683;
-  --color-dark_yellow_gradient: #443f32;
-  --color-dark_blue_gradient: #303d42;
-
-  --breakpoint-Xsm: 425px;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1024px;
-  --breakpoint-xxl: 1280px;
-  --breakpoint-2xl: 1440px;
-
-  --spacing-25: 25rem;
-  --spacing-32: 32rem;
-  --spacing-38: 38rem;
-  --spacing-48: 48rem;
-  --spacing-50: 50rem;
-  --spacing-3_75: 3.75rem;
-  --spacing-6_5: 6.5rem;
-  --spacing-18_75: 18.75rem;
-  --spacing-31_25: 31.25rem;
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
+  --font-sans: var(--font-geist), -apple-system, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+:root {
+  --accent: #234ae8;
+  --accent-hover: #1b3cc4;
+  --bg: var(--color-paper);
+  --fg: var(--color-carbon);
+  --fg-2: var(--color-ink2);
+  --hair: var(--color-hair);
+  --margin: 6vw;
+  --gutter: 24px;
+  --header-h: 84px;
+  --ease-out-3: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-2: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-reveal: 0.7s;
+  --text-body: 19px;
+  --leading-body: 1.55;
+  color-scheme: light;
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Dark mode — light sections become deep charcoal; dark/blue sections keep their identity. */
+html.dark {
+  color-scheme: dark;
+  background: #10161b;
+}
+html.dark,
+html.dark [data-tone='light'] {
+  --bg: #10161b;
+  --fg: var(--color-paper);
+  --fg-2: var(--color-silver);
+  --hair: var(--color-hair-dark);
+}
+html.dark body {
+  background: #10161b;
+  color: var(--color-paper);
+}
+
+[data-tone='dark'] {
+  --bg: var(--color-night);
+  --fg: var(--color-paper);
+  --fg-2: var(--color-silver);
+  --hair: var(--color-hair-dark);
+}
+
+[data-tone='blue'] {
+  --bg: var(--accent);
+  --fg: var(--color-paper);
+  --fg-2: #d6ddfb;
+  --hair: #f2f4f152;
+}
+
 @layer base {
   *,
   ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  ::before {
+    box-sizing: border-box;
+    border-color: var(--hair);
   }
-}
-
-@utility text-balance {
-  text-wrap: balance;
-}
-
-@utility container {
-  @apply w-full max-w-[96rem] my-0 mx-auto py-0 sm:px-8 px-5 lg:px-12;
-}
-
-@layer utilities {
   html {
     scroll-behavior: smooth;
-    font-family: var(--font-inter), 'Inter', system-ui,
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-    @apply dark:bg-dark_black;
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-paper);
   }
-
   body {
-    overflow-x: hidden;
-  }
-
-  * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-@layer utilities {
-  .instrument-font {
-    font-family: var(--font-instrument), 'Instrument Serif', Georgia, serif;
-  }
-
-  .wiz-font {
-    font-family: var(--font-inter), 'Inter', system-ui,
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-feature-settings: 'kern', 'ss01';
-    letter-spacing: 0;
-  }
-
-  .wiz-serif {
-    font-family: var(--font-display), 'Playfair Display',
-      var(--font-instrument), Georgia, serif;
-    font-feature-settings: 'kern', 'liga', 'ss01';
-    font-variation-settings: 'wght' 300;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1.12;
-  }
-
-  .wiz-display {
-    font-family: var(--font-display), 'Playfair Display',
-      var(--font-instrument), Georgia, serif;
-    font-feature-settings: 'kern', 'liga', 'ss01';
-    font-variation-settings: 'wght' 300;
-    font-weight: 300;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-  }
-
-  .wiz-eyebrow {
-    font-family: var(--font-inter), 'Inter', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 12px;
-    font-weight: 500;
-    /* No hardcoded color — let parent / utility classes drive it so this
-       utility works on both light and dark surfaces. */
-  }
-
-  .wiz-dropdown {
-    animation: wiz-dropdown-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    transform-origin: top center;
-  }
-
-  @keyframes wiz-dropdown-in {
-    from {
-      opacity: 0;
-      transform: translateY(-6px) scale(0.985);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  .wiz-promo-marquee {
-    animation: wiz-promo-fade 6s ease-in-out infinite;
-  }
-
-  @keyframes wiz-promo-fade {
-    0%,
-    45% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    50%,
-    55% {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-    60%,
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-mask {
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent,
-      white 20%,
-      white 80%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      90deg,
-      transparent,
-      white 20%,
-      white 80%,
-      transparent
-    );
-  }
-
-  @keyframes hero-enter {
-    from {
-      opacity: 1;
-      transform: none;
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  /* No opacity:0 — that delayed LCP on mobile Lighthouse */
-  .hero-enter,
-  .hero-enter-delay {
-    animation: none;
-  }
-
-  .hero-peach-slab {
-    background-color: color-mix(in srgb, var(--brand-peach) 28%, transparent);
-  }
-
-  @keyframes hero-marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .hero-marquee {
-    animation: hero-marquee 18s linear infinite;
-    will-change: transform;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-enter,
-    .hero-enter-delay,
-    .hero-marquee {
-      animation: none;
-    }
-  }
-
-  .cv-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 480px;
-  }
-}
-
-@layer components {
-  body {
-    font-family: var(--font-inter), 'Inter', system-ui, -apple-system,
-      BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-carbon);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     font-feature-settings: 'kern', 'ss01';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    @apply text-base font-normal text-wiz_ink dark:text-white;
-    -webkit-text-size-adjust: 100%;
-    background-color: #ffffff;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
-
-  body.dark,
-  .dark body {
-    background-color: var(--color-dark_black);
+  ::selection {
+    background: var(--accent);
+    color: var(--color-paper);
   }
-
-  /* Smooth, consistent transitions for interactive elements */
-  a,
-  button {
-    transition: color 180ms ease, background-color 180ms ease,
-      border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+  a {
+    color: inherit;
+    text-decoration: none;
   }
-
-  /* Accessible focus rings */
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid var(--color-wiz_ink);
+  :focus-visible {
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
+}
 
-  ::selection {
-    background-color: rgba(255, 122, 26, 0.25);
-    color: var(--color-wiz_ink);
+/* Section surface — every section declares its tone. */
+@utility tone {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@utility px-margin {
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+}
+
+/* Display type: huge, regular weight, tightly tracked. */
+@utility display {
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+@utility claim {
+  font-size: clamp(30px, 3vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+}
+
+@utility label {
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+@utility caps {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@utility muted {
+  color: var(--fg-2);
+}
+
+@utility hairline {
+  border-color: var(--hair);
+}
+
+/* Editorial italic accent (Instrument Serif) */
+@utility serif {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Word-by-word mask reveal. Server renders the words; JS only adds .is-in. */
+.rw {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.rw > span {
+  display: inline-block;
+  transition: transform 1s var(--ease-out-3);
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+html.js [data-reveal].words {
+  opacity: 1;
+  transform: none;
+}
+html.js [data-reveal].words:not(.is-in) .rw > span {
+  transform: translateY(105%);
+}
+/* Hero: rises on load, no observer needed */
+.rise .rw > span {
+  animation: rise 1.1s var(--ease-out-3) both;
+  animation-delay: calc(120ms + var(--i, 0) * 90ms);
+}
+@keyframes rise {
+  from {
+    transform: translateY(105%);
   }
+}
 
-  h1 {
-    font-family: var(--font-display), 'Playfair Display',
-      var(--font-instrument), Georgia, serif;
-    font-feature-settings: 'kern', 'liga', 'ss01';
-    font-variation-settings: 'wght' 500;
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-    @apply 2xl:text-8xl md:text-7xl text-5xl text-dark_black dark:text-white;
+/* Paper grain overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html.a11y-contrast .grain,
+html.a11y-filter .grain {
+  display: none;
+}
+
+/* Key figures inside résumé text */
+.figure {
+  font-weight: 500;
+  color: var(--fg);
+  background-image: linear-gradient(color-mix(in srgb, var(--accent) 30%, transparent), color-mix(in srgb, var(--accent) 30%, transparent));
+  background-size: 100% 0.3em;
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+}
+
+/* Range input — thin track, round thumb, accent blue. */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+  --track: currentColor;
+}
+.range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--track);
+}
+.range::-moz-range-track {
+  height: 2px;
+  background: var(--track);
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: currentColor;
+  transition: transform 0.2s var(--ease-out-3);
+}
+.range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+.range:active::-webkit-slider-thumb {
+  transform: scale(1.5);
+}
+
+/* Scroll reveal — only applied once JS has booted (html.js), so content
+   is never hidden for no-JS crawlers or before hydration. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-reveal) var(--ease-out-3),
+    transform var(--dur-reveal) var(--ease-out-3);
+}
+html.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Arrow nudge on hover for ↗ links */
+.arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-out-3);
+}
+.group:hover .arrow,
+a:hover > .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Underline that draws in */
+.draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.5s var(--ease-out-3);
+}
+.draw:hover,
+.group:hover .draw {
+  background-size: 100% 1px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
   }
-
-  h2 {
-    font-family: var(--font-display), 'Playfair Display',
-      var(--font-instrument), Georgia, serif;
-    font-feature-settings: 'kern', 'liga', 'ss01';
-    font-variation-settings: 'wght' 500;
-    font-weight: 500;
-    letter-spacing: -0.022em;
-    line-height: 1.08;
-    @apply text-4xl md:text-5xl text-dark_black dark:text-white;
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
+}
 
-  h3 {
-    font-family: var(--font-display), 'Playfair Display',
-      var(--font-instrument), Georgia, serif;
-    font-feature-settings: 'kern', 'liga';
-    font-variation-settings: 'opsz' 96, 'SOFT' 0, 'wght' 350;
-    font-weight: 350;
-    letter-spacing: -0.018em;
-    line-height: 1.15;
-    @apply text-3xl md:text-4xl text-dark_black dark:text-white;
+@keyframes a11yIn {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
   }
-
-
-  h4 {
-    @apply text-2xl font-medium text-dark_black dark:text-white;
+  to {
+    transform: none;
+    opacity: 1;
   }
+}
 
-  h5 {
-    @apply text-xl font-medium;
+@keyframes drift {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
-  h6 {
-    @apply text-lg lg:text-xl font-medium;
+/* Sliced word (chapter 3) */
+@keyframes slice-shift {
+  0%,
+  100% {
+    transform: translateX(0);
   }
+  50% {
+    transform: translateX(var(--shift, 0));
+  }
+}
 
-  p {
-    font-family: var(--font-inter), 'Inter', system-ui,
-      sans-serif;
-    @apply text-base font-normal text-dark_black dark:text-white;
-    letter-spacing: 0;
+/* Motion off — user toggle + OS preference */
+html[data-motion='off'] *,
+html[data-motion='off'] *::before,
+html[data-motion='off'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rw > span {
+    transform: none !important;
+    animation: none !important;
   }
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── Accessibility widget (see constants/a11y.ts) ─────────────────────
+   Visual effects target page content (body > *), never the widget drawer,
+   so the controls always stay readable. */
+html.a11y-zoom body > *:not(.a11y-drawer) {
+  zoom: var(--a11y-zoom, 1);
+}
+
+/* Contrast — stage 1: high contrast */
+html.a11y-contrast,
+html.a11y-contrast [data-tone] {
+  --fg-2: var(--fg);
+  --hair: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+html.a11y-contrast :focus-visible {
+  outline: 3px solid var(--fg);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--accent);
+}
+
+/* Contrast stage 2 (invert) + saturation share one filter chain */
+html.a11y-invert {
+  --a11y-f-invert: invert(1) hue-rotate(180deg);
+}
+html.a11y-sat-1 {
+  --a11y-f-sat: saturate(0.45);
+}
+html.a11y-sat-2 {
+  --a11y-f-sat: saturate(1.9);
+}
+html.a11y-sat-3 {
+  --a11y-f-sat: grayscale(1);
+}
+html.a11y-filter body > *:not(.a11y-drawer) {
+  filter: var(--a11y-f-invert, ) var(--a11y-f-sat, );
+}
+html.a11y-invert body > *:not(.a11y-drawer) :is(img, video, picture, iframe) {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Highlight links */
+html.a11y-links body > *:not(.a11y-drawer) a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px !important;
+  background-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+}
+
+/* Text spacing */
+html.a11y-spacing-1 body > *:not(.a11y-drawer) {
+  letter-spacing: 0.03em !important;
+  word-spacing: 0.1em !important;
+}
+html.a11y-spacing-2 body > *:not(.a11y-drawer) {
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.18em !important;
+}
+html.a11y-spacing-3 body > *:not(.a11y-drawer) {
+  letter-spacing: 0.1em !important;
+  word-spacing: 0.26em !important;
+}
+html[class*='a11y-spacing-'] body > *:not(.a11y-drawer) * {
+  letter-spacing: inherit !important;
+}
+
+/* Line height */
+html.a11y-lh-1 body > *:not(.a11y-drawer) :is(p, li, dd, dt, label, span, a) {
+  line-height: 1.75 !important;
+}
+html.a11y-lh-2 body > *:not(.a11y-drawer) :is(p, li, dd, dt, label, span, a) {
+  line-height: 2 !important;
+}
+html.a11y-lh-3 body > *:not(.a11y-drawer) :is(p, li, dd, dt, label, span, a) {
+  line-height: 2.3 !important;
+}
+
+/* Hide images */
+html.a11y-noimg body > *:not(.a11y-drawer) :is(img, picture, video, canvas, svg[role='img']) {
+  visibility: hidden !important;
+}
+
+/* Readable font */
+html.a11y-font body > *:not(.a11y-drawer),
+html.a11y-font body > *:not(.a11y-drawer) * {
+  font-family: var(--font-readable), Verdana, Arial, sans-serif !important;
+}
+
+/* Text align */
+html.a11y-align body > *:not(.a11y-drawer) :is(p, li, h1, h2, h3, h4, dd, dt, span) {
+  text-align: left !important;
+}
+
+/* Big cursor */
+html.a11y-cursor,
+html.a11y-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M6 3l30 21-13 2 8 15-6 3-8-15-11 9z' fill='%23090e13' stroke='%23f2f4f1' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E")
+      4 2,
+    auto !important;
 }

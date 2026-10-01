@@ -121,52 +121,37 @@ export const faqList = [
   {
     faq_que: 'Who is Satwik Kanhere?',
     faq_ans:
-      'Satwik Kanhere (also spelled Satvik Kanhere) is a Full-Stack Software Development Engineer 1 at WizCommerce in Gurugram, India. He builds with Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. Official portfolio: satwik-kanhere.vercel.app. LinkedIn: linkedin.com/in/satwikkanhere0730. GitHub: github.com/satwik073.',
+      'Satwik Kanhere (also spelled Satvik Kanhere) is a Software Engineer — Software Development Engineer 1 at Oritur Technologies (WizCommerce) in Gurugram, India — with 2+ years of experience building production web applications with Next.js, React.js, TypeScript, FastAPI, and REST APIs. LinkedIn: linkedin.com/in/satwikkanhere0730. GitHub: github.com/satwik073.',
   },
   {
-    faq_que: 'What does Satwik Kanhere do as a software developer?',
+    faq_que: 'What does Satwik Kanhere work on?',
     faq_ans:
-      'Satwik Kanhere is a full-stack engineer — Java / Spring Boot / Hibernate backends and React.js / Next.js / TypeScript frontends. He ships reusable UI systems, REST APIs, Ag-Grid SSRM data grids, payment workflows, and CDN performance improvements for B2B commerce products at WizCommerce.',
-  },
-  {
-    faq_que: 'Is Satwik Kanhere a full-stack Java and React developer?',
-    faq_ans:
-      'Yes. Satwik Kanhere works full-stack with Java, Spring Boot, Hibernate, and JPA on the backend, and React.js, Next.js, and TypeScript on the frontend — plus Node.js / Express where the product needs it.',
-  },
-  {
-    faq_que: 'Where does Satwik Kanhere work?',
-    faq_ans:
-      'Satwik Kanhere works as Software Development Engineer 1 at WizCommerce (Gurugram, July 2024–Present). He previously worked at Infosys Mysuru as Application Developer Intern and Scrum Master (May–June 2024).',
-  },
-  {
-    faq_que: 'What is Satwik Kanhere’s education?',
-    faq_ans:
-      'B.Tech in Computer Science and Engineering from Chitkara University Institute of Engineering and Technology, Chandigarh (2021–2025), CGPA 9.41/10.',
+      'He has delivered features across three enterprise products — PIM, CRM, and AI Web Studio — including a PHP/WordPress-to-Next.js migration, a PIM admin for 100K+ SKU catalogs, a CRM Kanban board, Ag-Grid SSRM workflows for 500K+ records, multi-cart functionality on FastAPI, and a 65% page-load reduction across 80+ enterprise clients.',
   },
   {
     faq_que: 'What is Satwik Kanhere’s tech stack?',
     faq_ans:
-      'Java, Spring Boot, Hibernate, JPA, JavaScript (ES6+), TypeScript, SQL, React.js, Next.js, React Native, HTML5, CSS3, Tailwind CSS, Ag-Grid, Node.js, Express.js, REST APIs, Kafka, MongoDB, MySQL, GCP CDN, Cloudflare, Sentry, Grafana, eBizCharge, Finix, ACH, CyberSource, Git, GitHub, Docker, Postman, Jira.',
+      'Languages: JavaScript (ES6+), TypeScript, Java, SQL. Frontend: Next.js, React.js, HTML5, CSS3, Tailwind CSS, Ag-Grid. Backend & APIs: Node.js, Express.js, REST APIs, FastAPI. Databases: PostgreSQL. Cloud & infrastructure: GCP, Docker, CDN caching, content hashing, cache-busting. Tools: Git, GitHub, Postman, Jira, Sentry, Cursor, Claude.',
+  },
+  {
+    faq_que: 'Where has Satwik Kanhere worked?',
+    faq_ans:
+      'Oritur Technologies (WizCommerce), Gurugram — Software Development Engineer 1 since July 2024 (Software Engineer Intern, Jul 2024 – Jul 2025). Infosys, Mysuru — Application Developer Intern & Scrum Master, May–June 2024.',
+  },
+  {
+    faq_que: 'What is Satwik Kanhere’s education?',
+    faq_ans:
+      'B.Tech in Computer Science and Engineering from Chitkara University Institute of Engineering and Technology, Chandigarh (2021–2025), CGPA 9.41.',
   },
   {
     faq_que: 'What projects has Satwik Kanhere built?',
     faq_ans:
-      'Assembly (assembly-stack.vercel.app) — enterprise design studio SaaS. Flux (flux-code.vercel.app) — AI-powered code IDE. Production work at WizCommerce includes CRM Kanban and PIM product experiences. He also led an Apple-collaborated iOS assistive learning app for students in Chandigarh.',
+      'Arobix Design Studio — an AI-powered, multi-tenant platform for agencies with sub-accounts, Kanban-style pipelines, an AI website builder, team invitations and a management dashboard (Next.js, Node.js, Prisma, MySQL, Cloudflare, Sentry). Flux — an AI-powered browser-based code IDE built with Next.js, WebContainers and MCP.',
   },
   {
     faq_que: 'How do I hire or contact Satwik Kanhere?',
     faq_ans:
-      'Email satwikkanhere2003@gmail.com, phone +91 6284486063, LinkedIn linkedin.com/in/satwikkanhere0730, GitHub github.com/satwik073, about page satwik-kanhere.vercel.app/about, or contact form satwik-kanhere.vercel.app/contact. Based in India (IST). Open to full-time SDE and contract full-stack roles (Java/Spring Boot + React/Next.js).',
-  },
-  {
-    faq_que: 'Is Satwik Kanhere available for remote software engineering roles?',
-    faq_ans:
-      'Yes. Satwik Kanhere is open to conversations about full-time Software Development Engineer roles and contract full-stack work (Java, Spring Boot, Hibernate, React, Next.js, TypeScript), including remote collaboration in IST timezone.',
-  },
-  {
-    faq_que: 'How is Satwik Kanhere different from other full-stack developers?',
-    faq_ans:
-      'Satwik Kanhere combines Java / Spring Boot / Hibernate backend skills with React / Next / TypeScript frontend ownership (PIM, CRM, payments, CDN performance), Agile delivery from Infosys, and side projects in SaaS and AI developer tooling (Assembly, Flux).',
+      'Email satwikkanhere2003@gmail.com, phone +91 6284486063, LinkedIn linkedin.com/in/satwikkanhere0730, or GitHub github.com/satwik073. Based in India (IST) and open to Software Engineer, frontend, and full-stack roles, including remote.',
   },
 ]
 

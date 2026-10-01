@@ -1,5 +1,7 @@
+import { absoluteUrl } from "@/constants/site";
 import ContactForm from "@/app/components/contact-form";
-import Faq from "@/app/components/home/faq";
+import Faq from "@/app/components/ui/Faq";
+import Ending from "@/app/components/ui/Ending";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -8,14 +10,14 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 export const metadata: Metadata = {
-  title: "Contact Satwik Kanhere | Hire Full-Stack Java / React Developer",
+  title: "Contact Satwik Kanhere | Hire a Next.js / React Software Engineer",
   description:
-    "Contact Satwik Kanhere — Full-Stack SDE 1 at WizCommerce. Hire for Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript in India (IST). Email satwikkanhere2003@gmail.com · +91 6284486063.",
+    "Contact Satwik Kanhere — Software Engineer (SDE 1) at WizCommerce. Hire for Next.js, React.js, TypeScript and FastAPI roles in India (IST). Email satwikkanhere2003@gmail.com · +91 6284486063.",
   keywords: [
     "Hire Satwik Kanhere",
     "Contact Satwik Kanhere",
     "Hire Full Stack Developer India",
-    "Hire Java Spring Boot Developer",
+    "Hire FastAPI Developer",
     "Hire React Developer India",
     "Hire Next.js Developer",
     "Hire TypeScript Developer",
@@ -24,17 +26,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Satwik Kanhere | Full-Stack Software Development Engineer",
     description:
-      "Reach Satwik Kanhere for full-time SDE roles, contract Java/Spring Boot + React/Next.js work, or technical conversations.",
-    url: "https://satwik-kanhere.vercel.app/contact",
+      "Reach Satwik Kanhere for Software Engineer, frontend and full-stack roles — Next.js, React.js, TypeScript, FastAPI.",
+    url: absoluteUrl("/contact"),
     type: "website",
   },
   twitter: {
     card: "summary",
     title: "Contact Satwik Kanhere",
-    description: "Hire a full-stack Java / Spring Boot / React developer — India · IST",
+    description: "Hire a Next.js / React / TypeScript Software Engineer — India · IST",
   },
   alternates: {
-    canonical: "https://satwik-kanhere.vercel.app/contact",
+    canonical: absoluteUrl("/contact"),
   },
 };
 
@@ -43,7 +45,7 @@ const contactJsonLd = {
   "@type": "ContactPage",
   name: "Contact Satwik Kanhere",
   description: "Contact page for Satwik Kanhere - Software Development Engineer",
-  url: "https://satwik-kanhere.vercel.app/contact",
+  url: absoluteUrl("/contact"),
   mainEntity: {
     "@type": "Person",
     name: "Satwik Kanhere",
@@ -61,9 +63,10 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-      <main>
+      <main id="main">
         <ContactForm />
         <Faq />
+        <Ending />
       </main>
     </>
   );
