@@ -3,6 +3,8 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 import { Geist, Geist_Mono, Atkinson_Hyperlegible, Instrument_Serif } from 'next/font/google'
 import { personSchema, websiteSchema, SITE_URL, SITE_HOST } from '@/constants'
 import InstantCache from './components/instant-cache'
@@ -283,6 +285,8 @@ export default function RootLayout({
           {children}
           <Footer />
           <InstantCache />
+          <SpeedInsights />
+          <Analytics />
         </Providers>
       </body>
     </html>
