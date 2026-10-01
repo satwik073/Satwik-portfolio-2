@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, ROBOTS_DISALLOW_PATHS } from "@/constants";
+import { SITE_HOST, ROBOTS_DISALLOW_PATHS, absoluteUrl } from "@/constants";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -9,7 +9,7 @@ export const revalidate = false;
  * https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
  */
 export default function robots(): MetadataRoute.Robots {
-  const sitemapUrl = new URL("/sitemap.xml", SITE_URL).toString();
+  const sitemapUrl = absoluteUrl("/sitemap.xml");
   const disallow = [...ROBOTS_DISALLOW_PATHS];
 
   return {
@@ -29,6 +29,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Applebot-Extended", allow: "/" },
     ],
     sitemap: sitemapUrl,
-    host: new URL(SITE_URL).host,
+    host: SITE_HOST,
   };
 }
