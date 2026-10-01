@@ -8,6 +8,8 @@ import { personSchema, websiteSchema, SITE_URL, SITE_HOST } from '@/constants'
 import InstantCache from './components/instant-cache'
 import { THEME_BOOT_SCRIPT } from '@/constants/themes'
 import { A11Y_BOOT_SCRIPT } from '@/constants/a11y'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 
 const siteUrl = SITE_URL
 
@@ -280,6 +282,8 @@ export default function RootLayout({
           {children}
           <Footer />
           <InstantCache />
+          <SpeedInsights />
+          <Analytics />
         </Providers>
       </body>
     </html>
