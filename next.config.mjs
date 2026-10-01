@@ -41,6 +41,9 @@ const nextConfig = {
 
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-accordion'],
+    // Inline the (small) global stylesheet into the HTML — removes the
+    // render-blocking CSS request and speeds up first paint / LCP.
+    inlineCss: true,
   },
 
   // Modern browsers only — drops legacy polyfills Lighthouse flags (~14 KiB)

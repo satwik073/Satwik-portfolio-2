@@ -108,7 +108,7 @@ export default function SceneProjects() {
             onClick={() => setI(k)}
             onMouseEnter={() => setI(k)}
             className={`text-left py-4 text-[clamp(18px,1.5vw,23px)] tracking-[-0.015em] border-b-2 -mb-px cursor-pointer transition-colors ${
-              i === k ? 'border-paper' : 'border-transparent text-paper/70'
+              i === k ? 'border-paper font-medium' : 'border-transparent text-paper/90 hover:text-paper'
             }`}>
             {x.tab}
           </button>

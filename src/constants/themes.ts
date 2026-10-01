@@ -4,7 +4,7 @@ export type ThemeMode = 'light' | 'dark'
 
 export const ACCENTS = [
   { id: 'cobalt', label: 'Cobalt', value: '#234ae8', hover: '#1b3cc4' },
-  { id: 'ember', label: 'Ember', value: '#d9481c', hover: '#b83b15' },
+  { id: 'ember', label: 'Ember', value: '#c2410c', hover: '#9a3412' },
   { id: 'forest', label: 'Forest', value: '#2f6b4f', hover: '#24543e' },
   { id: 'violet', label: 'Violet', value: '#5b3fd6', hover: '#4930b5' },
   { id: 'rose', label: 'Rose', value: '#c43d5f', hover: '#a3304e' },

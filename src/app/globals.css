@@ -213,7 +213,8 @@ html.js [data-reveal].words:not(.is-in) .rw > span {
   inset: 0;
   z-index: 45;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 html.a11y-contrast .grain,
@@ -309,12 +310,10 @@ a:hover > .arrow {
   from {
     opacity: 0;
     transform: translateY(12px);
-    filter: blur(4px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 }
 
@@ -336,6 +335,23 @@ a:hover > .arrow {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* Anamorphic "SHIP?" slices — shared styles; per-slice clip/transform stay inline */
+.ship-slice {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  text-align: center;
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  font-size: clamp(110px, 25.5vw, 460px);
+  background-image: linear-gradient(180deg, #ffffff 0%, #dfe5e6 45%, #8d989b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: transform 0.7s var(--ease-out-3);
 }
 
 /* Sliced word (chapter 3) */
