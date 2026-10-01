@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
-import Faq from "@/app/components/home/faq";
+import Faq from "@/app/components/ui/Faq";
+import Ending from "@/app/components/ui/Ending";
+import Reading, { Archive, ChapterMeta } from "@/app/components/ui/Reading";
+import { RESUME } from "@/constants/resume";
 import {
   SEO,
   SITE_URL,
@@ -49,33 +52,22 @@ export const metadata: Metadata = {
 };
 
 const facts = [
-  { label: "Role", value: `${SEO.jobTitle} @ ${SEO.company}` },
-  { label: "Focus", value: "Java · Spring Boot · React · Next.js" },
-  { label: "Location", value: SEO.location },
-  { label: "Education", value: "B.Tech CSE · Chitkara · 9.41 CGPA" },
+  { year: "Role", title: `${RESUME.title} · SDE 1 @ ${SEO.company}` },
+  { year: "Focus", title: RESUME.headline },
+  { year: "Location", title: RESUME.location },
+  { year: "Education", title: "B.Tech CSE · Chitkara · 9.41 CGPA" },
 ];
 
-const projects = [
-  {
-    name: "Assembly",
-    blurb: "Enterprise design studio SaaS — Next.js, Prisma, MySQL, Cloudflare.",
-    href: SEO.assembly,
-  },
-  {
-    name: "Flux",
-    blurb: "AI-powered code IDE — WebContainers and MCP-assisted workflows.",
-    href: SEO.flux,
-  },
-  {
-    name: "Assistive iOS",
-    blurb: "Apple-collaborated learning tech for visually impaired students.",
-    href: "/#awards",
-  },
+const work = [
+  ...RESUME.experience.map((j) => ({ year: j.dates.replace(" — ", "–"), title: `${j.role} · ${j.company}`, href: "/#experience" })),
+  { year: "2021–2025", title: `${RESUME.education.degree} · Chitkara University` },
 ];
+
+const projects = RESUME.projects.map((p) => ({ year: p.name.split(" ")[0], title: `${p.name} — ${p.stack.join(", ")}`, href: p.href }));
 
 const channels = SOCIAL_PRIMARY.map((s) => ({
-  label: s.label,
-  value: s.handle,
+  year: s.label,
+  title: s.handle,
   href: s.href,
 }));
 
@@ -93,196 +85,92 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main className="wiz-font bg-white dark:bg-dark_black">
-        <article className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-24">
-          <div className="container">
-            <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-              <div className="lg:col-span-4">
-                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
-                  About
-                </p>
-                <h1 className="wiz-display mt-4 sm:mt-5 text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.1] text-wiz_ink dark:text-white">
-                  Satwik Kanhere
-                </h1>
-                <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink/70 dark:text-white/65 leading-snug">
-                  {SEO.jobTitle} · India · {SEO.timezone}
-                </p>
-              </div>
-
-              <div className="lg:col-span-8 space-y-5">
-                {SEO.longBio.map((paragraph) => (
-                  <p
-                    key={paragraph.slice(0, 48)}
-                    className="text-[14.5px] sm:text-[16px] leading-[1.65] text-wiz_muted dark:text-white/60 max-w-2xl">
-                    {paragraph}
-                  </p>
-                ))}
-
-                <div className="pt-2 flex flex-wrap gap-3">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-wiz_ink dark:bg-white text-white dark:text-wiz_ink text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:opacity-90 transition">
-                    Contact
-                  </Link>
-                  <Link
-                    href="/#work"
-                    className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                    Projects
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-              {channels.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    item.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  className="bg-white dark:bg-dark_black p-5 sm:p-6 group hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors">
-                  <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
-                    {item.label}
-                  </p>
-                  <p className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug break-all group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
-                    {item.value}
-                  </p>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-              <div className="lg:col-span-4">
-                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
-                  Snapshot
-                </p>
-                <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
-                  At a glance
-                </h2>
-              </div>
-              <div className="lg:col-span-8">
-                <dl className="grid sm:grid-cols-2 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-                  {facts.map((fact) => (
-                    <div
-                      key={fact.label}
-                      className="bg-white dark:bg-dark_black p-5 sm:p-6">
-                      <dt className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
-                        {fact.label}
-                      </dt>
-                      <dd className="mt-3 wiz-serif text-[18px] sm:text-[20px] text-wiz_ink dark:text-white leading-snug">
-                        {fact.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </div>
-
-            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-              <div className="lg:col-span-4">
-                <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
-                  Stack
-                </p>
-                <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
-                  Languages to delivery
-                </h2>
-              </div>
-              <div className="lg:col-span-8">
-                <p className="text-[14.5px] sm:text-[16px] leading-[1.65] text-wiz_muted dark:text-white/60 max-w-2xl">
-                  {SEO.skillsLine}
-                </p>
-                <Link
-                  href="/#services"
-                  className="mt-6 inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                  View skills
-                </Link>
-              </div>
-            </div>
-
-            <div className="mt-14 sm:mt-20">
-              <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-                <div className="lg:col-span-4">
-                  <p className="wiz-eyebrow text-wiz_ink dark:text-white/70">
-                    Work
-                  </p>
-                  <h2 className="wiz-display mt-4 text-[28px] sm:text-[36px] md:text-[44px] text-wiz_ink dark:text-white">
-                    Selected work
-                  </h2>
-                </div>
-                <div className="lg:col-span-8">
-                  <p className="text-[14.5px] sm:text-[16px] leading-[1.55] text-wiz_muted dark:text-white/60 max-w-xl">
-                    Side projects and initiatives that sit alongside product work
-                    at WizCommerce.
-                  </p>
-                </div>
-              </div>
-
-              <ul className="mt-8 sm:mt-10 grid sm:grid-cols-3 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-                {projects.map((project) => (
-                  <li key={project.name} className="bg-white dark:bg-dark_black">
-                    <Link
-                      href={project.href}
-                      target={
-                        project.href.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        project.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className="block p-5 sm:p-6 h-full hover:bg-wiz_chip/40 dark:hover:bg-white/[0.04] transition-colors group">
-                      <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
-                        Project
-                      </p>
-                      <p className="mt-3 wiz-serif text-[20px] sm:text-[22px] text-wiz_ink dark:text-white group-hover:text-[var(--brand)] dark:group-hover:text-[var(--brand-pink)] transition-colors">
-                        {project.name}
-                      </p>
-                      <p className="mt-3 text-[14px] leading-relaxed text-wiz_ink/70 dark:text-white/60">
-                        {project.blurb}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-px bg-wiz_border dark:bg-white/10 border border-wiz_border dark:border-white/10">
-              <div className="lg:col-span-5 bg-wiz_cream dark:bg-white/[0.03] p-6 sm:p-8 lg:p-10">
-                <p className="wiz-eyebrow text-wiz_muted dark:text-white/70 text-[10px]">
-                  Hire
-                </p>
-                <h2 className="wiz-serif mt-3 text-[28px] sm:text-[34px] text-wiz_ink dark:text-white leading-tight">
-                  Looking for a full-stack SDE?
-                </h2>
-              </div>
-              <div className="lg:col-span-7 bg-white dark:bg-dark_black p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-6">
-                <p className="text-[14.5px] sm:text-[16px] leading-[1.6] text-wiz_muted dark:text-white/60 max-w-xl">
-                  Java / Spring Boot / Hibernate + React / Next.js / TypeScript.
-                  Chandigarh, Gurugram, or remote · IST. Open to full-time and
-                  contract roles.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-wiz_ink dark:bg-white text-white dark:text-wiz_ink text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:opacity-90 transition">
-                    Get in touch
-                  </Link>
-                  <a
-                    href={`mailto:${SEO.email}`}
-                    className="inline-flex items-center gap-2 border border-wiz_border dark:border-white/20 text-wiz_ink dark:text-white text-[13px] tracking-[0.14em] uppercase font-medium px-5 py-3.5 hover:bg-wiz_chip/50 dark:hover:bg-white/5 transition">
-                    Email
-                  </a>
-                </div>
-              </div>
+      <main id="main">
+        <section data-tone="light" className="tone px-[6vw] sm:px-[4.5vw] pt-[108px] lg:pt-[110px] pb-[72px] min-h-[88svh] flex flex-col">
+          <ChapterMeta index="—" total="About" name="The person" years={`${SEO.location} · ${SEO.timezone}`} />
+          <h1 className="display mt-auto text-[clamp(84px,15.2vw,300px)] leading-[0.84]">
+            <span className="block">Satwik</span>
+            <span className="block text-right">Kanhere.</span>
+          </h1>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 items-end">
+            <p className="text-[clamp(20px,1.7vw,26px)] leading-[1.3] tracking-[-0.02em] max-w-[28ch]">
+              {SEO.jobTitle} at {SEO.company}. Full-stack, from the database to the pixel.
+            </p>
+            <div className="flex sm:justify-end gap-8 text-[14px]">
+              <Link href="/contact" className="group inline-flex gap-2"><span className="draw">Get in touch</span><span className="arrow">↗</span></Link>
+              <a href={SEO.resume} target="_blank" rel="noopener noreferrer" className="group inline-flex gap-2"><span className="draw">Résumé</span><span className="arrow">↗</span></a>
             </div>
           </div>
-        </article>
+        </section>
+
+        <div>
+          <Reading
+            label="01 — Who"
+            as="h2"
+            claim="A software engineer who ships production web apps."
+            readHref="/contact"
+            readLabel="Start a conversation"
+            note="Also searched as Satvik Kanhere · satwik073 · satwikkanhere."
+            archive={<Archive title="At a glance" note="Snapshot" items={facts} />}>
+            {SEO.longBio.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </Reading>
+        </div>
+
+        <div id="work" className="border-t">
+          <Reading
+            label="02 — Work"
+            as="h2"
+            claim="Experience and projects."
+            readHref="/#experience"
+            readLabel="See full experience"
+            archive={
+              <>
+                <Archive title="Experience" note="Timeline" items={work} />
+                <Archive title="Projects" note="Live" items={projects} />
+              </>
+            }>
+            <p>
+              Three enterprise products at WizCommerce — PIM, CRM and AI Web Studio — plus two live side
+              projects, Arobix Design Studio and Flux.
+            </p>
+          </Reading>
+        </div>
+
+        <div id="stack" className="border-t">
+          <Reading
+            label="03 — Stack"
+            as="h2"
+            claim="Languages to delivery."
+            readHref="/satwik-kanhere-resume.pdf"
+            readLabel="Download résumé"
+            archive={
+              <Archive
+                title="Inside the stack"
+                note={`${RESUME.skills.length} groups`}
+                items={RESUME.skills.map((g) => ({ year: g.group, title: g.items.join(" · ") }))}
+              />
+            }>
+            <p>{SEO.skillsLine}.</p>
+          </Reading>
+        </div>
+
+        <div className="border-t">
+          <Reading
+            label="04 — Elsewhere"
+            as="h2"
+            claim="Every channel, one person."
+            archive={<Archive title="Channels" note="Replies within 24h" items={channels} />}>
+            <p>
+              Next.js · React.js · TypeScript · FastAPI. Gurugram, Chandigarh, or remote · IST. Open to
+              Software Engineer, frontend and full-stack roles.
+            </p>
+          </Reading>
+        </div>
 
         <Faq />
+        <Ending first="Let’s" second="build." />
       </main>
     </>
   );

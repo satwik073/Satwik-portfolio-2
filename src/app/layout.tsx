@@ -3,42 +3,52 @@ import Header from './components/layout/header'
 import Footer from './components/layout/footer/Footer'
 import Providers from '../providers/Provider'
 import { Metadata, Viewport } from 'next'
-import { Inter, Playfair_Display, Instrument_Serif } from 'next/font/google'
-import { personSchema, websiteSchema } from '@/constants'
-import { COLOR_THEME_BOOTSTRAP_SCRIPT } from '@/constants/theme-bootstrap'
+import { Geist, Geist_Mono, Atkinson_Hyperlegible, Instrument_Serif } from 'next/font/google'
+import { personSchema, websiteSchema, SITE_URL, SITE_HOST } from '@/constants'
 import InstantCache from './components/instant-cache'
+import { THEME_BOOT_SCRIPT } from '@/constants/themes'
+import { A11Y_BOOT_SCRIPT } from '@/constants/a11y'
 
-const siteUrl = 'https://satwik-kanhere.vercel.app'
+const siteUrl = SITE_URL
 
-// Self-hosted via next/font — zero third-party font CSS for these faces.
-const inter = Inter({
+// Self-hosted via next/font — zero third-party font CSS.
+const geist = Geist({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-geist',
+  weight: ['400', '500'],
   preload: true,
   adjustFontFallback: true,
 })
 
-const playfair = Playfair_Display({
+// Editorial italic accent for headings.
+const serif = Instrument_Serif({
   subsets: ['latin'],
-  display: 'optional',
-  variable: '--font-display',
-  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-serif',
+  weight: '400',
   style: ['normal', 'italic'],
   preload: true,
   adjustFontFallback: true,
   fallback: ['Georgia', 'Times New Roman', 'serif'],
 })
 
-const instrumentSerif = Instrument_Serif({
+// Accessibility "readable font" — only fetched when a visitor turns it on.
+const readable = Atkinson_Hyperlegible({
   subsets: ['latin'],
-  display: 'optional',
-  variable: '--font-instrument',
+  display: 'swap',
+  variable: '--font-readable',
+  weight: ['400', '700'],
+  preload: false,
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-geist-mono',
   weight: '400',
-  style: ['italic'],
   preload: false,
   adjustFontFallback: true,
-  fallback: ['Georgia', 'Times New Roman', 'serif'],
 })
 
 export const viewport: Viewport = {
@@ -47,8 +57,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1b1d1e' },
+    { media: '(prefers-color-scheme: light)', color: '#f2f4f1' },
+    { media: '(prefers-color-scheme: dark)', color: '#090e13' },
   ],
   colorScheme: 'light dark',
 }
@@ -56,10 +66,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Satwik Kanhere | Full-Stack SDE | Java Spring Boot React Next.js',
-    template: '%s | Satwik Kanhere - Full-Stack Developer',
+    default: 'Satwik Kanhere | Software Engineer | Next.js · React · TypeScript · FastAPI',
+    template: '%s | Satwik Kanhere - Software Engineer',
   },
-  description: 'Satwik Kanhere — Full-Stack Software Development Engineer 1 at WizCommerce. Java, Spring Boot, Hibernate, React, Next.js, TypeScript. CRM, PIM, Ag-Grid, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Chandigarh, India.',
+  description: 'Satwik Kanhere — Software Engineer (SDE 1) at WizCommerce with 2+ years building production web apps in Next.js, React.js, TypeScript and FastAPI. PIM for 100K+ SKUs, Ag-Grid for 500K+ records, 65% faster page loads across 80+ clients. B.Tech CSE, Chitkara (9.41 CGPA).',
   applicationName: 'Satwik Kanhere Portfolio',
   referrer: 'origin-when-cross-origin',
   keywords: [
@@ -72,7 +82,7 @@ export const metadata: Metadata = {
     'WizCommerce', 'Infosys', 'Chitkara University',
     'Software Engineer India', 'Developer Chandigarh', 'Developer Gurugram',
     'Hire Full Stack Developer India', 'Hire Spring Boot Developer', 'Ag-Grid SSRM',
-    'Product Information Management', 'satwik-kanhere.vercel.app',
+    'Product Information Management', SITE_HOST,
   ],
   authors: [
     { name: 'Satwik Kanhere', url: 'https://linkedin.com/in/satwikkanhere0730' },
@@ -91,8 +101,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Satwik Kanhere - Software Development Engineer',
-    title: 'Satwik Kanhere | Full-Stack Software Development Engineer at WizCommerce',
-    description: 'Full-stack SDE 1 at WizCommerce | Java · Spring Boot · Hibernate · React · Next.js · TypeScript | Assembly & Flux | Apple assistive tech',
+    title: 'Satwik Kanhere | Software Engineer at WizCommerce',
+    description: 'Software Engineer at WizCommerce | Next.js · React.js · TypeScript · FastAPI | PIM · CRM · AI Web Studio',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -110,8 +120,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@satwikkanhere',
     creator: '@satwikkanhere',
-    title: 'Satwik Kanhere | Full-Stack Software Development Engineer',
-    description: 'Full-stack SDE 1 | Java/Spring Boot/Hibernate + React/Next.js/TypeScript | Ag-Grid · payments · CDN | Assembly · Flux',
+    title: 'Satwik Kanhere | Software Engineer',
+    description: 'Software Engineer at WizCommerce | Next.js · React.js · TypeScript · FastAPI | PIM · CRM · AI Web Studio',
     images: ['/images/og-image.jpg'],
   },
 
@@ -161,7 +171,7 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'apple-mobile-web-app-title': 'Satwik Kanhere',
-    'msapplication-TileColor': '#4928fd',
+    'msapplication-TileColor': '#234ae8',
     'geo.region': 'IN-CH',
     'geo.placename': 'Chandigarh, India',
     'geo.position': '30.7333;76.7794',
@@ -186,7 +196,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${playfair.variable} ${instrumentSerif.variable}`}>
+      className={`${geist.variable} ${geistMono.variable} ${serif.variable} ${readable.variable}`}>
       <head>
         <meta name="google-site-verification" content="bJZ1VDoftPbrcFtzdlTF5ffCR0lLUjqOJH6IRxw8qQw" />
 
@@ -224,9 +234,9 @@ export default function RootLayout({
         {/* Language & region */}
         <meta httpEquiv="content-language" content="en-US" />
         <meta name="language" content="English" />
-        <meta name="theme-color" content="#ff7a1a" />
+        <meta name="theme-color" content="#f2f4f1" />
         <script
-          dangerouslySetInnerHTML={{ __html: COLOR_THEME_BOOTSTRAP_SCRIPT }}
+          dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT + A11Y_BOOT_SCRIPT }}
         />
         {/* Chrome/Edge: prerender primary routes for ~0ms navigations */}
         <script
@@ -263,6 +273,8 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Paper grain — purely decorative */}
+        <div aria-hidden className='grain' />
         <Providers>
           <Header />
           {children}

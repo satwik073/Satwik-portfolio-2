@@ -1,4 +1,4 @@
-import { SITE_URL } from "./site";
+import { SITE_URL, SITE_HOST } from "./site";
 import { faqList } from "./data";
 import { SEO } from "./seo";
 
@@ -192,7 +192,7 @@ export const websiteSchema = {
     "Satwik Kanhere Portfolio",
     "Satvik Kanhere Portfolio",
     "Satwik Developer Portfolio",
-    "satwik-kanhere.vercel.app",
+    SITE_HOST,
   ],
   url: SITE_URL,
   description: SEO.shortBio,
