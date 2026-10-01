@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { SITE_URL, OG_IMAGE_URL, OG_IMAGE_SQUARE_URL } from "./site";
+import { SITE_URL, SITE_HOST, OG_IMAGE_URL, OG_IMAGE_SQUARE_URL } from "./site";
 
 export const META = {
-  title: "Satwik Kanhere | Full-Stack SDE | Java Spring Boot React Next.js",
+  title: "Satwik Kanhere | Software Engineer | Next.js · React · TypeScript · FastAPI",
   description:
-    "Satwik Kanhere is a Full-Stack Software Development Engineer 1 at WizCommerce — Java, Spring Boot, Hibernate, React.js, Next.js, and TypeScript. CRM, PIM, Ag-Grid SSRM, payments, CDN. B.Tech CSE Chitkara (9.41 CGPA). Hire: satwikkanhere2003@gmail.com · +91 6284486063 · satwik-kanhere.vercel.app/about",
+    "Satwik Kanhere — Software Engineer (SDE 1) at WizCommerce with 2+ years building production web apps in Next.js, React.js, TypeScript and FastAPI. PIM for 100K+ SKUs, Ag-Grid for 500K+ records, 65% faster page loads across 80+ clients. B.Tech CSE, Chitkara (9.41 CGPA).",
   keywords: [
     // === Name variations (CRITICAL for ranking) ===
     "Satwik Kanhere",
@@ -126,7 +126,7 @@ export const META = {
     "Best software developer portfolio",
     "Top software engineer portfolio",
     "Developer portfolio website",
-    "satwik-kanhere.vercel.app",
+    SITE_HOST,
 
     // === Long-tail search phrases ===
     "Satwik Kanhere software development engineer",
@@ -143,10 +143,10 @@ export const META = {
   siteName: "Satwik Kanhere - Software Development Engineer",
   ogTitle: "Satwik Kanhere | Software Development Engineer at WizCommerce",
   ogDescription:
-    "Full-stack SDE 1 at WizCommerce | Java · Spring Boot · Hibernate · React · Next.js · TypeScript | Assembly & Flux | Apple assistive tech | 9.41 CGPA",
+    "Software Engineer at WizCommerce | Next.js · React.js · TypeScript · FastAPI | PIM · CRM · AI Web Studio",
   twitterTitle: "Satwik Kanhere | Full-Stack Software Development Engineer",
   twitterDescription:
-    "Full-stack SDE 1 at WizCommerce | Java/Spring Boot/Hibernate + React/Next.js/TypeScript | Ag-Grid · payments · CDN",
+    "Software Engineer at WizCommerce | Next.js · React.js · TypeScript · FastAPI | PIM · CRM · AI Web Studio",
   author: "Satwik Kanhere",
   authorUrl: "https://linkedin.com/in/satwikkanhere0730",
   twitterHandle: "@satwikkanhere",
